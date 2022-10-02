@@ -1,0 +1,77 @@
+/* Our Team Section Style */
+.team{
+    @include mobile{
+        &__grid{
+            margin-bottom: toRem(20);
+            &:nth-child(odd){
+                .team__block__overlay{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    @include min-mobile{
+        .section-header__sub-title{
+            margin-left: toRem(20);
+        }
+        .row{
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        &__grid{
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-bottom: 10px;
+        }
+    }
+    &__block{
+        &__wrapper{
+            border-radius: 5px;
+            z-index: 0;
+            @extend %transition;
+        }
+        &__overlay{
+            top: 0;
+            left: 0;
+            padding: toRem(20);
+            background-color: rgba($color-secondary, $alpha: 0.9);
+            border-radius: inherit;
+            @extend %transition;
+            @include min-desktop{
+                opacity: 0;
+            }
+            &__title{
+                font-size: toRem(20);
+                font-weight: 500;
+            }
+            &__sub-title{
+                font-size: toRem(16);
+                font-weight: 300;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 90%;
+                    border-bottom: 1px solid rgba($color-white, $alpha: 0.15);
+                }
+            }
+            .social{
+                z-index: 2;
+            }
+        }
+        &:hover{
+            .team__block{
+                @include min-desktop{
+                    &__wrapper{
+                        z-index: 2;
+                        transform: scale(1.15);
+                    }
+                }
+                &__overlay{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

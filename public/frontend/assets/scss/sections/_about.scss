@@ -1,0 +1,62 @@
+/* About Us Section Style */
+.about{
+    &--primary{
+        @include min-desktop{
+            background-image: url(../images/about/about-bg-primary.png);
+        }
+        @extend %cover-bg;
+    }
+    &--secondary{
+        color: $color-secondary;
+        .about__conten{
+            &__number{
+                text-shadow:
+                    toRem(7) toRem(7) 0 $color-gallery,
+                    toRem(10) toRem(10) toRem(45) rgba($color-white, $alpha: 0.16);
+            }
+            &__sub-title,
+            &__text{
+                color: $color-tundora;
+            }
+        }
+    }
+    &__conten{
+        @include min-tablet{
+            display: grid;
+            grid-template-columns: toRem(110) 1fr;
+            row-gap: toRem(21);
+            column-gap: toRem(8);
+        }
+        &__number{
+            font-size: toRem(110);
+            text-shadow:
+             toRem(7) toRem(7) 0 rgba($color-image-bg, $alpha: 0.5),
+             toRem(10) toRem(10) toRem(45) rgba($color-white, $alpha: 0.3);
+            @include min-tablet{
+                line-height: 0.8;
+            }
+            @include mobile{
+                font-size: toRem(70);
+            }
+        }
+        &__sub-title{
+            font-size: toRem(18);
+            font-weight: 300;
+        }
+        &__title{
+            font-size: toRem(32);
+            font-weight: 600;
+            @include mobile{
+                font-size: toRem(24);
+            }
+        }
+        &__bar__image{
+            filter: drop-shadow(0 toRem(3) toRem(99) rgba($color-gradient__one, $alpha: 0.15));
+            pointer-events: none;
+        }
+        &__text{
+            margin-bottom: toRem(30);
+            line-height: 1.625;
+        }
+    }
+}

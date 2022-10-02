@@ -1,0 +1,33 @@
+/* Sub Banner Section Style */
+.sub-banner{
+    background-image: url(../images/banner/sub-banner-bg.png);
+    @extend %cover-bg;
+    padding: toRem(181) 0 toRem(52);
+    @include tablet{
+        padding: toRem(120) 0 toRem(60);
+    }
+    &__title{
+        font-size: toRem(32);
+    }
+    .breadcrumb{
+        &-item{
+            + .breadcrumb-item::before {
+                position: relative;
+                top: 1px;
+                color: $color-white;
+                content: "\f112";
+                font-family: flaticon;
+            }
+            &.active{
+                color: $color-primary;
+            }
+        }
+        &-link{
+            @extend %transition;
+            &:hover,
+            &:focus{
+                color: $color-primary;
+            }
+        }
+    }
+}

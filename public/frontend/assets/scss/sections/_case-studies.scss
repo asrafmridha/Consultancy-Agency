@@ -1,0 +1,98 @@
+/* Case Studies Section Style */
+.case-studies{
+    &--secondary{
+        .case-studies__block{
+            margin-bottom: toRem(30);
+        }
+    }
+    .tab-pane{
+        height: 0;
+        &.active{
+            height: auto;
+        }
+    }
+    &__navigation{
+        &__link{
+            color: $color-mine-shaft !important;
+            font-size: toRem(20);
+            font-family: $font-primary;
+            cursor: pointer;
+            @extend %transition;
+            &.active,
+            &:hover,
+            &:focus{
+                color: $color-primary !important;
+            }
+        }
+    }
+    &__slider{
+        padding-bottom: toRem(80);
+        @include min-desktop{
+            padding-bottom: toRem(110);
+        }
+    }
+    &__slide{
+        @include mobile{
+            display: flex !important;
+            justify-content: center;
+        }
+    }
+    &__block{
+        border-radius: 5px;
+        overflow: hidden;
+        &__overlay{
+            top: 0;
+            left: 0;
+            padding: toRem(20);
+            background-color: rgba($color-secondary, $alpha: 0.9);
+            border-radius: inherit;
+            @extend %transition;
+            @include min-desktop{
+                opacity: 0;
+            }
+            &__content__text{
+                z-index: 2;
+            }
+            &__sub-title{
+                font-size: toRem(16);
+                font-family: $font-secondary;
+                @include min-mobile{
+                    margin-left: toRem(50);
+                }
+                @include mobile-to-tablet{
+                    font-size: toRem(12);
+                }
+            }
+            &__title{
+                font-size: toRem(20);
+                font-weight: 500;
+                @include mobile-to-tablet{
+                    font-size: toRem(16);
+                }
+                @include mobile{
+                    font-size: toRem(18);
+                }
+                &__link{
+                    @extend %transition;
+                    &:hover,
+                    &:focus{
+                        color: $color-primary;
+                    }
+                }
+            }
+            .plus-btn{
+                width: toRem(50);
+                height: toRem(50);
+                @include mobile-to-tablet{
+                    width: toRem(40);
+                    height: toRem(40);
+                }
+            }
+        }
+        &:hover{
+            .case-studies__block__overlay{
+                opacity: 1;
+            }
+        }
+    }
+}

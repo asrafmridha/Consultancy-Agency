@@ -1,0 +1,56 @@
+/* Counter Section Style */
+.counter{
+    &__block{
+        @include mobile{
+        
+        }
+        &-wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            @include mobile{
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        &__number{
+            color: $color-secondary;
+            font-size: toRem(50);
+            @include tablet{
+                font-size: toRem(40);
+            }
+        }
+        &__text{
+            color: $color-primary;
+            font-size: toRem(18);
+            font-family: $font-primary;
+            @include tablet{
+                margin-top: toRem(10);
+            }
+            @include min-tablet{
+                margin-left: toRem(8);
+                width: min-content;
+            }
+        }
+        &--shape{
+           &::before{
+               content: url(../images/counter/counter-arrow.png);
+               position: absolute;
+               bottom: 0;
+               left: 50%;
+               transform: translate(-50%, 35%);
+               pointer-events: none;
+               @include min-tablet{
+                   left: 80%;
+                   transform: translate(-50%, 70%)
+               }
+               @include min-desktop-lg{
+                   left: 65%;
+               }
+               @include min-desktop-xl{
+                   left: 0;
+                   transform: translate(10%, 70%);
+               }
+           }
+        }
+    }
+}

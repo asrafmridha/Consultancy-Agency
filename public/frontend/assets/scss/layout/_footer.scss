@@ -1,0 +1,67 @@
+/* Footer Section Style */
+.footer{
+    background-color: $color-secondary;
+    &__block{
+        &__list{
+            &__item:not(:last-child){
+                margin-bottom: toRem(22);
+            }
+            &__link{
+                padding: toRem(5);
+                @extend %transition;
+                &:hover,
+                &:focus{
+                    color: $color-primary;
+                    text-decoration: underline;
+                }
+            }
+        }
+        &__title{
+            font-size: toRem(24);
+            font-weight: 500;
+        }
+        &__form{
+            max-width: toRem(400);
+            min-height: toRem(64);
+            .form-control{
+                color: $color-white;
+                min-height: inherit;
+                border-color: rgba($color-white, $alpha: 0.30);
+                @include min-mobile{
+                    padding-left: toEm(20);
+                    padding-right: toEm(60);
+                }
+                &::placeholder{
+                    color: #8A8AA1;
+                    opacity: 1;
+                }
+                &:focus{
+                    border-color: rgba($color-primary, $alpha: 0.70);
+                }
+            }
+            .primary-btn{
+                padding-top: toEm(9);
+                padding-bottom: toEm(9);
+                @include min-mobile{
+                    position: absolute;
+                    right: 0;
+                    transform: translateX(50%);
+                }
+            }
+        }
+    }
+    &__bottom{
+        background-color: $color-mirage;
+        &__text{
+            font-size: toRem(14);
+        }
+        &__link{
+            @extend %transition;
+            &:hover,
+            &:focus{
+                color: $color-primary;
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+/* 404 Error Section Style */
+.error{
+    @include min-desktop{
+        background-image: url(../images/error/error.png);
+        padding: toRem(627) 0 toRem(100);
+    }
+    padding-bottom: toRem(100);
+    @extend %cover-bg;
+    &__image{
+        margin-bottom: -10vw;
+        @include min-tablet{
+            margin-bottom: -13vw;
+        }
+    }
+    &__content{
+        &__title{
+            font-size: toRem(30);
+            @include min-mobile{
+                font-size: toRem(40);
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: toRem(-18);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: toRem(100);
+                height: 1px;
+                @include gradient-bg(90deg);
+            }
+        }
+        &__text{
+            margin: toRem(46) 0 toRem(30);
+            @include min-tablet{
+                font-size: toRem(20);
+            }
+        }
+    }
+}

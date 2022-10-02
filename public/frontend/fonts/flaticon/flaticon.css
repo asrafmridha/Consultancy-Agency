@@ -1,0 +1,90 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?b0c5a2ef812a481bae2bb486c2eb8882") format("truetype"),
+    url("./flaticon.woff?b0c5a2ef812a481bae2bb486c2eb8882") format("woff"),
+    url("./flaticon.woff2?b0c5a2ef812a481bae2bb486c2eb8882") format("woff2"),
+    url("./flaticon.eot?b0c5a2ef812a481bae2bb486c2eb8882#iefix") format("embedded-opentype"),
+    url("./flaticon.svg?b0c5a2ef812a481bae2bb486c2eb8882#flaticon") format("svg");
+}
+
+i, i[class^="flaticon-"], i[class*="flaticon-"]{
+    line-height: 0;
+}
+
+i[class^="flaticon-"]::before, i[class*=" flaticon-"]::before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-straight-quotes::before {
+    content: "\f101";
+}
+.flaticon-star::before {
+    content: "\f102";
+}
+.flaticon-add::before {
+    content: "\f103";
+}
+.flaticon-sales::before {
+    content: "\f104";
+}
+.flaticon-twitter::before {
+    content: "\f105";
+}
+.flaticon-linkedin::before {
+    content: "\f106";
+}
+.flaticon-facebook-app-symbol::before {
+    content: "\f107";
+}
+.flaticon-customer-service::before {
+    content: "\f108";
+}
+.flaticon-pinterest::before {
+    content: "\f109";
+}
+.flaticon-debt::before {
+    content: "\f10a";
+}
+.flaticon-placeholder::before {
+    content: "\f10b";
+}
+.flaticon-research::before {
+    content: "\f10c";
+}
+.flaticon-envelope::before {
+    content: "\f10d";
+}
+.flaticon-strategy::before {
+    content: "\f10e";
+}
+.flaticon-menu::before {
+    content: "\f10f";
+}
+.flaticon-call::before {
+    content: "\f110";
+}
+.flaticon-down-arrow::before {
+    content: "\f111";
+}
+.flaticon-next::before {
+    content: "\f112";
+}
+.flaticon-back::before {
+    content: "\f113";
+}
+.flaticon-stats::before {
+    content: "\f114";
+}
+.flaticon-upload::before {
+    content: "\f115";
+}
+.flaticon-straight-right-arrow::before {
+    content: "\f116";
+}

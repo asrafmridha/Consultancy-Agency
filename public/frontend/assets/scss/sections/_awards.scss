@@ -1,0 +1,16 @@
+/* Awards Section Style */
+.awards{
+    &__block{
+        padding: toRem(15);
+        border-radius: 5px;
+        margin-bottom: toRem(30);
+        &--primary{
+            background-color: $color-mirage;
+            box-shadow: toRem(10) toRem(10) toRem(15) $color-image-bg;
+        }
+        &--secondary{
+            border: 1px solid $color-alto;
+            box-shadow: toRem(10) toRem(10) toRem(15) rgba($color-black, $alpha: 0.08);
+        }
+    }
+}

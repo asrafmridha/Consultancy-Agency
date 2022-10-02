@@ -1,0 +1,40 @@
+/* Contact Quote Section Style */
+.contact-quote{
+    background-image: url(../images/quote/quote-bg.png);
+    @extend %cover-bg;
+    &__sub-title{
+        color: $color-primary;
+        font-size: toRem(24);
+        font-family: $font-secondary;
+        @include mobile{
+            font-size: toRem(20);
+        }
+    }
+    &__title{
+        font-size: toRem(50);
+        text-shadow: toEm(10) toEm(10) toEm(60) rgba($color-white, $alpha: 0.2);
+        @include desktop{
+            font-size: toRem(40);
+        }
+        @include tablet{
+            font-size: toRem(35);
+        }
+        @include mobile{
+            font-size: toRem(28);
+        }
+        @include mobile-xxs{
+            font-size: toRem(24);
+        }
+    }
+    &__text{
+        font-size: toRem(26);
+        font-weight: 200;
+        font-family: $font-primary;
+        @include mobile{
+            font-size: toRem(20);
+        }
+        @include min-tablet{
+            letter-spacing: toRem(2);
+        }
+    }
+}

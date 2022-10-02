@@ -1,0 +1,38 @@
+/* Form Section Style */
+.contact-form{
+    .section-header{
+        margin-bottom: toRem(20);
+    }
+    .form{
+        &-group{
+            margin-bottom: toRem(15);
+            .invalid-feedback{
+                width: max-content;
+            }
+        }
+        &-control{
+            color: $color-silver;
+            border-color: $color-alto;
+            padding: toRem(13) toRem(20);
+            text-shadow: none;
+            @extend %transition;
+            &--textarea{
+                resize: none;
+                height: toRem(150);
+            }
+            &::placeholder{
+                color: inherit;
+                font-size: toRem(14);
+                @extend %transition;
+            }
+            &:hover,
+            &:focus{
+                color: $color-secondary;
+                border-color: inherit;
+            }
+            &:valid{
+                color: $color-secondary;
+            }
+        }
+    }
+}

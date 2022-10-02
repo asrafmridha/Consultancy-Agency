@@ -1,0 +1,138 @@
+/* Header Section Style */
+.header{
+	top: 0;
+	left: 0;
+	z-index: 99;
+	&__top{
+		padding: toRem(14) 0;
+		border-bottom: 1px solid rgba($color-white, $alpha: 0.10);
+		&__contact{
+			@extend %transition;
+			&:hover,
+            &:focus{
+				color: $color-primary;
+			}
+		}
+	}
+	.navbar{
+		top: 0;
+		left: 0;
+		padding-top: toRem(20);
+		padding-bottom: toRem(20);
+		&-toggler{
+			font-size: 2rem;
+			color: $color-primary;
+		}
+        &-collapse{
+            @include desktop-lg{
+                background-color: $color-image-bg;
+                padding-bottom: 1rem;
+            }
+        }
+		.nav{
+			&-item{
+				&.dropdown{
+					@include min-desktop-lg{
+						position: relative;
+						z-index: 1;
+						&::before{
+							content: "";
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 110%;
+							z-index: -1;
+							cursor: pointer;
+							pointer-events: none;
+						}
+						&:hover,
+						&:focus{
+							&::before{
+								pointer-events: initial;
+							}
+							.nav-link{
+								color: $color-primary;
+							}
+							.dropdown-menu{
+								transform: translateY(0);
+								opacity: 1;
+								visibility: visible;	
+							}
+						}
+					}
+					.dropdown{
+						&-toggle{
+							&::after{
+								vertical-align: 2px;
+								@include min-desktop-lg{
+									display: none;
+								}
+							}
+						}
+						&-menu{
+							padding: 0.5rem;
+							min-width: max-content;
+							max-width: max-content;
+							border-radius: toRem(5);
+							@include gradient-bg(180deg);
+							@extend %transition;
+							@include min-desktop-lg{
+								display: block;
+								transform: translateY(30%);
+								opacity: 0;
+								visibility: hidden;
+							}
+						}
+						&-item{
+							color: $color-white;
+							font-size: toRem(20);
+							border-radius: toRem(5);
+							font-family: $font-secondary;
+							@extend %transition;
+							@include mobile{
+								font-size: toRem(17);
+							}
+							&.active,
+							&:hover,
+							&:focus{
+								background-color: $color-secondary;
+							}
+						}
+					}
+				}
+			}
+			&-link{
+				font-size: toRem(20);
+				font-family: $font-secondary;
+				padding-left: toEm(12);
+				padding-right: toEm(12);
+				@extend %transition;
+				@include mobile{
+					font-size: toRem(17);
+				}
+				&.active,
+				&:hover,
+				&:focus-visible{
+					color: $color-primary;
+				}
+			}
+		}
+		&--fixed{
+			position: fixed;
+			transform: translateY(-100%);
+			background-color: $color-image-bg;
+			box-shadow: 0 3px 15px rgba($color: #000000, $alpha: 0.16);
+			animation: header_in .4s linear forwards;
+		}
+	}
+}
+/* Fixed Header animation */
+@keyframes header_in{
+	0%{
+		transform: translateY(-100%);
+	}
+	100%{
+		transform: translateY(0);
+	}
+}

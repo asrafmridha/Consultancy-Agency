@@ -1,0 +1,59 @@
+/* About Us Section Style in About Us */
+.about--secondary{
+    @include desktop-lg{
+        padding: 0;
+    }
+    .about__image{
+        @include desktop{
+            width: 100%;
+        }
+        @include min-desktop{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}
+
+/* Awards Section Style in About Us Page */
+.awards{
+    @include desktop-lg{
+        padding: 0;
+    }
+    &__details{
+        .section-header{
+            margin-bottom: toRem(18);
+        }
+        &__text{
+            color: $color-tundora;
+        }
+    }
+    &__grid{
+        display: grid;
+        @include mobile{
+            grid-template-columns: 1fr;
+        }
+        @include min-mobile{
+            grid-template-columns: 1fr 1fr;
+        }
+        @include min-desktop-lg{
+            grid-template-columns: toRem(20) 1fr 1fr toRem(20);
+        }
+        column-gap: toRem(20);
+        row-gap: toRem(20);
+        &__wrapper{
+            @include min-mobile{
+                &:nth-child(1),
+                &:nth-child(4){
+                    grid-column: span 2;
+                }
+                &:nth-child(2){
+                    grid-column: span 1;
+                }
+                &:nth-child(3){
+                    grid-column: 2 / span 1;
+                }
+            }
+        }
+    }
+}

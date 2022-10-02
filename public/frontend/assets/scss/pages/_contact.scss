@@ -1,0 +1,79 @@
+/* Contact Us Section Style */
+.contact{
+    .contact-form{
+        padding: 1rem;
+        border-radius: 5px;
+        box-shadow: toRem(10) toRem(10) toRem(50) rgba($color-black, $alpha: 0.05);
+        padding: toRem(57) toRem(30) toRem(60);
+        @include mobile{
+            padding: toRem(40) toRem(20);
+        }
+    }
+    &__card{ 
+        padding: toRem(50) toRem(20);
+        border: 1px solid $color-gallery;
+        border-radius: 5px;
+        box-shadow: toRem(10) toRem(10) toRem(50) rgba($color-black, $alpha: 0.04);
+        @include min-desktop{
+            padding: toRem(57) toRem(56) toRem(60);
+        }
+        &-wrapper{
+            display: grid;
+            grid-template-columns: 1fr;
+            @include desktop{
+                justify-content: center;
+            }
+            @include min-desktop{
+                grid-template-columns: 1.2fr 1fr;
+            }
+            @include min-desktop-lg{
+                grid-template-columns: 0.9fr 1fr 0.6fr;
+            }
+            &__block--line{
+               &::before,
+               &::after{
+                   content: "";
+                   position: absolute;
+                   @include gradient-bg(0deg);
+                   @include desktop{
+                       left: 50%;
+                        transform: translateX(-50%);
+                        width: 35%;
+                        height: 1px;
+                   }
+                   @include min-desktop-lg{
+                        top: 55%;
+                        transform: translateY(-50%);
+                        width: 1px;
+                        height: 60%;
+                   }
+               }
+               &::before{
+                    @include desktop{
+                        top: -10%;
+                    }
+                    @include min-desktop-lg{
+                        left: 15%;
+                    }
+               }
+               &::after{
+                   right: 15%;
+                   @include desktop{
+                       bottom: -10%;
+                   }
+               }
+            }
+        }
+        &__block{
+            color: $color-tundora;
+            .section-header{
+                margin-bottom: toRem(30);
+            }
+            .contact-details__icon{
+                @include desktop{
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

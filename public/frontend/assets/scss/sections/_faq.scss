@@ -1,0 +1,68 @@
+/* FAQ Section Style */
+.faq{
+    &__accordion{
+        .card{
+            border-radius: 5px !important;
+            &:not(:last-child){
+                margin-bottom: toRem(15);
+            }
+            &-header,
+            &-body{
+                padding-left: toRem(30);
+                padding-right: toRem(30);
+                @include mobile{
+                    padding-left: toRem(20);
+                    padding-right: toRem(20);
+                }
+            }
+            .btn{
+                color: $color-secondary;
+                font-size: toRem(20);
+                @extend %transition;
+                @include mobile{
+                    font-size: toRem(18);
+                }
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-color: $color-wild-sand;
+                    z-index: -1;
+                    pointer-events: none;
+                    border-radius: 5px;
+                    @extend %transition;
+                }
+                &__icon{
+                    width: toRem(40);
+                    height: toRem(40);
+                    color: $color-dusty-gray;
+                    background-color: $color-white;
+                    font-size: toRem(12);
+                    border: 1px solid $color-gallery;
+                    border-radius: 3px;
+                }
+                &[aria-expanded="true"],
+                &:hover,
+                &:focus-visible{
+                    color: $color-white;
+                    &::before{
+                        background-color: $color-secondary
+                    }
+                    .btn__icon{
+                        color: $color-white;
+                        border-color: transparent;
+                        @include gradient-bg(0deg);
+                    }
+                }
+            }
+            &-body{
+                .hr{
+                    border-color: rgba($color-white, $alpha: 0.10);
+                }
+            }
+        }
+    }
+}

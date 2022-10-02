@@ -1,0 +1,330 @@
+/* Banner/Hero Section Style */
+.banner{
+	background-image: url(../images/banner/banner-bg.webp);
+	@extend %cover-bg;
+	padding: toEm(247) 0 toEm(117);
+	z-index: 1;
+	@include desktop-xl{
+		padding-top: toEm(200);
+		padding-bottom: toEm(70);
+	}
+	@include desktop{
+		padding-bottom: 0;
+	}
+	@include tablet{
+		padding-top: toEm(150);
+	}
+	&__sub-title{
+		font-size: toRem(16);
+		font-weight: 400;
+		font-family: $font-secondary;
+		@include min-desktop{
+			margin-left: toRem(60);
+		}
+		@include mobile{
+			&::before{
+				width: toRem(20);
+			}
+		}
+	}
+	&__title{
+		font-size: toRem(75);
+		font-weight: 500;
+		@include min-desktop{
+			line-height: toRem(85);
+		}
+		@include desktop{
+			font-size: toRem(50);
+		}
+		@include tablet{
+			font-size: toRem(40);
+		}
+	}
+	&__text{
+		margin: toEm(15) 0 toEm(30);
+	}
+	&__image{
+		@include desktop{
+			width: 100%;
+		}
+		@include min-desktop{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			z-index: -1;
+			width: 53.5%;
+		}
+		#circle-left--top,
+		#circle-left--bottom--sm,
+		#circle-middle,
+		#circle-right--top,
+		#circle-right--middle,
+		#circle-right--bottom,
+		#circle-right--lg,
+		#rect-sm,
+		#bar-chart-screen,
+		#tab-screen,
+		#rect-lg,
+		#success{
+			transform-origin: center;
+			will-change: transform;
+			@extend %fill-box;
+		}
+		#bar-chart{
+			&-left,
+			&-right{
+				&__1,
+				&__2,
+				&__3,
+				&__4,
+				&__5,
+				&__6,
+				&__7{
+					animation: bar-chart-grow 3s linear infinite;
+					transform: scaleY(0);
+					transform-origin: center bottom;
+					@extend %fill-box;
+				}
+			}
+			&-left{
+				&__2{
+					animation-delay: 0.5s;
+				}
+				&__3{
+					animation-delay: 1s;
+				}
+				&__4{
+					animation-delay: 1.5s;
+				}
+				&__5{
+					animation-delay: 2s;
+				}
+				&__6{
+					animation-delay: 2.5s;
+				}
+			}
+			&-right{
+				&__6{
+					animation-delay: 0.5s;
+				}
+				&__5{
+					animation-delay: 1s;
+				}
+				&__4{
+					animation-delay: 1.5s;
+				}
+				&__3{
+					animation-delay: 2s;
+				}
+				&__2{
+					animation-delay: 2.5s;
+				}
+				&__1{
+					animation-delay: 3s;
+				}
+			}
+			@keyframes bar-chart-grow {
+				0%,100%{
+					transform: scaleY(0);
+				}
+				50%{
+					transform: scaleY(1);
+				}
+			}
+		}
+		#message-screen{
+			animation: bounce 5s linear infinite;
+			transform-origin: center;
+			@extend %fill-box;
+			@keyframes bounce {
+				0%,100%{
+					transform: translateY(0);
+				}
+				50%{
+					transform: translateY(-30%);
+				}
+			}
+		}
+		#half-pi{
+			animation: rotate 10s linear infinite reverse;
+			transform-origin: center;
+			@extend %fill-box;
+		}
+		#setting{
+			&-sm,
+			&-lg{
+				animation: rotate linear infinite;
+				transform-origin: center;
+				@extend %fill-box;
+			}
+			&-sm{
+				animation-duration: 20.5s;
+			}
+			&-lg{
+				animation-duration: 30.5s;
+				animation-direction: reverse;
+			}
+		}
+		#chart-line--front{
+			stroke-dasharray: 100;
+			stroke-dashoffset: 727;
+			animation: line-chart 12s linear infinite;
+			@keyframes line-chart {
+				0%,100%{
+					stroke-dashoffset: 100;
+				}
+				50%{
+					stroke-dashoffset: 727;
+				}
+			}
+		}
+		#pi-chart-full{
+			animation: rotate-grow 10s linear infinite;
+			transform-origin: center;
+			@extend %fill-box;
+			@keyframes rotate-grow {
+				0%{
+					transform: rotate(0) scale(1);
+				}
+				50%{
+					transform: rotate(180deg) scale(1.5);
+				}
+				100%{
+					transform: rotate(360deg) scale(1);
+				}
+			}
+		}
+		@keyframes rotate {
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+	}
+}
+
+/* Testimonial Section Style */
+.testimonial{
+	background-image: url(../images/testimonial/testimonial-bg.png);
+	@extend %cover-bg;
+	&__block{
+		background-color: rgba($color-mirage, $alpha: 0.75);
+		border-radius: 5px;
+		padding: toRem(10);
+		box-shadow: toRem(10) toRem(10) toRem(50) rgba($color-mirage, $alpha: 0.20);
+		@include min-desktop{
+			padding-right: toRem(30);
+		}
+		&__image{
+			@include mobile{
+				border-radius: 10px;
+			}
+			@include min-mobile{
+				border-radius: 5px 0 0 5px;
+			}
+		}
+		&__quote{
+			top: 50%;
+			right: 0;
+			transform: translate(40%, -30%);
+			width: toRem(50);
+			height: toRem(50);
+			box-shadow: toRem(10) toRem(10) toRem(50) rgba($color-gradient__one, $alpha: 0.30);
+			@include gradient-bg(180deg);
+		}
+		&__content{
+			@include mobile{
+				padding-top: toRem(20);
+			}
+			&__text{
+				line-height: toRem(26);
+				margin-bottom: toRem(30);
+				word-break: break-all;
+			}
+			&__title{
+				font-size: toRem(20);
+				font-weight: 500;
+				&::before{
+					content: "";
+					position: absolute;
+					top: -60%;
+					left: 0;
+					width: 110%;
+					height: 1px;
+					@include gradient-bg(0deg);
+				}
+			}
+			&__sub-title{
+				font-size: toRem(16);
+				font-weight: 300;
+			}
+			&__rating{
+				&-icon{
+					font-size: toRem(16);
+					color: $color-orange;
+					text-shadow: toRem(10) toRem(10) toRem(50) rgba($color-orange, $alpha: 0.16);
+				}
+			}
+		}
+	}
+}
+
+/* Clients Section Style */
+.clients{
+	&__list{
+		&__item{
+			&:nth-child(1),
+			&:nth-child(2),
+			&:nth-child(3){
+				border-bottom: 1px solid $color-alto;
+				.clients__block{
+					padding-bottom: toRem(22);
+				}
+			}
+			&:nth-child(3),
+			&:nth-child(4){
+				@include mobile{
+					.clients__block{
+						padding-top: toRem(22);
+						padding-bottom: toRem(22);
+					}
+				}
+			}
+			&:nth-child(4){
+				@include mobile{
+					border-bottom: 1px solid $color-alto;
+				}
+			}
+			&:nth-child(4),
+			&:nth-child(5),
+			&:nth-child(6){
+				.clients__block{
+					padding-top: toRem(22);
+				}
+			}
+			&:nth-child(2),
+			&:nth-child(5){
+				@include min-mobile{
+					border-left: 1px solid $color-alto;
+					border-right: 1px solid $color-alto;
+				}
+			}
+			&:nth-child(odd){
+				@include mobile{
+					border-right: 1px solid $color-alto;
+				}
+			}
+		}
+	}
+	&__block{
+		&__image{
+			filter: grayscale(1);
+			@extend %transition;
+		}
+		&:hover,
+		&:focus{
+			.clients__block__image{
+				filter: grayscale(0);
+			}
+		}
+	}
+}

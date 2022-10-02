@@ -1,0 +1,76 @@
+/* 
+------------------
+Template Name: Consult | Agency Type Website
+Version: 1.00
+------------------
+
+----------------
+Table of CSS Content
+----------------
+
+0.Google Fonts Link
+1.Typography Reset
+2.Reset CSS
+3.Preloader Section Style
+4.Common Slick Slider Style
+5.Veno Box Style
+6.Scroll To Top Button Style
+7.Common Section Gap
+8.Common Section Space Style
+9.Common Section Heading Style
+10.Common Logo Style
+11.Common Social Media Icons Style
+12.Common Side Line Style
+13.Common Contact Details Style
+14.Common Horizontal Line Style
+15.Common Form and FAQ Section Style
+16.Common Transition Style
+17.Common Background Style
+18.Common Button's Style
+19.Header Section Style
+20.Footer Section Style
+21.Form Section Style
+22.Our Services Section Style
+23.About Us Section Style
+24.Case Studies Section Style
+25.Awards Section Style
+26.Counter Section Style
+27.FAQ Section Style
+28.Our Team Section Style
+29.Contact Quote Section Style
+30.Sub Banner Section Style
+31.Banner/Hero Section Style
+32.Testimonial Section Style
+33.Clients Section Style
+34.About Us Section Style in About Us
+35.Awards Section Style in About Us Page
+36.Service Details Section Style
+37.Contact Us Section Style
+38.404 Error Section Style
+
+------------------
+*/
+@import "./abstracts/variable";
+@import "./abstracts/mixin";
+@import "./abstracts/function";
+@import "./base/typography";
+@import "./base/common";
+@import "./abstracts/extend";
+@import "./components/buttons";
+@import "./layout/header";
+@import "./layout/footer";
+@import "./layout/forms";
+@import "./sections/services";
+@import "./sections/about";
+@import "./sections/case-studies";
+@import "./sections/awards";
+@import "./sections/counter";
+@import "./sections/faq";
+@import "./sections/team";
+@import "./sections/contact-quote";
+@import "./sections/sub-banner";
+@import "./pages/home";
+@import "./pages/about-us";
+@import "./pages/service-details";
+@import "./pages/contact";
+@import "./pages/404";

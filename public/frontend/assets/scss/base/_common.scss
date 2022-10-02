@@ -1,0 +1,373 @@
+/* Reset CSS */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+::selection{
+	color: $color-white;
+	background: $color-primary;
+}
+
+html,
+body{
+	scroll-behavior: smooth;
+}
+
+html{
+	font-size: 16px;
+}
+
+body {
+	color: $color-white;
+	font-family: $font-secondary;
+}
+
+a,
+a:hover,
+a:active {
+	text-decoration: none;
+	color: inherit;
+}
+a[href*="mailto:"]{
+	word-wrap: anywhere;
+}
+
+button,
+button:hover,
+button:focus,
+button:active {
+	outline: none;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+/* Reset Extra Large Device Container Width Style */
+.container{
+	@include min-desktop-lg{
+		max-width: 1170px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+/* Preloader Section Style */
+.preloader{
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	&__bg{
+		background-color: $color-image-bg;
+	}
+}
+
+/* Common Slick Style */
+.slick{
+	&__arrows{
+		width: toRem(50);
+		height: toRem(50);
+		bottom: 0;
+		position: absolute;
+		color: $color-dusty-gray;
+		background: transparent;
+		font-size: 1.1rem;
+		border: 1px solid $color-alto;
+		cursor: pointer;
+		z-index: 2;
+		@extend %transition;
+		@include min-desktop{
+			width: toRem(70);
+			height: toRem(70);
+		}
+		&--left{
+			left: 42%;
+			left: calc(50% - 30px);
+			transform: translate(-50%, 0);
+			@include min-desktop{
+				left: calc(50% - 50px);
+			}
+		}
+		&--right{
+			right: 42%;
+			right: calc(50% - 30px);
+			transform: translate(50%, 0);
+			@include min-desktop{
+				right: calc(50% - 50px);
+			}
+		}
+		&:hover,
+		&:focus-visible{
+			color: $color-white;
+			background: $color-secondary;
+			border-color: $color-secondary;
+		}
+	}
+	&-dots{
+		display: flex;
+		justify-content: center;
+		margin-bottom: 0;
+		line-height: 0;
+		margin-top: toRem(30);
+		li{
+			&:not(:last-child){
+				margin-right: 1rem;
+			}
+			button{
+				font-size: 0;
+				width: toRem(10);
+				height: toRem(10);
+				background: $color-white;
+				border-radius: 50%;
+				border: 0;
+			}
+			&.slick-active{
+				button{
+					transform: scale(1.5);
+					box-shadow: toRem(0) toRem(3) toRem(10) rgba($color-gradient__one, $alpha: 0.25);
+					@include gradient-bg(180deg);
+				}
+			}
+		}
+	}
+}
+
+/* Veno Box Style */
+.vbox{
+	&-close{
+		top: 2%;
+		right: 2%;
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 3rem;
+		color: $color-white !important;
+		@include gradient-bg(180deg);
+		@extend %transition;
+		@include tablet{
+			width: 3rem;
+			height: 3rem;
+			font-size: 2rem;
+		}
+		&:hover,
+		&:focus{
+			color: $color-secondary !important;
+		}
+	}
+	&-preloader .sk-cube{
+		@include gradient-bg(180deg);
+	}
+	&-next,
+	&-prev{
+		width: 3rem;
+		height: 3rem;
+		span{
+			width: 2rem;
+			height: 2rem;
+			border-width: 4px;
+			border-top-color: $color-primary !important;
+			border-right-color: $color-primary !important;
+		}
+	}
+}
+
+/* Scroll To Top Button Style */
+.scroll-top{
+	bottom: 3%;
+	right: 1%;
+	display: none;
+	cursor: pointer;
+	z-index: 7;
+	@include mobile{
+		bottom: 2%;
+	}
+	&__btn{
+		width: 2.8rem;
+		height: 2.8rem;
+		font-size: 1.2rem;
+		border-radius: 5px;
+		color: $color-white;
+		background: rgba($color-gradient__one, $alpha: 0.8);
+	}
+}
+
+/* Common Section Gap Style */
+.section-gap{
+	margin-bottom: toRem(100);
+	@include tablet{
+		margin-bottom: toRem(60);
+	}
+}
+
+/* Common Section Space Style */
+.section-space{
+	padding-top: toRem(55);
+	padding-bottom: toRem(55);
+}
+
+/* Common Section Heading Style */
+.section-header{
+	margin-bottom: toRem(40);
+	&__title{
+		color: $color-secondary;
+		font-size: toRem(32);
+		@include mobile{
+			font-size: toRem(24);
+		}
+	}
+	&__sub-title{
+		color: $color-primary;
+		font-size: 1rem;
+		font-weight: 400;
+		font-family: $font-secondary;
+	}
+}
+
+/* Common Logo Style */
+.logo{
+	font-size: toRem(30);
+	font-family: $font-logo;
+	line-height: 0;
+	img{
+		filter: drop-shadow(toRem(5) toRem(5) toRem(25) rgba($color-gradient__one, $alpha: 0.20));
+	}
+}
+
+/* Common Social Media Icons Style */
+.social{
+	&__items:not(:last-child){
+		margin-right: toRem(10);
+	}
+	&__link{
+		font-size: toRem(18);
+		@extend %transition;
+		padding: toRem(5);
+		&:hover,
+		&:focus{
+			color: $color-primary;
+		}
+	}
+	&--rounded{
+		.social__link{
+			width: toRem(50);
+			height: toRem(50);
+			border: 1px solid rgba($color-white, $alpha: 0.30);
+			&:hover,
+			&:focus{
+				color: $color-white;
+				background-color: $color-picton-blue;
+				border-color: $color-picton-blue;
+				box-shadow: toEm(10) toEm(10) toEm(50) rgba($color-picton-blue, $alpha: 0.25);
+			}
+		}
+	}
+}
+
+/* Common Side Line Style */
+.side-line{
+	position: relative;
+	display: inline-block;
+	&::before{
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: toRem(-10);
+		transform: translate(-100%, -50%);
+		@include gradient-bg(180deg);
+		height: 1px;
+		pointer-events: none;
+	}
+	&--38{
+		&::before{
+			width: toRem(38);
+		}
+	}
+	&--40{
+		&::before{
+			width: toRem(40);
+		}
+	}
+	&--50{
+		&::before{
+			width: toRem(50);
+		}
+	}
+	&--60{
+		&::before{
+			width: toRem(60);
+		}
+	}
+	&--81{
+		&::before{
+			width: toRem(81);
+		}
+	}
+	&--98{
+		&::before{
+			width: toRem(98);
+		}
+	}
+	&--106{
+		&::before{
+			width: toRem(106);
+		}
+	}
+	&--124{
+		&::before{
+			width: toRem(124);
+		}
+	}
+	@include mobile{
+		&::before{
+			left: initial;
+			right: toRem(-10);
+			width: toRem(38);
+			transform: translate(100%, -50%);
+		}
+	}
+}
+
+/* Common Contact Details Style */
+.contact-details{
+	&__icon{
+		width: toRem(60);
+		height: toRem(60);
+		font-size: toRem(20);
+		@include gradient-bg(180deg);
+		box-shadow: toEm(10) toEm(10) toEm(50) rgba($color-gradient__one, $alpha: 0.20);
+		margin-right: toRem(10);
+		@include mobile{
+			width: toRem(45);
+			height: toRem(45);
+		}
+	}
+	&__text{
+		font-family: $font-secondary;
+		line-height: 1.625;
+	}
+}
+
+/* Common Horizontal Line Style */
+.hr{
+	border-color: $color-gallery;
+	margin: toRem(60) 0;
+}
+
+/* Common Form and FAQ Section Style */
+.form-and-faq{
+	&__wrapper{
+		@include tablet-to-desktop{
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
