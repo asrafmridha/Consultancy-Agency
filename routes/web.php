@@ -119,7 +119,8 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::post('/teamimport',[ExportImportController::class,'teamimport'])->name('team-file-import');
 
-    
+    //Route For Team Filter 
+    Route::get('/team-date-filter', [TeamController::class, 'teamDateFilter'])->name('team.date.filter');
 
 
     // Route for form view for team
