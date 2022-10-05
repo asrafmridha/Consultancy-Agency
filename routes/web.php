@@ -40,20 +40,23 @@ require __DIR__.'/auth.php';
 
 Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
-Route::get('/ourservice/{id}',[FrontendController::class,'service'])->name('our_service');
+Route::get('/ourservice/{slug}',[FrontendController::class,'service'])->name('our_service');
+
+Route::get('/service',[FrontendController::class,'service2'])->name('service2');
+
 Route::get('/cases',[FrontendController::class,'case'])->name('cases');
 Route::get('/testimonials', [FrontendController::class, 'testimonials'])->name('testimonials');
 Route::get('/about_us',[FrontendController::class,'about'])->name('about-us');
 
-
-
-
-
 // Route::get('/service',[FrontendController::class,'service'])->name('our.service');
+
+//Customer Message Save
+
+Route::post('user/message',[CustomerMessageController::class,'store'])->name('store.customermessage');
 
 
 //  All Route For Admin
- 
+
 Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
         //Route for add Header text View
@@ -74,13 +77,28 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
       // Route for  Serviec Table View by
       Route::get('/servicetableview',[ServiceController::class,'servicetableview'])->name('admin.servicetableview');
 
+       // Route for Our Service Update
+
+       Route::post('/updateourservice/{id}',[ServiceController::class,'updateourservice'])->name('ourservice.update'); 
+      
+
+      //Route for service edit view
+
+      Route::get('service/edit/view/{id}',[ServiceController::class,'editview'])->name('service.edit');
+
+      Route::get('update/service/view',[ServiceController::class,'updateview'])->name('admin.updateserviceview');
+
+
      //Export Service
      Route::post('/export',[ExportImportController::class,'export'])->name('service-export');
+  
+     //Service Filter
+     
+     Route::get('/service-date-filter', [ServiceController::class, 'serviceDateFilter'])->name('service.date.filter');
 
      //Import Service
      Route::post('/import',[ExportImportController::class,'import'])->name('service-file-import');
-    // Route for  Serviec Table Data  View by Ajax
-
+   
     // Route::get('/servicetabledata',[ServiceController::class,'show']);
     
     
@@ -180,16 +198,12 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::delete('delete/clientfeedback/{id}',[ClientFeedbackController::class,'destroy'])->name('feedback.destroy');
 
-    //Customer Message Save
-
-    Route::post('user/message',[CustomerMessageController::class,'store'])->name('store.customermessage');
-
     //Customer Message Show Admin
 
     Route::get('show/message',[CustomerMessageController::class,'show_message'])->name('customer.message.show');
 
     // Route for group Delete Message 
-    Route::delete('user/message/delete',[CustomerMessageController::class,'mass_delete'])->name('message.delete');
+    Route::get('user/message/delete',[CustomerMessageController::class,'mass_delete'])->name('message.delete');
     
     
     Route::delete('delete/message/{id}',[CustomerMessageController::class,'destroy'])->name('user.message.delete'); 
@@ -240,49 +254,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     //Title Setting
 
     Route::get('title/show',[TitleController::class,'show'])->name('title.show');
-    
 
-
-
-
-
-
-
-
-
-
-
-
-        
-   
-
-
-
-
-    
-
-
-
-    
-
-    
-
-    
-
-
-     
-
-
-
-
-
-
-
-
-    
-
-    
-
+    Route::post('title/update/{id}',[TitleController::class,'update'])->name('title.update');
 
 
 });
+
