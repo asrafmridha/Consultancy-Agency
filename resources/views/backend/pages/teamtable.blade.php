@@ -20,13 +20,13 @@
     <div class="col-md-8  ">
         <form action="{{ route('team-file-export') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-12  text-right">
-                    <button type="submit" class="btn btn-primary">Export</button>
-                 </div>
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-md-12  text-right">
+                        <button type="submit" class="btn btn-primary">Export</button>
+                    </div>
+                </div>
             </div>
-        </div>
         </form>
     </div>
     <div class="col-md-1">
@@ -63,14 +63,16 @@
                 </div>
             </div>
         </div>
+    </form>
+    <form action="{{ route('team.table.search') }}"  method="GET">
          <div class="row align-items-md-center">
             <div class="col-md">
                 <div class="form-group mb-md-0">
                     <div class="input-group">
-                        <input type="search" class="form-control table_search" placeholder="Search Here">
+                        <input type="search" name="search" class="form-control table_search" placeholder="Search Here By Name Or Designation">
                         <div class="input-group-append">
                           <span class="input-group-text">
-                            <i data-feather='search'></i>
+                            <button type="submit"><i data-feather='search'></i></button>
                           </span>
                         </div>
                     </div>
@@ -83,27 +85,29 @@
 {{-- End Filter  --}}
 
 
-       <div class="row" id="dark-table">
-            <div class="col-12">
-                 <div class="card">
-                      <div class="card-header">
-                           <h4 class="card-title">Team Member ({{ $data->count() }})</h4>
-                      </div>
-               
-                <div class="table-responsive">
-                    <table class="table table-white">
-                        <thead>
-                            <tr>
-                                <th>Sl No</th>
-                                <th>image</th>
-                                <th>name</th>  
-                                <th>Designation</th>
-                                <th>fb_link</th>
-                                <th>twitter_link</th>
-                                <th>linkedin_link</th>
-                                <th>pinterest_link</th>
-                                <th colspan="2">Action</th>
-                            </tr>
+<div class="row" id="dark-table">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Team Member ({{ $data->count() }})</h4>
+            </div> 
+            <div class="table-responsive">
+                <table class="table table-white">
+                    <thead>
+                        @if($data->isEmpty())
+                        <th><h2 class="alert alert-danger">Data Not Found</h2></th>
+                        @else
+                        <tr>
+                            <th>Sl No</th>
+                            <th>image</th>
+                            <th>name</th>  
+                            <th>Designation</th>
+                            <th>fb_link</th>
+                            <th>twitter_link</th>
+                            <th>linkedin_link</th>
+                            <th>pinterest_link</th>
+                            <th colspan="2">Action</th>
+                        </tr>
                         </thead>
                         <tbody>
 
@@ -146,113 +150,100 @@
                                 </td>
 
                                 <!-- Modal for Service Update -->
-     <div class="modal fade" id="updateModalteam__{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
+<div class="modal fade" id="updateModalteam__{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
            
-          <div class="modal-body">
-            <form action="{{ Route('admin.team.update',$item->id) }}"  method="POST" enctype="multipart/form-data" >
-                @csrf
-                <label for="">Old Image</label>
-                <img height="100px" width="100px" src="{{ asset('uploads/team/'.$item->image) }}" alt="img nai">
-                <input type="file" name="image" class="mt-3 form-control name">
-                @error('image')
-                   <div class="alert alert-danger">
-           
-                       {{$message}}
-                   </div>  
-                @enderror
-                 
-           
-               <input type="text" name="name" value="{{ $item->name }}" class="mt-3 form-control name" placeholder="Enter Team Member name">
-           
-                   @error('name')
-                   <div class="alert alert-danger">
-                       {{$message}}
-                   </div>  
-                   @enderror
+            <div class="modal-body">
+                <form action="{{ Route('admin.team.update',$item->id) }}"  method="POST" enctype="multipart/form-data" >
+                        @csrf
+                        <label for="">Old Image</label>
+                        <img height="100px" width="100px" src="{{ asset('uploads/team/'.$item->image) }}" alt="img nai">
+                        <input type="file" name="image" class="mt-3 form-control name">
+                        @error('image')
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>  
+                        @enderror
+                        <input type="text" name="name" value="{{ $item->name }}" class="mt-3 form-control name" placeholder="Enter Team Member name">
+                        @error('name')
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>  
+                        @enderror
 
-                   <input type="text" name="designation" class="mt-3 form-control image"
-                   placeholder="Enter Designation" value="{{ $item->designation }}">
-                   @error('designation')
-                   <div class="alert alert-danger">
-                       {{$message}}
-                   </div>  
-                   @enderror
-                   <input type="text" name="fb_link" class="mt-3 form-control" placeholder="Enter  Fb link here" value="{{ $item->fb_link }}">
+                        <input type="text" name="designation" class="mt-3 form-control image"
+                        placeholder="Enter Designation" value="{{ $item->designation }}">
+                        @error('designation')
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>  
+                        @enderror
+                        <input type="text" name="fb_link" class="mt-3 form-control" placeholder="Enter  Fb link here" value="{{ $item->fb_link }}">
+                        @error('fb_link')
+                        <div class="alert alert-danger">
+                    
+                            {{$message}}
+                        </div>  
+                        @enderror
            
-                   @error('fb_link')
-                   <div class="alert alert-danger">
-               
-                       {{$message}}
-                   </div>  
-                   @enderror
+                        <input type="text" name="twitter_link" class="mt-3 form-control" placeholder="Enter  Twitter link here" value="{{ $item->twitter_link }}">
            
-                   <input type="text" name="twitter_link" class="mt-3 form-control" placeholder="Enter  Twitter link here" value="{{ $item->twitter_link }}">
+                        @error('twitter_link')
+                        <div class="alert alert-danger">
+                    
+                            {{$message}}
+                        </div>  
+                        @enderror
            
-                   @error('twitter_link')
-                   <div class="alert alert-danger">
-               
-                       {{$message}}
-                   </div>  
-                   @enderror
-           
-                   <input type="text" name="linkedin_link" class="mt-3 form-control" placeholder="Enter  Linkedin link here" value="{{ $item->linkedin_link }}">
-           
-                   @error('linkedin_link')
-                   <div class="alert alert-danger">
-               
-                       {{$message}}
-                   </div>  
-                   @enderror
-           
-                   <input type="text" name="pinterest_link" class="mt-3 form-control" placeholder="Enter  Pinterest link here" value="{{ $item->pinterest_link }}">
-           
-                   @error('pinterest_link')
-                   <div class="alert alert-danger">
-               
-                       {{$message}}
-                   </div>  
-                   @enderror
-           
-                   {{-- <button type="submit" class="form-control mt-3 btn-purchaseAdd btn btn-success"> Update</button>            --}}
-                    <div class="modal-footer">
-                        <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                        <button type="submit" class="btn btn-primary deletemodalservicebutton">Update</button>
-                    </div>
+                        <input type="text" name="linkedin_link" class="mt-3 form-control" placeholder="Enter  Linkedin link here" value="{{ $item->linkedin_link }}">
+                        @error('linkedin_link')
+                        <div class="alert alert-danger">
+                    
+                            {{$message}}
+                        </div>  
+                        @enderror
+                        <input type="text" name="pinterest_link" class="mt-3 form-control" placeholder="Enter  Pinterest link here" value="{{ $item->pinterest_link }}">
+                
+                        @error('pinterest_link')
+                        <div class="alert alert-danger">
+                    
+                            {{$message}}
+                        </div>  
+                        @enderror
+                        <div class="modal-footer">
+                            <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                            <button type="submit" class="btn btn-primary deletemodalservicebutton">Update</button>
+                        </div>
               </form>
             </div>
       </div>
   </div>
 </div>
-
 {{-- End Modal  --}}
-                           
 
-
-             <!-- Modal for Service delete -->
-    <div class="modal fade" id="deleteModalteam__{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+ <!-- Modal for Service delete -->
+<div class="modal fade" id="deleteModalteam__{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
            
-          <div class="modal-body text-white bg-dark">
-              <form action="{{ route('admin.teamdata.destroy',$item->id) }}" method="POST">
+            <div class="modal-body text-white bg-dark">
+                <form action="{{ route('admin.teamdata.destroy',$item->id) }}" method="POST">
                 @method('delete')
-                  @csrf
-                      Are you sure want to delete this Service?
-                    
+                @csrf
+                    Are you sure want to delete this Service?
                     <div class="modal-footer">
                         <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
                         <button type="submit" class="btn btn-primary deletemodalservicebutton">Confirm</button>
@@ -262,75 +253,48 @@
       </div>
   </div>
 </div>
-
-      
-
                             </tr>
                             <?php $slno++; ?>
-                            @endforeach
-                           
-                           
+                            @endforeach 
+                            @endif
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 @endsection
-
-
- 
         {{-- Modal For Import CSV  --}}
-        <div class="modal fade" id="teamcsvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                      <div class="modal-header">
-                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                             </button>
-                     </div>
-         <div class="modal-body">
-   
-           <form action="{{ route('team-file-import') }}" method="POST" enctype="multipart/form-data">
-             @csrf
-   
-             <input type="file" name="file" class="mt-3 form-control import" >
-   
-             @error('file')
-             <div class="alert alert-danger">
-         
-                 {{$message}}
-             </div>  
-             @enderror
-           
-          
-         </div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-           <button type="submit" class="btn btn-primary">Save</button>
-         </div>
-       </form>
-       </div>
-     </div>
-   </div>
+<div class="modal fade" id="teamcsvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('team-file-import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                    <input type="file" name="file" class="mt-3 form-control import" >
+                    @error('file')
+                    <div class="alert alert-danger">
+                        {{$message}}
+                    </div>  
+                    @enderror 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+                </form>
+            </div>
+    </div>
+</div>
 
-
-   {{-- <script>
-
-    @if(session::has('success'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.success("{{ session('message') }}");
-    @endif
-
-</script> --}}
 
 
 
