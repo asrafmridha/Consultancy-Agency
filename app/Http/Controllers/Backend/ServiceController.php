@@ -167,14 +167,12 @@ class ServiceController extends Controller
         $alldata = Service::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
         // $categories   = Category::orderBy('name', 'asc')->get();
         return view('backend.pages.servicetable',compact('alldata'));
-
-
-
        }
 
-
-
-
-
+       public function serviceDataSearch(Request $request){
+        $search=$request->search;
+        $alldata = Service::where('title','Like','%'.$search.'%')->orwhere('advisor_name','Like','%'.$search.'%')->paginate(10);
+        return view('backend.pages.servicetable',compact('alldata'));
+       }
 }
 
