@@ -29,12 +29,9 @@ class RecentWorkController extends Controller
         $recentwork->short_description=$request->short_description;
         $recentwork->save();
         return back()->with('success','Save Data Successfully');
-
-
     }
 
     public function show(){
-
          $data=RecentWork::all();
          return view('backend.pages.recentwork.recent_work_table',compact('data'));
     }
@@ -83,4 +80,17 @@ class RecentWorkController extends Controller
     public function export(){
         return Excel::download(new RecentWorkExport, 'recentwork.xlsx');
     }
+    
+    public function recentworkDateFilter(){
+
+        $data = RecentWork::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
+        return view('backend.pages.recentwork.recent_work_table',compact('data'));
+       }
+
+    public function recentworkDataSearch(Request $request){
+        $search=$request->search;
+        $data = RecentWork::where('title','Like','%'.$search.'%')->get();
+        return view('backend.pages.recentwork.recent_work_table',compact('data'));
+    }
+    
 }
