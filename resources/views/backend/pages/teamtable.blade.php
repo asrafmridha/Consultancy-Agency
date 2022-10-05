@@ -16,34 +16,73 @@
 @endsection
 @section('content') 
       
-      <div class="row">
-        <div class="col-md-8  ">
-             <form action="{{ route('team-file-export') }}" method="POST" enctype="multipart/form-data">
-             @csrf
-    
-            <div class="container">
-                  <div class="row mb-3">
-                        <div class="col-md-12  text-right">
-                             <button type="submit" class="btn btn-primary">Export</button>
-                        </div>
-                
-                  </div>
+<div class="row">
+    <div class="col-md-8  ">
+        <form action="{{ route('team-file-export') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-12  text-right">
+                    <button type="submit" class="btn btn-primary">Export</button>
+                 </div>
             </div>
-               </form>
-    
-         </div>
-      <div class="col-md-1">
-           <div class="container">
-              <div class="row mb-3">
-                    <div class="col-md-12  text-right">
+        </div>
+        </form>
+    </div>
+    <div class="col-md-1">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-12  text-right">
                       <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary">Import</button>
-                    </div>
-                
+                </div>  
               </div>
-           </div>
-        
-      </div>
-       </div>
+        </div>
+    </div>
+</div>
+
+{{-- Team Date Filter  --}}
+
+<div class="card-body">
+    <form action="{{ route('team.date.filter') }}" method="GET">
+        <div class="row align-items-end">
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="start_date">Start Date <span class="text-danger">*</span></label>
+                    <input type="date" name="start_date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->start_date)->format('Y-m-d') }}" @endisset id="start_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="start_date">End Date <span class="text-danger">*</span></label>
+                    <input type="date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->end_date)->format('Y-m-d') }}" @endisset name="end_date" id="end_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
+                </div>
+            </div>
+             <div class="col-md-auto">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success waves-effect w-100 w-sm-auto">Filter</button>
+                </div>
+            </div>
+        </div>
+         <div class="row align-items-md-center">
+            <div class="col-md">
+                <div class="form-group mb-md-0">
+                    <div class="input-group">
+                        <input type="search" class="form-control table_search" placeholder="Search Here">
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i data-feather='search'></i>
+                          </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+     </form>
+</div>
+
+{{-- End Filter  --}}
+
+
        <div class="row" id="dark-table">
             <div class="col-12">
                  <div class="card">

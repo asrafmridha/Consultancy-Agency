@@ -17,12 +17,12 @@ class TeamController extends Controller
     public function create(TeamRequest $request ){
 
         $team=new TeamImage;
-        $image = $request->image; 
-        $filename = time(). '.' . $image->extension(); 
-        $location = public_path('uploads/team/'); 
-        $image->move($location, $filename); 
+        // $image = $request->image; 
+        // $filename = time(). '.' . $image->extension(); 
+        // $location = public_path('uploads/team/'); 
+        // $image->move($location, $filename); 
 
-        $team->image = $filename; 
+        // $team->image = $filename; 
         $team->name=$request->name;
         $team->designation=$request->designation;
         $team->fb_link=$request->fb_link;
@@ -30,15 +30,13 @@ class TeamController extends Controller
         $team->linkedin_link=$request->linkedin_link;
         $team->pinterest_link=$request->pinterest_link;
         $team->save();
-
-        return back()->with('success','Save Data Successfully');
+        return redirect()->route('admin.teamtable')->with('success','Save Data Successfully');
 
       
      
     }  
     
     public function teamtable(){
-        
         $data= TeamImage::all();
         return view('backend.pages.teamtable',compact('data'));
     }
@@ -49,24 +47,19 @@ class TeamController extends Controller
         return redirect()->back()->with('success', "Delete Data Successfully");
     }
 
-    
     public function showdata($id){
 
         $data=TeamImage::find($id);
         return view('backend.pages.updateteamview',compact('data'));
     }
-
     public function update(Request $request, $id){
-
         $request->validate([
-       
             'name'=>'required',
             'designation'=>'required',
             'image'=>'image'
 
         ]);
-
-        
+  
         $team=TeamImage::find($id);
         if($image=$request->image){
             $filename = time(). '.' . $image->extension(); 
@@ -82,9 +75,13 @@ class TeamController extends Controller
         $team->linkedin_link=$request->linkedin_link;
         $team->pinterest_link=$request->pinterest_link;
         $team->update();
-
         return back()->with('success','Update Data Successfully');
-
-
     }
+
+    public function teamDateFilter(){
+
+        $data = TeamImage::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
+        return view('backend.pages.teamtable',compact('data'));
+       }
+
 }
