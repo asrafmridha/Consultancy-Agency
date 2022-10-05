@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\FeedbackExport;
 use App\Exports\ServiceExport;
 use App\Exports\TeamExport;
 use App\Http\Controllers\Controller;
@@ -33,8 +34,10 @@ class ExportImportController extends Controller
 
         Excel::import(new TeamImport, $request->file('file'));
         return redirect()->back()->with('success', 'Team Imported Successfully');
+    }
 
+    public function exportFeedback(){
 
-
+        return Excel::download(new FeedbackExport, 'feedback.xlsx');
     }
 }

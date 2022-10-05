@@ -202,6 +202,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
  
     Route::get('feedback/table',[ClientFeedbackController::class,'show'])->name('feedback.show');
 
+    // Route for export feedback 
+    Route::post('/export/feedback',[ExportImportController::class,'exportFeedback'])->name('export-feedback');
+
     //Route For Filter Feedback Table
     Route::get('/feedback-date-filter', [ClientFeedbackController::class, 'feedbackkDateFilter'])->name('feedback.date.filter');
 

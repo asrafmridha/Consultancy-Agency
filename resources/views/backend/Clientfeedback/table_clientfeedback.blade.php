@@ -17,7 +17,7 @@
 
 <div class="row">
     <div class="col-md-8  ">
-        <form action="{{ route('team-file-export') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('export-feedback') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <div class="row mb-3">
