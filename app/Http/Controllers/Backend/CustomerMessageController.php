@@ -27,14 +27,32 @@ class CustomerMessageController extends Controller
 
         $ids=$request->ids;
         CustomerMessage::whereIn('id',$ids)->delete();
-        return redirect()->back();
+        return response()->json([
+ 
+            'success'=>'Message Delete'
+
+        ]);
     }
 
      public function destroy($id){
-
         $message=CustomerMessage::find($id)->delete();
-        return redirect()->back();
-        
+        return redirect()->back()->withSuccess('Delete Data Successfully');  
      }
+
+     public function messageDateFilter(){
+        $data = CustomerMessage::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
+        // $categories   = Category::orderBy('name', 'asc')->get();
+        return view('backend.contact.user_message',compact('data'));
+
+
+     }
+     public function messageDataSearch(Request $request){
+        $search=$request->search;
+        $data = CustomerMessage::where('customer_name','Like','%'.$search.'%')->orwhere('customer_email','Like','%'.$search.'%')->orwhere('customer_message','Like','%'.$search.'%')->get();
+        return view('backend.contact.user_message',compact('data'));
+
+     }
+
+     
    
 }

@@ -37,8 +37,11 @@ class DatabaseSeeder extends Seeder
             ClientMessageSeeder::class,
             UserSeeder::class,
             ContactSeeder::class,
-            CustomerTrust::class,
             TitleSeeder::class,
+            OurserviceSeeder::class,
+            CustomerTrustSeeder::class,
+            TeamImageSeeder::class,
+            FooterServiceSeeder::class,
 
         ]);
     }

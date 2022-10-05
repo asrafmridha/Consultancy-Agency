@@ -42,7 +42,7 @@
 </form>
 </div>
 </div>
-
+ {{-- Data Filter Start  --}}
 <div class="card-body">
   <form action="{{ route('service.date.filter') }}" method="GET">
       <div class="row align-items-end">
@@ -64,24 +64,26 @@
               </div>
           </div>
       </div>
+    </form>
+    <form action="{{ route('service.table.search') }}" method="GET">
        <div class="row align-items-md-center">
           <div class="col-md">
               <div class="form-group mb-md-0">
                   <div class="input-group">
-                      <input type="search" class="form-control table_search" placeholder="Search Here">
+                      <input type="search" name="search" class="form-control table_search" placeholder="Search Here">
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <i data-feather='search'></i>
+                          <button type="submit"><i data-feather='search'></i></button>
                         </span>
                       </div>
                   </div>
               </div>
           </div>
       </div> 
-   </form>
+    </form>
 </div>
 
-
+{{-- Data Filter End  --}}
 
 <!-- White Tables start -->
 <div class="row" id="dark-table">
@@ -90,6 +92,9 @@
           <div class="table-responsive">
               <table class="table table-white">
                   <thead>
+                    @if($alldata->isEmpty())
+                        <th><h2 class="alert alert-danger">Data Not Found</h2></th>
+                        @else  
                       <tr> 
                         <th class="text-dark">Icon</th>
                         <th class="text-dark">Title</th>
@@ -105,7 +110,7 @@
                       </tr>
                   </thead>
                   <tbody>
-                    @foreach ($alldata as $item)
+                   @foreach ($alldata as $item)
                     <tr>
                     <td>      {{ $item->icon   }}                  </td>
                     <td>      {{ $item->title  }}</td>
@@ -164,7 +169,8 @@
 
                   {{-- End Modal  --}}
                     </tr>
-                    @endforeach     
+                    @endforeach    
+                    @endif 
                   </tbody>
               </table>
               {{ $alldata->links() }} 

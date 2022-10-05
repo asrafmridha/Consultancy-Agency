@@ -23,16 +23,6 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                {{-- <div class="card-header">
-                    <h4 class="card-title">Update Banner</h4>
-
-                    @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                    @endif
-                    @if (session('warning'))
-                        <div class="alert alert-warning">{{ session('warning') }}</div>
-                    @endif
-                </div> --}}
                 <div class="card-body">
     <form action="{{ route('updateheadertext',$headertext->id) }}" method="POST">
         @csrf
@@ -63,7 +53,7 @@
         
 
         <div class="form-group">
-            <label for="button_text">Enter Title</label>
+            <label for="button_text">Enter Button Text</label>
             <input type="text" name="button_text" id="about_page_button" class="form-control" placeholder="Enter Title Here"  value="{{ $headertext->button_text }}"  />
             @error('button_text')
                 <small class="text-danger">{{ $message }}</small>

@@ -41,7 +41,6 @@
 </div>
 
 {{-- Team Date Filter  --}}
-
 <div class="card-body">
     <form action="{{ route('team.date.filter') }}" method="GET">
         <div class="row align-items-end">

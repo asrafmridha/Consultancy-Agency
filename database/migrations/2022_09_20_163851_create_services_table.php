@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('advisor_name')->nullable();
             $table->string('heading')->nullable();
             $table->string('point')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

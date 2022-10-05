@@ -40,8 +40,8 @@
                             @csrf
                             <div class="row">
                                 <div class="section-header text-center text-lg-left col-12">
-                                    <h3 class="section-header__sub-title side-line side-line--81 mb-1">Contact</h3>
-                                    <h1 class="section-header__title text-uppercase font-weight-bold">Send us a Quick Message</h1>      
+                                    <h3 class="section-header__sub-title side-line side-line--81 mb-1">{{ $title->contact_title }}</h3>
+                                    <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->contact_heading }}</h1>      
                                 </div>
                         <div class="form-group col-12">
                             <input type="text" class="form-control shadow-none h-auto" placeholder="your name"  name="customer_name">
@@ -70,12 +70,9 @@
                             
                         </div>
                     </div>
-                </form>  
-
-              
+                </form>                
             </div>
         </div>
-
         <div class="row" data-aos="fade-up">
             <div class="col-lg-12 col-md-10 mx-auto">
                 <div class="contact__card bg-white">
@@ -83,8 +80,8 @@
                         <div class="contact__card-wrapper__block mb-5 mb-xl-0">
                             <div class="contact__card__block">
                                 <div class="section-header text-center text-lg-left">
-                                    <h3 class="section-header__sub-title mb-1">E-mail</h3>
-                                    <h1 class="section-header__title text-uppercase font-weight-bold">Contact Through E-Mail</h1>
+                                    <h3 class="section-header__sub-title mb-1">{{ $title->mail_title }}</</h3>
+                                    <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->mail_heading }}</h1>
                                 </div>
                                 <div class="contact-details text-center text-lg-left d-flex flex-column flex-lg-row align-items-center">
                                     <span class="contact-details__icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 text-white mb-2 mb-lg-0">
@@ -101,8 +98,8 @@
                         <div class="contact__card-wrapper__block contact__card-wrapper__block--line mb-5 mb-xl-0 d-xl-flex justify-content-xl-center position-relative">
                             <div class="contact__card__block">
                                 <div class="section-header text-center text-lg-left">
-                                    <h3 class="section-header__sub-title mb-1">Phone</h3>
-                                    <h1 class="section-header__title text-uppercase font-weight-bold">Contact Via Call</h1>
+                                    <h3 class="section-header__sub-title mb-1">{{ $title->phone_title }}</h3>
+                                    <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->phone_heading }}</h1>
                                 </div>
                                 <div class="contact-details text-center text-lg-left d-flex flex-column flex-lg-row align-items-center">
                                     <span class="contact-details__icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 text-white mb-2 mb-lg-0">
@@ -119,8 +116,8 @@
                         <div class="contact__card-wrapper__block">
                             <div class="contact__card__block">
                                 <div class="section-header text-center text-lg-left">
-                                    <h3 class="section-header__sub-title mb-1">Location</h3>
-                                    <h1 class="section-header__title text-uppercase font-weight-bold">Our Address</h1>
+                                    <h3 class="section-header__sub-title mb-1">{{ $title->location_title }}</h3>
+                                    <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->location_heading }}</h1>
                                 </div>
                                 <div class="contact-details text-center text-lg-left d-flex flex-column flex-lg-row align-items-center">
                                     <span class="contact-details__icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 text-white mb-2 mb-lg-0">

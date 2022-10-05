@@ -6,6 +6,7 @@ use App\Exports\ServiceExport;
 use App\Exports\TeamExport;
 use App\Http\Controllers\Controller;
 use App\Imports\ServiceImport;
+use App\Imports\TeamImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -19,28 +20,18 @@ class ExportImportController extends Controller
 
     public function import(Request $request){
 
-        
         Excel::import(new ServiceImport, $request->file('file'));
 
         return redirect()->back()->with('success', 'User Imported Successfully');
-
-
     }
 
     public function teamexport(){
 
-        return Excel::download(new TeamExport, 'service.xlsx');
-
+        return Excel::download(new TeamExport, 'team.xlsx');
     }
-
     public function teamimport(Request $request){
 
-        // $request->validate([
-        //     'file'=>'required','file',
-        //     ]); 
-
-        Excel::import(new TeamExport, $request->file('file'));
-
+        Excel::import(new TeamImport, $request->file('file'));
         return redirect()->back()->with('success', 'Team Imported Successfully');
 
 

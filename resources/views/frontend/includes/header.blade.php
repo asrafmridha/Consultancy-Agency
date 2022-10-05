@@ -43,18 +43,15 @@
                         <a class="nav-link text-capitalize active" href="{{ Route('index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-capitalize" href="{{ route('contact') }}">Our Services</a>
+                        <a class="nav-link text-capitalize" href="{{ route('service2') }}">Our Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-capitalize" href="{{ route('cases') }}">Cases</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-capitalize" href="{{ route('testimonials') }}">Testimonials</a>
+                        <a class="nav-link text-capitalize" href="#testimonials">Testimonials</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link text-capitalize" href="{{ asset('frontend') }}/contact.html">Contact</a>
-                    </li> --}}
-
+            
                     <li class="nav-item">
                         <a class="nav-link text-capitalize" href="{{route('contact') }}">Contact</a>
                     </li> 

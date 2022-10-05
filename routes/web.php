@@ -96,6 +96,11 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
      
      Route::get('/service-date-filter', [ServiceController::class, 'serviceDateFilter'])->name('service.date.filter');
 
+     //Service table Search 
+
+     Route::get('/service-date-search', [ServiceController::class, 'serviceDataSearch'])->name('service.table.search');
+
+
      //Import Service
      Route::post('/import',[ExportImportController::class,'import'])->name('service-file-import');
    
@@ -121,6 +126,10 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     //Route For Team Filter 
     Route::get('/team-date-filter', [TeamController::class, 'teamDateFilter'])->name('team.date.filter');
+
+    // Route for Team table Search 
+    Route::get('/team-data-search', [TeamController::class, 'teamDataSearch'])->name('team.table.search');
+
 
     // Route for form view for team
 
@@ -156,6 +165,10 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('/recentwork-date-filter', [RecentWorkController::class, 'recentworkDateFilter'])->name('recentwork.date.filter');
 
+    //RecentWork Data Search 
+    Route::get('/recentwork-date-search', [RecentWorkController::class, 'recentworkDataSearch'])->name('recentwork.data.search');
+
+
     //Delete Recentwork
 
     Route::delete('delete/recentwork/{id}',[RecentWorkController::class,'destroy'])->name('admin.deleterecentwork');
@@ -189,6 +202,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
  
     Route::get('feedback/table',[ClientFeedbackController::class,'show'])->name('feedback.show');
 
+    //Route For Filter Feedback Table
+    Route::get('/feedback-date-filter', [ClientFeedbackController::class, 'feedbackkDateFilter'])->name('feedback.date.filter');
+
     // Route for update form view Feedback 
 
     Route::get('updateview/clientfeedback/{id}',[ClientFeedbackController::class,'updateview'])->name('feedback.updateview');
@@ -202,9 +218,16 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::delete('delete/clientfeedback/{id}',[ClientFeedbackController::class,'destroy'])->name('feedback.destroy');
 
-    //Customer Message Show Admin
-
+    //User Message Show Admin
     Route::get('show/message',[CustomerMessageController::class,'show_message'])->name('customer.message.show');
+
+    //User Message Date Filter  message.date.filter
+    Route::get('message/date/filter',[CustomerMessageController::class,'messageDateFilter'])->name('message.date.filter');
+    //User Message Table Search message.table.search
+
+    Route::get('message/Search',[CustomerMessageController::class,'messageDataSearch'])->name('message.table.search');
+
+    
 
     // Route for group Delete Message 
     Route::get('user/message/delete',[CustomerMessageController::class,'mass_delete'])->name('message.delete');

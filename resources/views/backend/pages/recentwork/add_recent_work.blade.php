@@ -1,6 +1,6 @@
 @extends('backend.mastaring.master')
 
-@section('header','active')
+@section('recentwork','active')
 
 {{-- Breadcrumb --}}
 @section('breadcrumb')

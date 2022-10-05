@@ -14,15 +14,15 @@ class TeamController extends Controller
         return view('backend.pages.teamaddview');
     }
 
-    public function create(TeamRequest $request ){
-
+    public function create(TeamRequest $request ){  
         $team=new TeamImage;
-        // $image = $request->image; 
-        // $filename = time(). '.' . $image->extension(); 
-        // $location = public_path('uploads/team/'); 
-        // $image->move($location, $filename); 
+        $image = $request->image;
+        // dd($image); 
+        $filename = time(). '.' . $image->extension(); 
+        $location = public_path('uploads/team/');  
+        $image->move($location, $filename); 
 
-        // $team->image = $filename; 
+        $team->image = $filename; 
         $team->name=$request->name;
         $team->designation=$request->designation;
         $team->fb_link=$request->fb_link;
@@ -31,9 +31,6 @@ class TeamController extends Controller
         $team->pinterest_link=$request->pinterest_link;
         $team->save();
         return redirect()->route('admin.teamtable')->with('success','Save Data Successfully');
-
-      
-     
     }  
     
     public function teamtable(){
@@ -83,5 +80,11 @@ class TeamController extends Controller
         $data = TeamImage::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
         return view('backend.pages.teamtable',compact('data'));
        }
+
+    public function teamDataSearch(Request $request){
+        $search=$request->search;
+        $data = TeamImage::where('designation','Like','%'.$search.'%')->orwhere('name','Like','%'.$search.'%')->get();
+        return view('backend.pages.teamtable',compact('data'));
+    }
 
 }

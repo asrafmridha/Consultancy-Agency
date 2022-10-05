@@ -7,6 +7,7 @@ use App\Models\ClientFeedback;
 use App\Models\Contact;
 use App\Models\CustomerTrust;
 use App\Models\Experience;
+use App\Models\OurService;
 use App\Models\ProjectIdea;
 use App\Models\RecentWork;
 use App\Models\Service;
@@ -35,7 +36,8 @@ class FrontendController extends Controller
 
     public function contact(){
         $contact=Contact::first();
-        return view('frontend.pages.contact',compact('contact'));
+        $title=Title::first();
+        return view('frontend.pages.contact',compact('contact','title'));
     }
 
     public function case(){
@@ -53,10 +55,26 @@ class FrontendController extends Controller
         return view('frontend.pages.about',compact('experience'));
     }
    
-    public function service($id){
+    public function service($slug){
+        $projectidea=ProjectIdea::first();
         $title=Title::first();
-        $item=Service::find($id);     
-        return view('frontend.pages.service',compact('item','title'));
+        $item=Service::where('slug',$slug)->first(); 
+        $recentwork=RecentWork::all();  
+        return view('frontend.pages.service',compact('item','title','projectidea','recentwork'));
+    }
+
+    public function service2(){
+
+        $projectidea=ProjectIdea::first();
+        $title=Title::first(); 
+        $recentwork=RecentWork::all(); 
+        $ourservice=OurService::first();
+        return view('frontend.pages.service2',compact('title','projectidea','recentwork','ourservice'));
+    }
+
+    public function footer(){
+        $footer=Contact::first();
+        return view('frontend.includes.footer',compact('footer'));     
     }
  
 }

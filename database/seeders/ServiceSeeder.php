@@ -29,7 +29,8 @@ class ServiceSeeder extends Seeder
         'point'             => 'Going above and beyond for customers is what separates companies that thrive from companies that only survive.
         It generates not just repeat business but also referral business.
         ',
-        'image' =>'foo.jpg',
+        'image'             => 'foo.jpg',
+        'slug'              =>  'Consultisthelocallead',
         ]);
 
 

@@ -55,9 +55,66 @@
         </div>
     </div>
 
-  
-
-
 </section>
 
+    <section id="contact-quote" class="contact-quote section-space section-gap" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="contact-quote__sub-title font-weight-normal">{{ $title->contact_heading }}</h3>
+                    <h1 class="contact-quote__title text-uppercase font-weight-bold">{{ $projectidea->heading }}</h1>
+                    <p class="contact-quote__text">{{ $projectidea->title }}</p>
+                    <a href="{{ route('contact') }}" class="primary-btn d-inline-block text-uppercase mt-2">{{ $projectidea->button_text  }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-studies" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="section-header col-12 text-center">
+                    <h3 class="section-header__sub-title side-line side-line--81 mb-1">{{ $title->case_studies_title }}</h3>
+                    <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->case_studies_heading }}</h1>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade d-block show active" id="pills-business-finance" role="tabpanel" aria-labelledby="pills-business-finance-tab">
+                            <div class="case-studies__slider row">
+                                @foreach ($recentwork as $item)
+                                <div class="case-studies__slide col-lg-4 col-md-6">  
+                                    <div class="case-studies__block position-relative">
+                                        <img height="300px" width="200px" src="{{ asset('uploads/recentwork/'.$item->image) }}" alt="Case Studies Image" class="case-studies__block__image w-100">
+                                        <div class="case-studies__block__overlay d-flex align-items-end w-100 h-100 position-absolute">
+                                            <div class="case-studies__block__overlay__content d-flex align-items-end w-100">
+                                                <div class="case-studies__block__overlay__content__text position-relative flex-grow-1">
+                                                    <h4 class="case-studies__block__overlay__sub-title font-weight-normal side-line side-line--40 mb-1">{{ $item->title }}</h4>
+                                                    <h3 class="case-studies__block__overlay__title mb-0 mr-4 text-uppercase">
+                                                        <a href="./case-study.html" class="case-studies__block__overlay__title__link d-inline-block">{!! $item->short_description !!}</a>
+                                                    </h3>
+                                                </div>
+                                                <a href="{{ asset('uploads/recentwork/'.$item->image) }}" data-gall="case-studies" class="plus-btn venobox d-inline-flex align-items-center justify-content-center flex-shrink-0 stretched-link">
+                                                    <i class="flaticon-add"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+    
+                                @endforeach
+                                <div class="case-studies__slide col-lg-4 col-md-6">
+                                    <div class="case-studies__block position-relative">
+                                            <div class="case-studies__block__overlay__content d-flex align-items-end w-100">      
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 @endsection

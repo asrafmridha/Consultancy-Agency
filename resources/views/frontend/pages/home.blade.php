@@ -11,7 +11,7 @@
                 <h3 class="banner__sub-title side-line side-line--50">{{ $title->banner_title }}</h3>
                 <h1 class="banner__title text-uppercase"><span class="d-block d-sm-inline d-lg-block"> </span><span class="d-block d-sm-inline d-lg-block">{{ $headertext->title }} </span></h1>
                 <p class="banner__text"><span class="d-xl-block">{!! $headertext->Short_description !!}</p>
-                <a href="{{ route('about-us') }}" class="primary-btn d-inline-block text-uppercase">Click Here</a>
+                <a href="{{ route('about-us') }}" class="primary-btn d-inline-block text-uppercase">{{ $headertext->button_text }}</a>
             </div>
         </div>
         <div class="banner__image-wrapper mt-5 mt-lg-0">
@@ -338,6 +338,8 @@
                     </linearGradient>
                 </defs>
             </svg>
+
+        
         </div>
     </div>
 </section>
@@ -367,7 +369,7 @@
                     </div>
                     <p class="services__block__text">{!!  $item->Short_description !!}</p>
                    
-                    <a href="{{ route('our_service',$item->id) }}" class="services__block__btn d-inline-flex align-items-center stretched-link"> {{ $item->button_text }}<i class="btn__icon flaticon-straight-right-arrow position-relative"></i></a>
+                    <a href="{{ route('our_service',$item->slug) }}" class="services__block__btn d-inline-flex align-items-center stretched-link"> {{ $item->button_text }}<i class="btn__icon flaticon-straight-right-arrow position-relative"></i></a>
                    
                 </div>
             </div>
@@ -642,7 +644,7 @@
 
 {{-- Testmonial Section Start --}}
 
-<section id="testimonial" class="testimonial section-space section-gap" data-aos="fade-up">
+<section id="testimonials" class="testimonial section-space section-gap" data-aos="fade-up">
     <div class="container">
         <div class="row">
             <div class="section-header col-12 text-center">
@@ -662,13 +664,11 @@
                                             <span class="testimonial__block__quote d-inline-flex align-items-center justify-content-center rounded-circle position-absolute">
                                                 <i class="flaticon-straight-quotes"></i>
                                             </span>
-                                        </div>
-
-                                        
+                                        </div>                          
                                     </div>
                                     <div class="col-sm-8 d-flex align-items-center">
                                         <div class="testimonial__block__content text-center text-sm-left">
-                                            <p class="testimonial__block__content__text">{{ $item->short_description }}</p>
+                                            <p class="testimonial__block__content__text">{!! $item->short_description !!}</p>
                                             <h3 class="testimonial__block__content__title d-inline-block position-relative">{{ $item->client_name }}</h3>
                                             <h4 class="testimonial__block__content__sub-title">{{ $item->designation }}</h4>
                                             <ul class="testimonial__block__content__rating-list d-flex align-items-center justify-content-center justify-content-sm-start mb-0">
@@ -835,8 +835,8 @@
             <div class="col-xl-6 col-lg-8 mx-auto">
                 <div class="clients">
                     <div class="section-header text-center text-lg-left">
-                        <h3 class="section-header__sub-title side-line side-line--81 mb-1">Our Clients</h3>
-                        <h1 class="section-header__title text-uppercase font-weight-bold">Customers Who Trust us</h1>
+                        <h3 class="section-header__sub-title side-line side-line--81 mb-1">{{ $title->client_title }}</h3>
+                        <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->client_heading }}</h1>
                     </div>
                     <ul class="clients__list row mb-0">
                         {{-- <li class="clients__list__item col-sm-4 col-6">
@@ -878,8 +878,8 @@
             <div class="col-xl-5 col-lg-8 mx-auto offset-xl-1 mt-5 mt-xl-0">
                 <div class="counter">
                     <div class="section-header text-center text-lg-left">
-                        <h3 class="section-header__sub-title side-line side-line--81 mb-1">Statistics</h3>
-                        <h1 class="section-header__title text-uppercase font-weight-bold">Our Successes are Counting</h1>
+                        <h3 class="section-header__sub-title side-line side-line--81 mb-1">{{ $title->success_area_title }}</h3>
+                        <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->success_area_heading }}</h1>
                     </div>
                     <div class="counter__block-wrapper">
                         <div class="counter__block d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-sm-end" data-aos="fade-up">

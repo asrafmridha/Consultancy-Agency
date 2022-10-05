@@ -28,13 +28,12 @@ class ClientFeedbackController extends Controller
         $feedback->designation=$request->designation;
         $feedback->star=$request->star;
         $feedback->save();
-        return back()->with('success','Save Data Successfully');
+        return redirect()->route('feedback.show')->with('success','Save Data Successfully');
     }
 
     public function show(){
         $data=ClientFeedback::all();
         return view('backend.clientfeedback.table_clientfeedback',compact('data'));
-
     }
 
     public function destroy($id){
@@ -67,8 +66,10 @@ class ClientFeedbackController extends Controller
         $feedback->star=$request->star;
         $feedback->update();
         return back()->with('success','Update Data Successfully');
-
-
-
     }
+   
+    public function feedbackkDateFilter(){
+        $data = ClientFeedback::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
+        return view('backend.clientfeedback.table_clientfeedback',compact('data'));
+       }
 }

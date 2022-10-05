@@ -43,28 +43,9 @@
             </li>
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
             </li>
-           
-            
-          
-            
-     
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Invoice</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="app-invoice-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Preview</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-add.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add</span></a>
-                    </li>
-                </ul>
-            </li>
-
-
             {{-- my Section  --}}
 
-            {{-- for Header  --}}
+            {{-- for Banner  --}}
 
             <li class=" nav-item"><a  class="@yield('header') d-flex align-items-center" href="#"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Service">Banner</span></a>
                 <ul class="menu-content">
@@ -77,11 +58,13 @@
             {{-- End Header  --}}
 
 
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='cpu'></i><span class="menu-title text-truncate" data-i18n="Service">Service</span></a>
+            <li class=" nav-item"><a class="@yield('service') d-flex align-items-center" href="#"><i data-feather='cpu'></i><span class="menu-title text-truncate" data-i18n="Service">Service</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ route('admin.serviceview') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Service</span></a>
                     </li>
                     <li><a class="d-flex align-items-center" href="{{ route('admin.servicetableview') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Mange Service</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.updateserviceview') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Update Service</span></a>
                     </li>
                 </ul>
             </li>
@@ -89,7 +72,7 @@
 
 
             {{-- for team --}}
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Service">Team</span></a>
+            <li class=" nav-item"><a class="@yield('team') d-flex align-items-center" href="#"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Service">Team</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ route('admin.teamview') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Add Team</span></a>
                     </li>
@@ -102,9 +85,9 @@
 
             {{-- Case Studies --}}
 
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Service">Recent Work</span></a>
+            <li class=" nav-item"><a class="@yield('recentwork') d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Service">Recent Work</span></a>
                 <ul class="menu-content">
-                    <li><a  class=" @yield('recentwork') d-flex align-items-center" href="{{ route('admin.addrecentwork') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Add</span></a>
+                    <li><a  class="d-flex align-items-center" href="{{ route('admin.addrecentwork') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Add</span></a>
                     </li>
 
                     <li><a class="d-flex align-items-center" href="{{ route('admin.managerecentwork') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Manage</span></a>
@@ -195,7 +178,7 @@
                 </ul>
             </li>
 
-            <li class=" nav-item"><a class=" @yield('trust') d-flex align-items-center" href="#"><i data-feather='sunset'></i><span class="menu-title text-truncate" data-i18n="Service">All Title</span></a>
+            <li class=" nav-item"><a class=" @yield('title') d-flex align-items-center" href="#"><i data-feather='type'></i><span class="menu-title text-truncate" data-i18n="Service">All Title</span></a>
                 <ul class="menu-content">
                     <li><a  class="d-flex align-items-center" href="{{ route('title.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Manage</span></a>
                     </li> 

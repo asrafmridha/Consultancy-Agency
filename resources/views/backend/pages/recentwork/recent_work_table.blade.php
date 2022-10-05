@@ -69,21 +69,23 @@
               </div>
           </div>
       </div>
+  </form>
+  <form action="{{ route('recentwork.data.search') }}" method="GET">
        <div class="row align-items-md-center">
           <div class="col-md">
               <div class="form-group mb-md-0">
                   <div class="input-group">
-                      <input type="search" class="form-control table_search" placeholder="Search Here">
+                      <input type="search" name="search" class="form-control table_search" placeholder="Search Here">
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <i data-feather='search'></i>
+                          <button type="submit"><i data-feather='search'></i></button>
                         </span>
                       </div>
                   </div>
               </div>
           </div>
       </div> 
-   </form>
+  </form>
 </div>
 
 {{-- End Date Filter  --}}
@@ -94,10 +96,12 @@
           <div class="card-header">
               <h4 class="card-title">Recent Work ({{ $data->count() }})</h4>
           </div>
-        
           <div class="table-responsive">
               <table class="table table-white">
                   <thead>
+                    @if($data->isEmpty())
+                    <th><h2 class="alert alert-danger">Data Not Found</h2></th>
+                    @else
                       <tr>
                           <th class="text-dark">Image</th>
                           <th class="text-dark">Title</th>
@@ -107,22 +111,18 @@
                       </tr>
                   </thead>
                   <tbody class="servicetable">
-                   @foreach ($data as $item)
-   
-            
+                   @foreach ($data as $item)        
                       <tr>
-                        <td>
-                            <div class="avatar-group">
-                                <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="{{ $item->title }}">
-                                    <img height="80px" width="100px" src="{{ asset('uploads/recentwork/'.$item->image) }}" alt="">
-                                </div> 
-                            </div>
-                        </td>
+                          <td>
+                              <div class="avatar-group">
+                                  <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="{{ $item->title }}">
+                                      <img height="80px" width="100px" src="{{ asset('uploads/recentwork/'.$item->image) }}" alt="">
+                                  </div> 
+                              </div>
+                          </td>
                           <td class="text-dark">{{ $item->title }}</td>
-                          <td class="text-dark">{!! $item->short_description  !!}    </td>
-                     
-                            
-                            <td>
+                          <td class="text-dark">{!! $item->short_description  !!}  </td> 
+                          <td>
                             <div class="dropdown">
                               <button type="button" class="btn btn-sm text-dark dropdown-toggle hide-arrow" data-toggle="dropdown">
                                   <i data-feather="more-vertical"></i>
@@ -132,7 +132,6 @@
                                   <i data-feather="edit-2" class="mr-50"></i>
                                   <span>Edit</span>
                               </button>
-
                                   <button data-target="#deleterecentworkModal_{{ $item->id }}" data-toggle="modal" type="button" class="dropdown-item" href="javascript:void(0);"   data-category="{{ $item->id }}"   
                                   >
                                       <i data-feather="trash" class="mr-50"></i>
@@ -141,7 +140,6 @@
                               </div>
                           </div>
                       </tr> 
-
                       
     {{-- Modal for Recent work Update  --}}
   <div class="modal fade" id="recentworkupdatemodal__{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -198,38 +196,33 @@
 
 
                       <!-- Modal for recent Work delete -->
-        <div class="modal fade" id="deleterecentworkModal_{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                  </div>
-             
-            <div class="modal-body">
+<div class="modal fade" id="deleterecentworkModal_{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+              </div>
+              <div class="modal-body">
                 <form action="{{ route('admin.deleterecentwork', $item->id
                 ) }}" method="post">
                     @csrf
                     @method("delete")
                         Are you sure want to delete this Service?
                       
-                      <div class="modal-footer">
-                          <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                          <button type="submit" class="btn btn-primary deletemodalservicebutton">Confirm</button>
-                      </div>
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-primary deletemodalservicebutton">Confirm</button>
+                    </div>
                 </form>
               </div>
         </div>
-
                       @endforeach
-
-
+                      @endif
                     </tbody>
-                  </table>
-
-        
+                  </table>       
     </div>
   </div>
 
@@ -260,19 +253,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+          </button>
       </div>
       <div class="modal-body">
-
         <form action="{{ route('recentwork-file-import') }}" method="POST" enctype="multipart/form-data">
           @csrf
-
-          <input type="file" name="file" class="mt-3 form-control import" >
-
-        
-       
+          <input type="file" name="file" class="mt-3 form-control import" >  
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -282,17 +270,7 @@
     </div>
   </div>
 </div>
-
-
 @endsection
-
-
-
-
-
-
-
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

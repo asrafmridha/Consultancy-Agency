@@ -27,7 +27,20 @@ return new class extends Migration
             $table->string('team_title')->nullable();
             $table->string('team_heading')->nullable();
             $table->string('contact_title')->nullable();
-            $table->string('contact_heading')->nullable();
+            $table->string('contact_heading')->nullable();      
+            $table->string('client_title')->nullable();
+            $table->string('client_heading')->nullable();
+            $table->string('success_area_title')->nullable();
+            $table->string('success_area_heading')->nullable();
+            $table->string('mail_title')->nullable();
+            $table->string('mail_heading')->nullable();
+            $table->string('phone_title')->nullable();
+            $table->string('phone_heading')->nullable();
+            $table->string('location_title')->nullable();
+            $table->string('location_heading')->nullable();
+
+
+
             $table->timestamps();
         });
     }

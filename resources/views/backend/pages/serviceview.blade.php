@@ -21,13 +21,11 @@
 <section >
     <div class="row">
         <div class="col-12">
-            <div class="card">
-              
-<div class="card-body">
+            <div class="card"> 
+               <div class="card-body">
     <form action="{{ route('admin.addservice') }}" method="POST" enctype="multipart/form-data">
-
           @csrf
-
+          
           <div class="form-group">
             <label for="icon">For Select Your Icon <a class="btn  btn-sm btn-primary" href="https://www.flaticon.com/">Click Here</a></label>
             <i class="fa fa-user icon"></i>
@@ -74,9 +72,6 @@
              <small class="text-danger">{{ $message }}</small>
              @enderror
         </div>
-
-        
-
         <div class="form-group">
             <label for="short_description2">{{ __("short_description2 ") }} <span class="text-danger"> *</span></label>
             <input type="hidden" name="short_description2" id="short_description2" value="" class="form-control">
@@ -119,12 +114,6 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-
-
-
-
-       
-
         <button type="submit" class="form-control btn btn-primary "> Add</button>
        </form>
                     </div>
