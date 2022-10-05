@@ -152,6 +152,10 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('recent/work/table',[RecentWorkController::class,'show'])->name('admin.managerecentwork');
 
+    // Recentwork Date Filter 
+
+    Route::get('/recentwork-date-filter', [RecentWorkController::class, 'recentworkDateFilter'])->name('recentwork.date.filter');
+
     //Delete Recentwork
 
     Route::delete('delete/recentwork/{id}',[RecentWorkController::class,'destroy'])->name('admin.deleterecentwork');
