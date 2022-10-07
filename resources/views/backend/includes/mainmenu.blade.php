@@ -1,4 +1,14 @@
-<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+<div class="main-menu menu-fixed 
+        @if(themesetting(Auth::id()) == null)
+            menu-light
+        @else
+            @if(themesetting(Auth::id())->theme == 'light-layout')
+                menu-light
+            @else
+                menu-dark
+            @endif
+        @endif 
+        menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template/index.html"><span class="brand-logo">
@@ -27,7 +37,12 @@
                         </svg></span>
                     <h2 class="brand-text">Vuexy</h2>
                 </a></li>
-            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
+            <li class="nav-item nav-toggle">
+                <a id="toggle" class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">
+                    <i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i>
+                    <i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="shadow-bottom"></div>
@@ -92,7 +107,10 @@
 
                     <li><a class="d-flex align-items-center" href="{{ route('admin.managerecentwork') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Manage</span></a>
                     </li>
-                    
+
+                    <li><a class="d-flex align-items-center" href="{{ route('recentwork.button.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Update Button</span></a>
+                    </li>
+                   
                 </ul>
             </li>
 
@@ -122,19 +140,6 @@
                 
                 </ul>
             </li>
-
-
-            {{-- Success Area  --}}
-
-            {{-- <li class=" nav-item"><a class=" @yield('successarea') d-flex align-items-center" href="#"><i data-feather='plus-square'></i><span class="menu-title text-truncate" data-i18n="Service">Success Area</span></a>
-                <ul class="menu-content">
-                    <li><a  class="d-flex align-items-center" href="{{ route('customer.message.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Update</span></a>
-                    </li>
-
-                
-                </ul>
-            </li> --}}
-
 
             {{-- Project area --}}
 
@@ -178,6 +183,8 @@
                 </ul>
             </li>
 
+            {{-- title Section  --}}
+
             <li class=" nav-item"><a class=" @yield('title') d-flex align-items-center" href="#"><i data-feather='type'></i><span class="menu-title text-truncate" data-i18n="Service">All Title</span></a>
                 <ul class="menu-content">
                     <li><a  class="d-flex align-items-center" href="{{ route('title.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Manage</span></a>
@@ -185,34 +192,41 @@
                 </ul>
             </li>
 
+            {{-- Social Area <Section>/Section> --}}
+                <li class=" nav-item"><a class=" @yield('social_url') d-flex align-items-center" href="#"><i data-feather='link'></i></i><span class="menu-title text-truncate" data-i18n="Service">Social Url</span></a>
+                    <ul class="menu-content">
+                        <li><a  class="d-flex align-items-center" href="{{ route('social.url.update.view') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Update</span></a>
+                        </li> 
+                    </ul>
+                </li>
 
+                <li class=" nav-item"><a class=" @yield('copyright') d-flex align-items-center" href="#"><i data-feather='link'></i></i><span class="menu-title text-truncate" data-i18n="Service">Copyright</span></a>
+                    <ul class="menu-content">
+                        <li><a  class="d-flex align-items-center" href="{{ route('copyright.update.view') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Update</span></a>
+                        </li> 
+                    </ul>
+                </li> <br> 
+                
             {{-- End my Section  --}}
 
         </ul>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-         
-          
-         
-    
-         
-      </ul>
-
-
-
-
-
-
-     
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $(document).ready(function(){
+        
+        $('#toggle').click(function(){
+            $.ajax({
+                url: "{{ route('theme.toggle') }}",
+                type: "GET",
+                success: function(data)
+                {
+                    
+                }
+            })
+        });
+    })
+</script>

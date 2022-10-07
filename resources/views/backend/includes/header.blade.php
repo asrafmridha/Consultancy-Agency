@@ -1,12 +1,34 @@
-<nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow">
+<nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav 
+    @if(themesetting(Auth::id()) == null)
+        navbar-light
+    @else
+        @if(themesetting(Auth::id())->theme == 'light-layout')
+            navbar-light
+        @else
+            navbar-dark
+        @endif
+    @endif    
+    ">
     <div class="navbar-container d-flex content">
         <div class="bookmark-wrapper d-flex align-items-center">
             <ul class="nav navbar-nav d-xl-none">
-                <li class="nav-item"><a class="nav-link menu-toggle" href="javascript:void(0);"><i class="ficon" data-feather="menu"></i></a></li>
+                <li class="nav-item">
+                    <a class="nav-link menu-toggle" href="javascript:void(0);">
+                        <i class="ficon" data-feather="menu"></i>
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav bookmark-icons">
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-email.html" data-toggle="tooltip" data-placement="top" title="Email"><i class="ficon" data-feather="mail"></i></a></li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-chat.html" data-toggle="tooltip" data-placement="top" title="Chat"><i class="ficon" data-feather="message-square"></i></a></li>
+                <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link" href="app-email.html" data-toggle="tooltip" data-placement="top" title="Email">
+                        <i class="ficon" data-feather="mail"></i>
+                    </a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link" href="app-chat.html" data-toggle="tooltip" data-placement="top" title="Chat">
+                        <i class="ficon" data-feather="message-square"></i>
+                    </a>
+                </li>
                 <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-calendar.html" data-toggle="tooltip" data-placement="top" title="Calendar"><i class="ficon" data-feather="calendar"></i></a></li>
                 <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html" data-toggle="tooltip" data-placement="top" title="Todo"><i class="ficon" data-feather="check-square"></i></a></li>
             </ul>
@@ -24,7 +46,11 @@
             <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="javascript:void(0);" data-language="en"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="javascript:void(0);" data-language="fr"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="javascript:void(0);" data-language="de"><i class="flag-icon flag-icon-de"></i> German</a><a class="dropdown-item" href="javascript:void(0);" data-language="pt"><i class="flag-icon flag-icon-pt"></i> Portuguese</a></div>
             </li>
-            <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="moon"></i></a></li>
+            <li class="nav-item d-none d-lg-block">
+                <a  id="dark" class="nav-link nav-link-style">
+                    <i class="ficon" data-feather="moon"></i>
+                    </a>
+                </li>
             <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon" data-feather="search"></i></a>
                 <div class="search-input">
                     <div class="search-input-icon"><i data-feather="search"></i></div>
@@ -289,3 +315,20 @@
             <div class="d-flex justify-content-start"><span class="mr-75" data-feather="alert-circle"></span><span>No results found.</span></div>
         </a></li>
 </ul>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#dark').click(function(){
+            $.ajax({
+                url: "{{ route('theme.color') }}",
+                type: "GET",
+                success: function(data){
+                    
+                }
+            })
+        });
+    })
+</script>
