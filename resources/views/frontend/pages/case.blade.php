@@ -23,19 +23,19 @@
             <div class="col-12">
                 <ul class="case-studies__navigation nav nav-pills flex-column flex-sm-row align-items-center justify-content-center mb-4" id="pills-tab" role="tablist">
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                          <button class="case-studies__navigation__link nav-link bg-transparent border-0 active" data-mixitup-control data-filter="all" data-toggle="pill" role="tab" aria-selected="true">Business & Finance</button>
+                          <button class="case-studies__navigation__link nav-link bg-transparent border-0 active" data-mixitup-control data-filter="all" data-toggle="pill" role="tab" aria-selected="true">{{ $recentwork_button->buisness_finance   }}</button>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                          <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter=".customer-support" data-toggle="pill" role="tab" aria-selected="false">Customer Support</button>
+                          <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter=".customer-support" data-toggle="pill" role="tab" aria-selected="false">{{ $recentwork_button->customer_support   }}</button>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                        <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter="all" data-toggle="pill" role="tab" aria-selected="false">Financial Service</button>
+                        <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter="all" data-toggle="pill" role="tab" aria-selected="false">{{ $recentwork_button->financial_service   }}</button>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                          <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter=".business-strategy" data-toggle="pill" role="tab" aria-selected="false">Business Strategy</button>
+                          <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter=".business-strategy" data-toggle="pill" role="tab" aria-selected="false">{{ $recentwork_button->buisness_stargey   }}</button>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                          <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter=".sales-service" data-toggle="pill" role="tab" aria-selected="false">Sales Service</button>
+                          <button class="case-studies__navigation__link nav-link bg-transparent border-0" data-mixitup-control data-filter=".sales-service" data-toggle="pill" role="tab" aria-selected="false">{{ $recentwork_button->sale_service   }}</button>
                     </li>
                 </ul>
             </div>

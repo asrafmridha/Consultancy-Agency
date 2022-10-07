@@ -13,7 +13,7 @@ class ThemeSettingController extends Controller
     {
        $data = ThemeSetting::where('user_id', Auth::id())->first(); 
        if($data == null){
-        
+
         $create_setting = new ThemeSetting();
         $create_setting->user_id = Auth::id();
         $create_setting->theme = 'dark-layout';

@@ -40,6 +40,7 @@ class ClientFeedbackController extends Controller
 
         $data=ClientFeedback::find($id);
         $data->delete();
+        return back()->withSuccess('Deleted Data Successfully');
     }
 
     public function updateview($id){
@@ -65,11 +66,17 @@ class ClientFeedbackController extends Controller
         $feedback->designation=$request->designation;
         $feedback->star=$request->star;
         $feedback->update();
-        return back()->with('success','Update Data Successfully');
+        return redirect()->route('feedback.show')->with('success','Update Data Successfully');
     }
    
     public function feedbackkDateFilter(){
         $data = ClientFeedback::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
         return view('backend.clientfeedback.table_clientfeedback',compact('data'));
        }
+    
+    public function feedbackDataSearch(Request $request){
+        $search=$request->search;
+        $data = ClientFeedback::where('client_name','Like','%'.$search.'%')->orWhere('designation','Like','%'.$search.'%')->get();
+        return view('backend.clientfeedback.table_clientfeedback',compact('data'));
+    }   
 }

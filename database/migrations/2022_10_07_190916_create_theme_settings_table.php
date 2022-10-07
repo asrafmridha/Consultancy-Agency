@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('social_urls', function (Blueprint $table) {
+        Schema::create('theme_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('fb_url')->default('#');
-            $table->string('twitter_url')->default('#');
-            $table->string('pinterest_url')->default('#');
-            $table->string('linkedin_url')->default('#');
+            $table->integer('user_id');
+            $table->string('theme')->default('light-layout');
+            $table->string('nav')->default('expanded');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_urls');
+        Schema::dropIfExists('theme_settings');
     }
 };

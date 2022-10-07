@@ -449,34 +449,28 @@
             <div class="col-12">
                 <ul class="case-studies__navigation nav nav-pills flex-column flex-sm-row align-items-center justify-content-center mb-4" id="pills-tab" role="tablist">
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                      <a class="case-studies__navigation__link nav-link bg-transparent active" id="pills-business-finance-tab" data-toggle="pill" href="#pills-business-finance" role="tab" aria-controls="pills-business-finance" aria-selected="true">Business & Finance</a>
+                      <a class="case-studies__navigation__link nav-link bg-transparent active" id="pills-business-finance-tab" data-toggle="pill" href="#pills-business-finance" role="tab" aria-controls="pills-business-finance" aria-selected="true">{{ $recentwork_button->buisness_finance }}</a>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                      <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-customer-support-tab" data-toggle="pill" href="#pills-customer-support" role="tab" aria-controls="pills-customer-support" aria-selected="false">Customer Support</a>
+                      <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-customer-support-tab" data-toggle="pill" href="#pills-customer-support" role="tab" aria-controls="pills-customer-support" aria-selected="false">{{ $recentwork_button->customer_support }}</a>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                        <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-financial-service-tab" data-toggle="pill" href="#pills-financial-service" role="tab" aria-controls="pills-financial-service" aria-selected="false">Financial Service</a>
+                        <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-financial-service-tab" data-toggle="pill" href="#pills-financial-service" role="tab" aria-controls="pills-financial-service" aria-selected="false">{{ $recentwork_button->financial_service }}</a>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                      <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-business-strategy-tab" data-toggle="pill" href="#pills-business-strategy" role="tab" aria-controls="pills-business-strategy" aria-selected="false">Business Strategy</a>
+                      <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-business-strategy-tab" data-toggle="pill" href="#pills-business-strategy" role="tab" aria-controls="pills-business-strategy" aria-selected="false">{{ $recentwork_button->buisness_stargey }}</a>
                     </li>
                     <li class="case-studies__navigation__item nav-item" role="presentation">
-                      <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-sales-service-tab" data-toggle="pill" href="#pills-sales-service" role="tab" aria-controls="pills-sales-service" aria-selected="false">Sales Service</a>
+                      <a class="case-studies__navigation__link nav-link bg-transparent" id="pills-sales-service-tab" data-toggle="pill" href="#pills-sales-service" role="tab" aria-controls="pills-sales-service" aria-selected="false">{{ $recentwork_button->sale_service }}</a>
                     </li>
                 </ul>
             </div>
             <div class="col-12">
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade d-block show active" id="pills-business-finance" role="tabpanel" aria-labelledby="pills-business-finance-tab">
-
-                        
-                            
-                        
+                    <div class="tab-pane fade d-block show active" id="pills-business-finance" role="tabpanel" aria-labelledby="pills-business-finance-tab">     
                         <div class="case-studies__slider row">
                             @foreach ($recentwork as $item)
                             <div class="case-studies__slide col-lg-4 col-md-6">
-
-                                
                                 <div class="case-studies__block position-relative">
                                     <img height="300px" width="200px" src="{{ asset('uploads/recentwork/'.$item->image) }}" alt="Case Studies Image" class="case-studies__block__image w-100">
                                     <div class="case-studies__block__overlay d-flex align-items-end w-100 h-100 position-absolute">
@@ -764,9 +758,7 @@
                 <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->team_heading }}</h1>
             </div>
 
-            @foreach ($teamimages as $item)
-                
-            
+            @foreach ($teamimages as $item)    
             <div class="team__grid col-lg-3 col-md-4 col-sm-6 d-flex" data-aos="fade-up">
                 <div class="team__block mx-auto">
                     <div class="team__block__wrapper position-relative overflow-hidden">
@@ -799,9 +791,7 @@
                     </div>
                 </div>
             </div>
-
             @endforeach
-            
         </div>
     </div>
 </section>

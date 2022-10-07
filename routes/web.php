@@ -3,12 +3,15 @@
 use App\Http\Controllers\Backend\CaseStudiesController;
 use App\Http\Controllers\Backend\ClientFeedbackController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\CopyRightController;
 use App\Http\Controllers\Backend\CustomerMessageController;
 use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\ExportImportController;
 use App\Http\Controllers\Backend\RecentWorkController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\SocialUrlController;
 use App\Http\Controllers\Backend\TeamController;
+use App\Http\Controllers\Backend\ThemeSettingController;
 use App\Http\Controllers\Backend\TitleController;
 use App\Http\Controllers\Backend\TrustUsController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -71,11 +74,14 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::get('/serviceview',[ServiceController::class,'index'])->name('admin.serviceview'); 
     
     // Route for Add Serviec 
-    
     Route::post('/addservice',[ServiceController::class,'store'])->name('admin.addservice'); 
 
       // Route for  Serviec Table View by
       Route::get('/servicetableview',[ServiceController::class,'servicetableview'])->name('admin.servicetableview');
+
+      //Route for Service Details 
+      Route::get('/service/details/{id}',[ServiceController::class,'servicedetails'])->name('service.details');
+       
 
        // Route for Our Service Update
 
@@ -161,6 +167,12 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('recent/work/table',[RecentWorkController::class,'show'])->name('admin.managerecentwork');
 
+    //Route for recent work button update Show
+    Route::get('recent/work/button',[RecentWorkController::class,'recent_work_button'])->name('recentwork.button.show');
+
+    //Route for recent work button update
+    Route::post('recent/work/button/update/{id}',[RecentWorkController::class,'recent_work_button_update'])->name('recentwork.button.update');
+
     // Recentwork Date Filter 
 
     Route::get('/recentwork-date-filter', [RecentWorkController::class, 'recentworkDateFilter'])->name('recentwork.date.filter');
@@ -204,9 +216,15 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     // Route for export feedback 
     Route::post('/export/feedback',[ExportImportController::class,'exportFeedback'])->name('export-feedback');
+    //Route for feedback file import
+    Route::post('/import/feedback',[ExportImportController::class,'importFeedback'])->name('feedback-file-import');
 
     //Route For Filter Feedback Table
     Route::get('/feedback-date-filter', [ClientFeedbackController::class, 'feedbackkDateFilter'])->name('feedback.date.filter');
+
+    //Routen for Search feedback Table
+
+    Route::get('/feedback-data-search', [ClientFeedbackController::class, 'feedbackDataSearch'])->name('feedback.data.search');
 
     // Route for update form view Feedback 
 
@@ -286,6 +304,32 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::get('title/show',[TitleController::class,'show'])->name('title.show');
 
     Route::post('title/update/{id}',[TitleController::class,'update'])->name('title.update');
+
+    //Social Area 
+    Route::get('social/url',[SocialUrlController::class,'index'])->name('social.url.update.view');
+    //Social Area Update
+
+    Route::post('social/url/update/{id}',[SocialUrlController::class,'update'])->name('social.url.update');
+
+    //Copyright Area 
+    Route::get('copyright/update/view',[CopyRightController::class,'index'])->name('copyright.update.view');
+
+    //CopyRight Update
+
+    Route::post('copyright/update/{id}',[CopyRightController::class,'update'])->name('copyright.update');
+
+    //Theme Color
+
+    Route::get('theme-color', [ThemeSettingController::class, 'color'])->name('theme.color');
+
+    Route::get('theme-toggle', [ThemeSettingController::class, 'toggle'])->name('theme.toggle');
+
+
+
+    
+
+
+
 
 
 });

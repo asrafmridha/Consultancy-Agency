@@ -60,6 +60,12 @@ class ServiceController extends Controller
 
         }
 
+        public function servicedetails($id){
+            $item=Service::find($id);
+            return view('backend.pages.service_details_table',compact('item'));
+
+        }
+
         public function show(){
             $alldata=Service::all();
             return response()->json([

@@ -22,13 +22,26 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     {{-- trix editor js  --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js" integrity="sha512-/1nVu72YEESEbcmhE/EvjH/RxTg62EKvYWLG3NdeZibTCuEtW5M4z3aypcvsoZw03FAopi94y04GhuqRU9p+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    {{-- for jQuery <Table></Table> --}}
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> 
+   
+
+
+  <script>
+     $(document).ready( function () {
+    $('#table_id').DataTable();
+  } );
+
+  </script>
 
      <!-- Toastr Message Script-->
-     <script>
+<script>
         toastr.options = {
             "closeButton": true,
             "debug": false,
@@ -62,15 +75,5 @@
                 toastr.success('{{ session()->get('success') }}');
             @endif
         });
-    </script>
+</script>
 
-    
-     {{-- $(window).on('load', function() {
-            if (feather) {
-                feather.replace({
-                    width: 14,
-                    height: 14
-                });
-            }
-        })  
-   --}}

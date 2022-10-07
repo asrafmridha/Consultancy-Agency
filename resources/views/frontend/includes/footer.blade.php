@@ -77,16 +77,16 @@
                         <h3 class="footer__block__title side-line side-line--40 mt-5 mb-3">Get Social</h3>
                         <ul class="social social--rounded d-flex flex-wrap align-items-center mb-0">
                             <li class="social__items" data-aos="fade-up">
-                                <a href="#!" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-facebook-app-symbol"></i></a>
+                                <a href="{{ social_url()->fb_url }}" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-facebook-app-symbol"></i></a>
                             </li>
                             <li class="social__items" data-aos="fade-up" data-aos-delay="50">
-                                <a href="#!" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-twitter"></i></a>
+                                <a href="{{ social_url()->twitter_url }}" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-twitter"></i></a>
                             </li>
                             <li class="social__items" data-aos="fade-up" data-aos-delay="150">
-                                <a href="#!" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-pinterest"></i></a>
+                                <a href="{{ social_url()->pinterest_url }}" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-pinterest"></i></a>
                             </li>
                             <li class="social__items" data-aos="fade-up" data-aos-delay="200">
-                                <a href="#!" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-linkedin"></i></a>
+                                <a href="{{ social_url()->linkedin_url }}" target="_blank" class="social__link d-inline-flex align-items-center justify-content-center rounded-circle"><i class="flaticon-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -96,7 +96,7 @@
     </div>
     <div class="footer__bottom py-4">
         <div class="container">
-            <p class="footer__bottom__text text-center mb-0">© copyright 2021. All rights reserved by <a href="{{ route('dashboard') }}" class="footer__bottom__link">Consult</a></p>
+            <p class="footer__bottom__text text-center mb-0">© {{ copy_right()->copy_right_year }} <a href="{{ route('dashboard') }}" class="footer__bottom__link">{{ copy_right()->copy_right_text }}</a></p>
         </div>
     </div>
 </footer>

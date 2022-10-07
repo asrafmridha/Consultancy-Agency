@@ -58,37 +58,34 @@
      </form>
 </div>
 
-
-
     <!-- White Tables start -->
-    <div class="row" id="dark-table">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">User Message  ({{ $data->count() }})</h4>     
-                </div>
-                    <button style="width: 100px" type="submit"  class=" mb-1 btn btn-danger " id="delete_all"> Delete</button>   
-                <div class="table-responsive">
-                    <button id="msgbtn" style="display: none" type="submit" class="btn btn-danger">Delete</button>
-                    <table class="table table-white">
-                        <thead>
-                            @if($data->isEmpty())
-                            <th><h2 class="alert alert-danger">Data Not Found</h2></th>
-                            @else
-                            <tr>
-                                <th> <input type="checkbox" id="allcheck"></th>
-                                <th>User Name</th>
-                                <th>User Email</th>
-                                <th>User Message</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $item)
-                            <tr id="sid{{ $item->id }}">
-                                
+<div class="row" id="dark-table">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">User Message  ({{ $data->count() }})</h4>     
+            </div>
+                <button style="width: 100px" type="submit"  class=" mb-1 btn btn-danger " id="delete_all"> Delete</button>   
+            <div class="table-responsive">
+                <button id="msgbtn" style="display: none" type="submit" class="btn btn-danger">Delete</button>
+                <table class="table table-white display" id="table_id">
+                    <thead>
+                        @if($data->isEmpty())
+                        <th><h2 class="alert alert-danger">Data Not Found</h2></th>
+                        @else
+                        <tr>
+                            <th> <input name="main_checkbox" type="checkbox" id="all_checkbox"></th>
+                            <th>User Name</th>
+                            <th>User Email</th>
+                            <th>User Message</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $item)
+                            <tr id="sid{{ $item->id }}"> 
                                 <td>
-                                   <input type="checkbox" name="ids" class="checkSingle" value="{{ $item->id }}">
+                                   <input type="checkbox" name="ids" class="all_actions" value="{{ $item->id }}">
                                 </td>
                                 <td>
                                    {{ $item->customer_name }} 
@@ -98,18 +95,17 @@
                                     {{ $item->customer_message }}
                                  
                                 <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-sm text-dark dropdown-toggle hide-arrow" data-toggle="dropdown">
-                                                <i data-feather="more-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                              
-                                                <button data-target="#deleteModalmesssage_{{ $item->id }}" data-toggle="modal" type="button" class="dropdown-item" href="javascript:void(0);">
-                                                    <i data-feather="trash" class="mr-50"></i>
-                                                    <span>Delete</span>
-                                                </button>
-                                            </div>
-                                        </div>                                  
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-sm text-dark dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                        <i data-feather="more-vertical"></i>
+                                    </button>
+                                <div class="dropdown-menu">
+                                    <button data-target="#deleteModalmesssage_{{ $item->id }}" data-toggle="modal" type="button" class="dropdown-item" href="javascript:void(0);">
+                                        <i data-feather="trash" class="mr-50"></i>
+                                            <span>Delete</span>
+                                    </button>
+                                </div>
+                                </div>                                  
                                 </td>
                             </tr>         
 <!-- Modal for Messsage delete -->
@@ -138,13 +134,13 @@
 </div> 
        @endforeach 
        @endif                     
-                           </tbody>
-                        </table>
-                    </form>
-                </div>
+                        </tbody>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
+</div>
     <!-- White Tables end -->
 @endsection
 
@@ -154,35 +150,87 @@
 
   
 <script>
-$(document).ready(function(){
 
-    $("#allcheck").click(function(){
-        $('.checkSingle').prop('checked',$(this).prop('checked'));
-    });
 
-    $('#delete_all').click(function(e){ 
-        e.preventDefault(); 
-        var allids=[];
-        $('input:checkbox[name=ids]:checked').each(function(){
-            allids.push($(this).val());
-        });
+    // $("#allcheck").click(function(){
+    //     $('.checkSingle').prop('checked',$(this).prop('checked'));
+    // });
 
-//   $.ajax({
-//     type: "GET",
-//     url: "{{ route('message.delete') }}",
-//     data: {
-//         ids=allids
-//     },
-//     success: function (response) {
-//         $.each(allids, function (key, val) { 
-//             $('#sid'+val).remove();
-             
-//         });
-//     }
+    // $('#delete_all').click(function(e){ 
+    //     e.preventDefault(); 
+    //     var allids=[];
+    //     $('input:checkbox[name=ids]:checked').each(function(){
+    //         allids.push($(this).val());
+    //     });
 // });
+        // $.ajax({
+        //     type: "GET",
+        //     url: "{{ route('message.delete') }}",
+        //     data: {
+        //         ids=allids
+        //     },
+        //     success: function (response) {
+        //         $.each(allids, function (key, val) { 
+        //             $('#sid'+val).remove();
+                    
+        //         });
+        //     }
+        // });
+
+        $(document).ready(function(){
+
+            // $(document).on('click','input[name="main_checkbox"]'function(){
+            //     if(this.checked){
+            //         $("input[name='ids']").each(function(){
+            //         this.checked=true;
+            //     }else{
+            //         $("input[name='ids']").each(function(){
+            //         this.checked=false;
+            //     }
+              
+            //     });
 
 
-});
+            // });
+
+            $('#all_checkbox').change(function(){
+                 ids = [];
+                $('#all_checkbox').each(function(){
+                    if($(this).is(":checked")){
+                        ids.push($(this).attr('id').split('-')[2]);
+                    }
+                });
+                if(ids.length == 0){
+                    $('.all_actions').removeClass('d-inline-block');
+                    $('.all_actions').addClass('d-none');
+                }
+                else
+                {
+                    $('.all_actions').removeClass(' d-none');
+                    $('.all_actions').addClass('d-inline-block');
+                    // $('.export_all').val(ids);
+
+                        // Delete trigger
+
+                        $("#delete_all").on('click', function(){
+
+                            $.ajax({
+                                    url: "{{ route('message.delete') }}",
+                                    type: 'GET',
+                                    data: {
+                                        ids: ids,
+                                    },
+                                    success: function(data){
+                                        if(data.success == 'done'){
+                                            window.location.reload();
+                                        }
+                                    }
+                            });
+
+                        });
+                }
+            });
+
 
 
 

@@ -10,6 +10,7 @@ use App\Models\Experience;
 use App\Models\OurService;
 use App\Models\ProjectIdea;
 use App\Models\RecentWork;
+use App\Models\RecentWorkButton;
 use App\Models\Service;
 use App\Models\TeamImage;
 use App\Models\Title;
@@ -27,9 +28,10 @@ class FrontendController extends Controller
         $experience =Experience::first();
         $customertrust=CustomerTrust::all();
         $title=Title::first();
+        $recentwork_button=RecentWorkButton::first();
         
         // return view('welcome',compact('headertext','teamimages','recentwork','service'));
-        return view('frontend.pages.home',compact('headertext','service','recentwork','teamimages','feedback','projectidea','experience','customertrust','title'));
+        return view('frontend.pages.home',compact('headertext','service','recentwork','teamimages','feedback','projectidea','experience','customertrust','title','recentwork_button'));
         
         
     }
@@ -42,7 +44,8 @@ class FrontendController extends Controller
 
     public function case(){
         $recentwork=RecentWork::all();
-        return view('frontend.pages.case',compact('recentwork'));
+        $recentwork_button=RecentWorkButton::first();
+        return view('frontend.pages.case',compact('recentwork','recentwork_button'));
 
     }
 

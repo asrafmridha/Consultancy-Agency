@@ -15,32 +15,16 @@
         </ol>
     </div>
 @endsection
-@section('content')
-<div class="row" >
-  <div class="col-md-8 ">
-    <form action="{{ route('service-export')}}" method="POST" enctype="multipart/form-data">
-      @csrf
+@section('content') 
 
-      <div class="container">
-        <div class="row mb-3">
-            <div class="col-md-12  text-right">
-                <button type="submit" class="btn btn-primary">Export</button>
-            </div>
-        </div>
-      </div>
-    </form>
+<div class="d-flex justify-content-between">
+  <div class="row">
+      <form action=" {{ route('service-export')}} " method="POST"> 
+       @csrf
+          <button type="submit" class="btn btn-primary m-1">Export</button>
+      </form>
+      <button data-toggle="modal" data-target="#csvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
   </div>
-
-<div class="col-md-1">
-      <div class="container">
-          <div class="row mb-3">
-              <div class="col-md-12  text-right">
-                  <button data-toggle="modal" data-target="#csvModal" type="submit" class="btn btn-primary">Import</button>
-              </div>
-          </div>
-      </div>
-</form>
-</div>
 </div>
  {{-- Data Filter Start  --}}
 <div class="card-body">
@@ -90,7 +74,8 @@
   <div class="col-12">
       <div class="card">
           <div class="table-responsive">
-              <table class="table table-white">
+            
+              <table class="table table-white " >
                   <thead>
                     @if($alldata->isEmpty())
                         <th><h2 class="alert alert-danger">Data Not Found</h2></th>
@@ -100,12 +85,7 @@
                         <th class="text-dark">Title</th>
                         <th class="text-dark">Short Description</th>
                         <th class="text-dark">Button Text</th>
-                        <th class="text-dark">Short Description 2</th>
-                        <th class="text-dark">advise</th>
-                        <th class="text-dark">advisor_name</th>
-                        <th class="text-dark">Heading</th>
-                        <th class="text-dark">point</th>
-                        <th class="text-dark">Image</th>
+                        <th class="text-dark">Details</th>
                         <th class="text-dark">Action</th>
                       </tr>
                   </thead>
@@ -116,13 +96,7 @@
                     <td>      {{ $item->title  }}</td>
                     <td>      {!! $item->Short_description !!}    </td>
                     <td>      {{ $item->button_text }}             </td>
-                    <td>      {!! $item->short_description2 !!}    </td>
-                    <td>      {{ $item->advise }}                  </td>
-                    <td>      {{ $item->advisor_name}}             </td>
-                    <td>      {{ $item->heading  }}                </td>
-                    <td>      {!! $item->point !!}                 </td>
-                    <td><img height="80px" width="120px" src="{{ asset('uploads/service/'.$item->image) }}" alt=""> </td> 
-
+                    <td><a class="btn btn-primary btn-sm" href="{{ route('service.details',$item->id) }}">See Details</a></td>
                     <td>
                       <div class="dropdown">
                              <button type="button" class="btn btn-sm text-dark dropdown-toggle hide-arrow" data-toggle="dropdown">
@@ -173,6 +147,7 @@
                     @endif 
                   </tbody>
               </table>
+            
               {{ $alldata->links() }} 
           </div>
       </div>
@@ -185,31 +160,28 @@
       
 <!-- Modal For Import CSV -->
 <div class="modal fade" id="csvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-        <form action="{{ route('service-file-import') }}" method="POST" enctype="multipart/form-data">
-          @csrf
-
-          <input type="file" name="file" class="mt-3 form-control import" >
-
-        
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save</button>
-      </div>
-    </form>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+                  <div class="modal-body">
+                      <form action="{{ route('service-file-import') }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      <input type="file" name="file" class="mt-3 form-control import" >
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+              </form>
+        </div>
     </div>
-  </div>
+</div>
+
 
 @endsection
 

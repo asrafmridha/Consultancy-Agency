@@ -42,6 +42,10 @@ class DatabaseSeeder extends Seeder
             CustomerTrustSeeder::class,
             TeamImageSeeder::class,
             FooterServiceSeeder::class,
+            SocialUrlSeeder::class,
+            RecentWorkButtonSeeder::class,
+            CopyRightSeeder::class,
+            ThemeSeeder::class,
 
         ]);
     }

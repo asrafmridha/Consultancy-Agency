@@ -25,14 +25,23 @@ class CustomerMessageController extends Controller
 
     public function mass_delete(Request $request){
 
-        $ids=$request->ids;
-        CustomerMessage::whereIn('id',$ids)->delete();
-        return response()->json([
+        // $ids=$request->ids;
+        // CustomerMessage::whereIn('id',$ids)->delete();
+        // return response()->json([
  
-            'success'=>'Message Delete'
+        //     'success'=>'Message Delete'
+        // ]);
 
-        ]);
+        $message = CustomerMessage::findMany($request->ids);
+        foreach ($message as $message) {
+            // if ($message->id->count() > 0) {
+            //     return back()->with('error', 'Cette catégorie contient des sous-catégories. Veuillez les supprimer avant de pouvoir la supprimer.');
+            // }
+        $message->each->delete();
+        return response()->json(['success' => 'done']);
     }
+        
+}
 
      public function destroy($id){
         $message=CustomerMessage::find($id)->delete();

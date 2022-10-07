@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('social_urls', function (Blueprint $table) {
+        Schema::create('recent_work_buttons', function (Blueprint $table) {
             $table->id();
-            $table->string('fb_url')->default('#');
-            $table->string('twitter_url')->default('#');
-            $table->string('pinterest_url')->default('#');
-            $table->string('linkedin_url')->default('#');
+            $table->string('buisness_finance')->nullable();
+            $table->string('customer_support')->nullable();
+            $table->string('financial_service')->nullable();
+            $table->string('buisness_stargey')->nullable();
+            $table->string('sale_service')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_urls');
+        Schema::dropIfExists('recent_work_buttons');
     }
 };

@@ -6,8 +6,10 @@ use App\Exports\FeedbackExport;
 use App\Exports\ServiceExport;
 use App\Exports\TeamExport;
 use App\Http\Controllers\Controller;
+use App\Imports\FeedbackImport;
 use App\Imports\ServiceImport;
 use App\Imports\TeamImport;
+use App\Models\ClientFeedback;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -39,5 +41,10 @@ class ExportImportController extends Controller
     public function exportFeedback(){
 
         return Excel::download(new FeedbackExport, 'feedback.xlsx');
+    }
+    public function importFeedback(Request $request){
+        Excel::import(new FeedbackImport(), $request->file('file'));
+        return redirect()->back()->with('success', 'feedback Imported Successfully');
+        
     }
 }

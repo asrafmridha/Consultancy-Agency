@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RecentworkRequest;
 use App\Imports\RecentWorkImport;
 use App\Models\RecentWork;
+use App\Models\RecentWorkButton;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -28,7 +29,7 @@ class RecentWorkController extends Controller
         $recentwork->title=$request->title;
         $recentwork->short_description=$request->short_description;
         $recentwork->save();
-        return back()->with('success','Save Data Successfully');
+        return redirect()->route('admin.managerecentwork')->with('success','Save Data Successfully');
     }
 
     public function show(){
@@ -41,12 +42,6 @@ class RecentWorkController extends Controller
         $data->delete();
         return back()->with('success', 'Recent Work Delete Successfully');
     }
-
-    // public function updateview($id){
-
-    //     $item=RecentWork::first($id);
-    //     return view('backend.pages.recentwork.updateview_recent_work',compact('item'));
-    // }
 
     public function update(Request $request,$id){
        $request->validate([
@@ -64,7 +59,6 @@ class RecentWorkController extends Controller
        $recentwork->image=$filename;
        }
 
-      
        $recentwork->title=$request->title;
        $recentwork->short_description=$request->short_description;
        $recentwork->update();
@@ -72,7 +66,6 @@ class RecentWorkController extends Controller
     }
 
     public function import(Request $request){
-
         Excel::import(new RecentWorkImport, $request->file('file'));
         return back()->with('success','Excel Imported Successfully');
       
@@ -91,6 +84,24 @@ class RecentWorkController extends Controller
         $search=$request->search;
         $data = RecentWork::where('title','Like','%'.$search.'%')->get();
         return view('backend.pages.recentwork.recent_work_table',compact('data'));
+    }
+    public function recent_work_button(){
+        $recentworkbutton=RecentWorkButton::first();
+        return view('backend.pages.recentwork.recent_work_button',compact('recentworkbutton'));
+    }
+
+    public function recent_work_button_update(Request $request, $id){
+
+        $request->validate([
+            'buisness_finance'=>'required',
+            'customer_support'=>'required',
+            'financial_service'=>'required',
+            'buisness_stargey'=>'required',
+            'sale_service'   =>'required',      
+        ]);
+
+        RecentWorkButton::find($id)->update($request->except('_token'));
+        return back()->withSuccess('Data Updated Successfully');
     }
     
 }

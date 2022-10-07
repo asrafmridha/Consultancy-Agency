@@ -15,30 +15,15 @@
 @endsection
 @section('content') 
 
-<div class="row">
-    <div class="col-md-8  ">
-        <form action="{{ route('export-feedback') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-12  text-right">
-                    <button type="submit" class="btn btn-primary">Export</button>
-                </div>
-            </div>
-        </div>
+<div class="d-flex justify-content-between">
+    <div class="row">
+        <form action=" {{ route('export-feedback')}} " method="POST"> 
+         @csrf
+            <button type="submit" class="btn btn-primary m-1">Export</button>
         </form>
+        <button data-toggle="modal" data-target="#feedbackcsvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
     </div>
-
-    <div class="col-md-1">
-        <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-12  text-right">
-                    <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary">Import</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> 
+</div>
 
 {{-- Data Filter Start --}}
 <div class="card-body">
@@ -62,44 +47,48 @@
                 </div>
             </div>
         </div>
+    </form>
+    <form action="{{ route('feedback.data.search') }}" method="GET">
          <div class="row align-items-md-center">
             <div class="col-md">
                 <div class="form-group mb-md-0">
                     <div class="input-group">
-                        <input type="search" class="form-control table_search" placeholder="Search Here">
+                            <input type="search" name="search" class="form-control table_search " placeholder="Search Here by Name or Designation"  value="{{old('search')}}">
                         <div class="input-group-append">
-                          <span class="input-group-text">
-                            <i data-feather='search'></i>
+                            <span class="input-group-text">
+                            <button type="submit"><i data-feather='search'></i></button>
                           </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div> 
-     </form>
-  </div>
+    </form>
+</div>
 
 
 {{-- Data Filter End  --}}
           <!-- Dark Tables start -->
-          <div class="row" id="white-table">
-            <div class="col-12">
-                <div class="card">
-
-                    <div class="card-header">
-                        <h4 class="card-title">Total Feedback ({{ $data->count() }})</h4>
-                    </div>  
-                    <div class="table-responsive ">
-                        <table class="table table-white">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Short Description</th>
-                                    <th>Client Name</th>
-                                    <th>Designation</th>
-                                    <th>Star</th>
-                                    <th>Action</th>
-                                </tr>
+<div class="row" id="white-table">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Total Feedback ({{ $data->count() }})</h4>
+            </div>  
+                <div class="table-responsive " >
+                    <table class="table table-white display" id="table_id">
+                        <thead>
+                            @if($data->isEmpty())
+                            <th><h2 class="alert alert-danger">Data Not Found</h2></th>
+                            @else
+                            <tr>
+                                <th>Image</th>
+                                <th>Short Description</th>
+                                <th>Client Name</th>
+                                <th>Designation</th>
+                                <th>Star</th>
+                                <th>Action</th>
+                            </tr>
                             </thead>
                             <tbody>
                                 @foreach ( $data as $item)
@@ -131,36 +120,34 @@
                                 </tr>
 
                      <!-- Modal for Feedback  delete -->
-    <div class="modal fade" id="deleteModalfeedback__{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
+<div class="modal fade" id="deleteModalfeedback__{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
            
-          <div class="modal-body text-white bg-dark">
-              <form action="{{ route('feedback.destroy',$item->id) }}" method="POST">
-                @method('delete')
-                  @csrf
-                      Are you sure want to delete this Service?
+                   <div class="modal-body text-white bg-dark">
+                        <form action="{{ route('feedback.destroy',$item->id) }}" method="POST">
+                        @method('delete')
+                        @csrf
+                            Are you sure want to delete this Service?
                     
                     <div class="modal-footer">
                         <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
                         <button type="submit" class="btn btn-primary deletemodalservicebutton">Confirm</button>
                     </div>
-              </form>
+                        </form>
             </div>
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 
                                 @endforeach
-                              
-                             
-                               
+                              @endif    
                             </tbody>
                         </table>
                     </div>
@@ -169,15 +156,33 @@
         </div>
         <!-- Dark Tables end -->
 
-
-
-
-
-
-
-
-
-
-
-
 @endsection
+{{-- Modal For Import CSV  --}}
+<div class="modal fade" id="feedbackcsvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('feedback-file-import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" class="mt-3 form-control import" >
+                    @error('file')
+                    <div class="alert alert-danger">
+                        {{$message}}
+                    </div>  
+                    @enderror 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+                        </form>
+        </div>
+    </div>
+</div>
+        

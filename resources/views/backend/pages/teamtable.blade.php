@@ -15,30 +15,16 @@
     </div>
 @endsection
 @section('content') 
-      
-<div class="row">
-    <div class="col-md-8  ">
-        <form action="{{ route('team-file-export') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-            <div class="container">
-                <div class="row mb-3">
-                    <div class="col-md-12  text-right">
-                        <button type="submit" class="btn btn-primary">Export</button>
-                    </div>
-                </div>
-            </div>
+
+<div class="d-flex justify-content-between">
+    <div class="row">
+        <form action=" {{ route('team-file-export')}} " method="POST"> 
+         @csrf
+            <button type="submit" class="btn btn-primary m-1">Export</button>
         </form>
+        <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
     </div>
-    <div class="col-md-1">
-        <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-12  text-right">
-                      <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary">Import</button>
-                </div>  
-              </div>
-        </div>
-    </div>
-</div>
+  </div>
 
 {{-- Team Date Filter  --}}
 <div class="card-body">
@@ -91,7 +77,7 @@
                 <h4 class="card-title">Team Member ({{ $data->count() }})</h4>
             </div> 
             <div class="table-responsive">
-                <table class="table table-white">
+                    <table class="table table-white display" id="table_id" >
                     <thead>
                         @if($data->isEmpty())
                         <th><h2 class="alert alert-danger">Data Not Found</h2></th>
@@ -107,8 +93,8 @@
                             <th>pinterest_link</th>
                             <th colspan="2">Action</th>
                         </tr>
-                        </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
 
                             <?php $slno=1; ?>
                             @foreach ($data as $item) 
@@ -255,14 +241,14 @@
                             </tr>
                             <?php $slno++; ?>
                             @endforeach 
-                            @endif
-                        </tbody>
+                        @endif
+                    </tbody>
                     </table>
-                </div>
-            </div>
+                </div>  
         </div>
     </div>
 </div>
+ 
 
 @endsection
         {{-- Modal For Import CSV  --}}

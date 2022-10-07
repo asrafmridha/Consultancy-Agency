@@ -33,7 +33,7 @@
         @enderror
       
         <label class="mt-1 h5" for="short_description">Enter Short Description</label>
-        <input type="text" name="short_description" class="text-dark  form-control name" placeholder="Enter Short Description" value="{{ $data->short_description }}">
+        <input type="text" name="short_description" class="text-dark  form-control name" placeholder="Enter Short Description" value="{!! $data->short_description !!}">
 
         @error('short_description')
         <div class="alert alert-danger">
