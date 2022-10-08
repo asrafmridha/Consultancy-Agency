@@ -319,17 +319,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::post('copyright/update/{id}',[CopyRightController::class,'update'])->name('copyright.update');
 
     //Theme Color
-
     Route::get('theme-color', [ThemeSettingController::class, 'color'])->name('theme.color');
 
     Route::get('theme-toggle', [ThemeSettingController::class, 'toggle'])->name('theme.toggle');
-
-
-
-    
-
-
-
 
 
 });

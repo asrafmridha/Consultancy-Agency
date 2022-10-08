@@ -32,9 +32,8 @@ class ThemeSettingController extends Controller
             $data->theme = 'light-layout'; 
         }
 
-        $data->save(); 
+        $data->update(); 
        }
-
 
         die();
     }
@@ -54,7 +53,7 @@ class ThemeSettingController extends Controller
             $data->nav = 'expanded'; 
         }
 
-        $data->save(); 
+        $data->update(); 
 
         die();
     }
