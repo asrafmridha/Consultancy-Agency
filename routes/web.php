@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CaseStudiesController;
 use App\Http\Controllers\Backend\ClientFeedbackController;
 use App\Http\Controllers\Backend\ContactController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Backend\TrustUsController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\ProjectAreaController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,9 +32,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -61,6 +63,15 @@ Route::post('user/message',[CustomerMessageController::class,'store'])->name('st
 //  All Route For Admin
 
 Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
+
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->middleware(['auth'])->name('dashboard');
+
+    Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
+    
+
+
 
         //Route for add Header text View
         Route::get('/headertextview',[HeaderController::class,'view'])->name('headertextview');
@@ -323,6 +334,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('theme-toggle', [ThemeSettingController::class, 'toggle'])->name('theme.toggle');
 
+    Route::post('admin/profile/update/{id}',[AdminController::class,'profile_update'])->name('admin.profile.update');
+
 
 });
 
+      Route::get('my-profile', [AdminController::class, 'myProfile'])->name('my-profile');
