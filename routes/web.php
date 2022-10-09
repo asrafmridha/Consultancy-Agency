@@ -32,9 +32,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+//  Route::get('/dashboard',[AdminController::class,'index'])->middleware(['auth'])->name('dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -69,9 +67,6 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     // })->middleware(['auth'])->name('dashboard');
 
     Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
-    
-
-
 
         //Route for add Header text View
         Route::get('/headertextview',[HeaderController::class,'view'])->name('headertextview');
@@ -335,6 +330,13 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::get('theme-toggle', [ThemeSettingController::class, 'toggle'])->name('theme.toggle');
 
     Route::post('admin/profile/update/{id}',[AdminController::class,'profile_update'])->name('admin.profile.update');
+
+    Route::post('admin/update/{id}',[AdminController::class,'update'])->name('admin.update');
+
+    Route::post('reset/password',[AdminController::class,'reset_password'])->name('reset-password');
+
+
+    
 
 
 });

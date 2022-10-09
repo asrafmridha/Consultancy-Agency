@@ -1,7 +1,9 @@
 @extends('backend.mastaring.master')
 
 {{-- Title --}}
-
+@section('title')
+    {{ config('app.name') }} | My Profile
+@endsection
 
 {{-- Breadcrumb --}}
 @section('breadcrumb')
@@ -43,133 +45,126 @@
                         <h4 class="card-title">Profile Details</h4>
                     </div>
                     <div class="card-body py-2">
-                        <form action="{{ route('admin.profile.update',Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                        
                             <div class="d-flex flex-wrap align-items-end">
-                                <div class="mr-1 mb-1">
+                                {{-- <div class="mr-1 mb-1">
                                   <img src="{{('uploads/user/'.Auth::user()->image)  }}" class="uploadedAvatar rounded object-fit--cover" alt="profile image" width="100" height="100">
-                                </div>
+                                </div> --}}
+
+                                <form action="{{ route('admin.profile.update',Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="d-flex flex-wrap align-items-end">
+                                        <div class="mr-1 mb-1">
+                                          <img src="{{('uploads/user/'.Auth::user()->image)  }}" class="uploadedAvatar rounded object-fit--cover" alt="profile image" width="100" height="100">
+                                        </div>
+                                        <!-- upload and reset button -->
+                                        <div class="d-flex align-items-end mb-1">
+                                            <div>
+                                                <input class="form-control" type="file" name="image">
+                                                {{-- <label role="button" for="account-upload" class="btn btn-sm btn-success mb-75 mr-75 waves-effect waves-float waves-light">Upload</label> --}}
+        
+                                                <button type="submit" class="btn btn-sm btn-success mb-75 mr-75 waves-effect waves-float waves-light mt-1">Upload</button>
+                                                                           
+                                                {{-- <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 waves-effect">Reset</button> --}}
+                                                <p class="mb-0">Allowed file types: png, jpg, jpeg.</p>                    
+                                            </div>
+        
+                                            
+                                        </div>
+                                        <!--/ upload and reset button -->
+                                    </div>
+                                  
+                                   
+                                </form>
                                 <!-- upload and reset button -->
-                                <div class="d-flex align-items-end mb-1">
+                                {{-- <div class="d-flex align-items-end mb-1">
                                     <div>
-                                        <input class="form-control" type="file" name="image">
-                                        {{-- <label role="button" for="account-upload" class="btn btn-sm btn-success mb-75 mr-75 waves-effect waves-float waves-light">Upload</label> --}}
-
-                                        <button type="submit" class="btn btn-sm btn-success mb-75 mr-75 waves-effect waves-float waves-light">Upload</button>
-                                      
-
-                                       
-                                        {{-- <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 waves-effect">Reset</button> --}}
+                                        <label role="button" for="account-upload" class="btn btn-sm btn-success mb-75 mr-75 waves-effect waves-float waves-light">Upload</label>
+                                        <input type="file" name="account-image" id="account-upload" accept="image/*" hidden="">
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 waves-effect">Reset</button>
                                         <p class="mb-0">Allowed file types: png, jpg, jpeg.</p>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!--/ upload and reset button -->
                             </div>
-                            {{-- <div class="row">
-                                <div class="col-md-6">
+                        <form action="{{ route('admin.update',Auth::user()->id) }}" method="POST"> 
+                            @csrf
+                            <div class="row">
+                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="first_name">First Name</label>
-                                        <input type="text" id="first_name" class="form-control" name="first_name" placeholder="First Name">
+                                        <label for="name">Your Name</label>
+                                        <input type="text" id="first_name" class="form-control" name="name" placeholder="Your Name" value="{{ Auth::user()->name }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                              {{--  <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="last_name">Last Name</label>
                                         <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last Name">
                                     </div>
-                                </div>
+                                </div> --}}
+                              
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" name="email" placeholder="demo@demo.com">
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="demo@demo.com" value="{{ Auth::user()->email }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                                {{-- <div class="col-md-6">
+                                     <div class="form-group">
                                         <label for="website">Website</label>
                                         <input type="url" id="website" class="form-control" name="website" placeholder="demo.com">
-                                    </div>
-                                </div>
+                                    </div> 
+                                </div> --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="phone">Phone Number</label>
-                                        <input type="tel" id="phone" class="form-control" name="phone" placeholder="xxx xxx xxx xxx">
+                                        <input type="tel" id="phone" class="form-control" name="phone" placeholder="xxx xxx xxx xxx" value="{{ Auth::user()->phone }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input type="text" id="address" class="form-control" name="address" placeholder="Your Address">
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div> --}}
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="state">State</label>
                                         <input type="text" id="state" class="form-control" name="state" placeholder="State">
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="country">Country</label>
-                                        <select id="country" class="select2 form-select" required>
-                                            <option value="">Select Country</option>
-                                            <option value="Australia">Australia</option>
-                                            <option value="Bangladesh">Bangladesh</option>
-                                            <option value="Belarus">Belarus</option>
-                                            <option value="Brazil">Brazil</option>
-                                            <option value="Canada">Canada</option>
-                                            <option value="China">China</option>
-                                            <option value="France">France</option>
-                                            <option value="Germany">Germany</option>
-                                            <option value="India">India</option>
-                                            <option value="Indonesia">Indonesia</option>
-                                            <option value="Israel">Israel</option>
-                                            <option value="Italy">Italy</option>
-                                            <option value="Japan">Japan</option>
-                                            <option value="Korea">Korea, Republic of</option>
-                                            <option value="Mexico">Mexico</option>
-                                            <option value="Philippines">Philippines</option>
-                                            <option value="Russia">Russian Federation</option>
-                                            <option value="South Africa">South Africa</option>
-                                            <option value="Thailand">Thailand</option>
-                                            <option value="Turkey">Turkey</option>
-                                            <option value="Ukraine">Ukraine</option>
-                                            <option value="United Arab Emirates">United Arab Emirates</option>
-                                            <option value="United Kingdom">United Kingdom</option>
-                                            <option value="United States">United States</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                </div> --}}
+                                
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="about">About</label>
                                         <div>
-                                            <input id="about" type="hidden" name="about">
+                                            <input name="about" id="about" type="hidden" name="about" value="{!! Auth::user()->about !!}">
                                             <trix-editor input="about" class="trix-content"></trix-editor>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-success waves-effect waves-float waves-light w-100 w-sm-auto">Submit</button>
-                                </div>
-                            </div> --}}
+                                </div>                          
+                            </div>
                         </form>
                     </div>            
                 </div>
             </div>
-            {{-- <div class="tab-pane fade" id="pills-security" role="tabpanel">
+            <div class="tab-pane fade" id="pills-security" role="tabpanel">
                 <div class="card">
                     <div class="card-header border-bottom">
                         <h4 class="card-title">Change Password</h4>
                     </div>
                     <div class="card-body py-2">
-                        <form action="#!">
+                        <form action="{{ route('reset-password') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="account-old-password">Current password</label>
                                         <div class="input-group form-password-toggle">
-                                            <input type="password" class="form-control" id="account-old-password" name="password" placeholder="Enter current password">
+                                            <input type="password" class="form-control" id="account-old-password" name="old_password" placeholder="Enter current password">
                                             <div class="input-group-append cursor-pointer">
                                                 <span role="button" class="input-group-text">
                                                     <i data-feather='eye'></i>
@@ -182,7 +177,7 @@
                                     <div class="form-group">
                                         <label for="account-new-password">New Password</label>
                                         <div class="input-group form-password-toggle">
-                                            <input type="password" class="form-control" id="account-new-password" name="new-password" placeholder="Enter current password">
+                                            <input type="password" class="form-control" id="account-new-password" name="new_password" placeholder="Enter current password">
                                             <div class="input-group-append cursor-pointer">
                                                 <span role="button" class="input-group-text">
                                                     <i data-feather='eye'></i>
@@ -195,7 +190,7 @@
                                     <div class="form-group">
                                         <label for="account-retype-new-password">Retype New Password</label>
                                         <div class="input-group form-password-toggle">
-                                            <input type="password" class="form-control" id="account-retype-new-password" name="confirm-new-password" placeholder="Enter current password">
+                                            <input type="password" class="form-control" id="account-retype-new-password" name="new_password_confirmation" placeholder="Enter current password">
                                             <div class="input-group-append cursor-pointer">
                                                 <span role="button" class="input-group-text">
                                                     <i data-feather='eye'></i>
@@ -211,15 +206,14 @@
                         </form>
                     </div>            
                 </div>
-            </div> --}}
+            </div>
         </div>
 
     </div>
 </div>
 @endsection
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
+@push('js')
     <script>
         // Update & Reset Profile photo on click of button
         $(document).ready(function(){
@@ -249,3 +243,4 @@
             });
         })
     </script>
+@endpush
