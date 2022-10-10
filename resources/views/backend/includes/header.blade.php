@@ -43,12 +43,25 @@
             </ul> --}}
         </div>
         <ul class="nav navbar-nav align-items-center ml-auto">
-            <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
+            {{-- <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="javascript:void(0);" data-language="en"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="javascript:void(0);" data-language="fr"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="javascript:void(0);" data-language="de"><i class="flag-icon flag-icon-de"></i> German</a><a class="dropdown-item" href="javascript:void(0);" data-language="pt"><i class="flag-icon flag-icon-pt"></i> Portuguese</a></div>
-            </li>
+            </li> --}}
             <li class="nav-item d-none d-lg-block">
                 <a  id="dark" class="nav-link nav-link-style">
-                    <i class="ficon" data-feather="moon"></i>
+                    @if(themesetting(Auth::id()) == null)
+                    <i class="ficon"
+                    data-feather="sun"></i>
+                        @else
+                         @if(themesetting(Auth::id())->theme == 'dark-layout') 
+                         <i class="ficon"
+                         data-feather="sun"></i>
+                         @else
+                         <i class="ficon"
+                         data-feather="moon"></i>
+                    
+                    @endif
+              @endif 
+                    
                     </a>
                 </li>
             <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon" data-feather="search"></i></a>
@@ -149,7 +162,7 @@
                     </li>
                 </ul>
             </li> --}}
-            <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up">5</span></a>
+            {{-- <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up">5</span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
                         <div class="dropdown-header d-flex">
@@ -230,15 +243,16 @@
                     </li>
                     <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block" href="javascript:void(0)">Read all notifications</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
                         <span class="user-name font-weight-bolder">{{ Auth::user()->name }}</span>
                         <span class="user-status">{{ Auth::user()->email }}</span>
                     </div>
                     <span >
-                        <img class="round" src="{{('uploads/user/'.Auth::user()->image)  }}" alt="image" height="40" width="40">
+                        {{-- <img class="round" src="{{('uploads/user/'.Auth::user()->image)  }}" alt="image" height="40" width="40"> --}}
                         {{-- <span class="avatar-status-online"></span> --}}
+                        <img class="round" src="{{ 'uploads/user/'.Auth::user()->image }}" height="40px" width="40px" alt="admin">
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
@@ -257,9 +271,10 @@
                 </div>
             </li>
         </ul>
+        
     </div>
 </nav>
-<ul class="main-search-list-defaultlist d-none">
+{{-- <ul class="main-search-list-defaultlist d-none">
     <li class="d-flex align-items-center"><a href="javascript:void(0);">
             <h6 class="section-label mt-75 mb-0">Files</h6>
         </a></li>
@@ -340,7 +355,7 @@
             </div>
         </a>
     </li>
-</ul>
+</ul> --}}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -350,7 +365,7 @@
 
     jQuery(document).on("keyup","#allsearch", function(){
        var search= jQuery(this).val();
-        $.ajax({
+       $.ajax({
             type: "GET",
             url: "/admin/all/search/"+search,
             success: function (response) {
