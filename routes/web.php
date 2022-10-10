@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CustomerMessageController;
 use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\ExportImportController;
 use App\Http\Controllers\Backend\RecentWorkController;
+use App\Http\Controllers\Backend\SearchController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SocialUrlController;
 use App\Http\Controllers\Backend\TeamController;
@@ -334,6 +335,8 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::post('admin/update/{id}',[AdminController::class,'update'])->name('admin.update');
 
     Route::post('reset/password',[AdminController::class,'reset_password'])->name('reset-password');
+
+    Route::get('/all/search/{search}',[SearchController::class,'allsearch'])->name('admin.allsearch');
 
 
     

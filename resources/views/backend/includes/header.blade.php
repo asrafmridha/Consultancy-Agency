@@ -11,7 +11,7 @@
     ">
     <div class="navbar-container d-flex content">
         <div class="bookmark-wrapper d-flex align-items-center">
-            <ul class="nav navbar-nav d-xl-none">
+          {{--   <ul class="nav navbar-nav d-xl-none">
                 <li class="nav-item">
                     <a class="nav-link menu-toggle" href="javascript:void(0);">
                         <i class="ficon" data-feather="menu"></i>
@@ -40,7 +40,7 @@
                         <ul class="search-list search-list-bookmark"></ul>
                     </div>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
         <ul class="nav navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
@@ -52,14 +52,21 @@
                     </a>
                 </li>
             <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon" data-feather="search"></i></a>
-                <div class="search-input">
-                    <div class="search-input-icon"><i data-feather="search"></i></div>
-                    <input class="form-control input" type="text" placeholder="Explore Vuexy..." tabindex="-1" data-search="search">
-                    <div class="search-input-close"><i data-feather="x"></i></div>
-                    <ul class="search-list search-list-main"></ul>
-                </div>
+                {{-- <form action="{{ route('admin.allsearch')  }}" method="POST"> --}}
+                    {{-- @csrf --}}
+                    <div class="search-input">
+                        <div class="search-input-icon"><i data-feather="search"></i></div>
+                            <input class="form-control input" type="text" placeholder="Search Menu" tabindex="-1" data-search="search" id="allsearch" >
+                        <div class="search-input-close">
+                            <i data-feather="x"></i>
+                        </div>
+                        <ul class="search-list search-list-main" id="searchlist" >
+                            
+                        </ul>
+                    </div>
+                {{-- </form> --}}
             </li>
-            <li class="nav-item dropdown dropdown-cart mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="shopping-cart"></i><span class="badge badge-pill badge-primary badge-up cart-item-count">6</span></a>
+            {{-- <li class="nav-item dropdown dropdown-cart mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="shopping-cart"></i><span class="badge badge-pill badge-primary badge-up cart-item-count">6</span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
                         <div class="dropdown-header d-flex">
@@ -141,7 +148,7 @@
                         </div><a class="btn btn-primary btn-block" href="app-ecommerce-checkout.html">Checkout</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up">5</span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
@@ -225,10 +232,24 @@
                 </ul>
             </li>
             <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">{{ Auth::user()->name }}</span><span class="user-status">{{ Auth::user()->email }}</span></div><span class="avatar"><img class="round" src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                    <div class="user-nav d-sm-flex d-none">
+                        <span class="user-name font-weight-bolder">{{ Auth::user()->name }}</span>
+                        <span class="user-status">{{ Auth::user()->email }}</span>
+                    </div>
+                    <span >
+                        <img class="round" src="{{('uploads/user/'.Auth::user()->image)  }}" alt="image" height="40" width="40">
+                        {{-- <span class="avatar-status-online"></span> --}}
+                    </span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="page-profile.html"><i class="mr-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="app-email.html"><i class="mr-50" data-feather="mail"></i> Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="mr-50" data-feather="check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="mr-50" data-feather="message-square"></i> Chats</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" href="page-account-settings.html"><i class="mr-50" data-feather="settings"></i> Settings</a><a class="dropdown-item" href="page-pricing.html"><i class="mr-50" data-feather="credit-card"></i> Pricing</a><a class="dropdown-item" href="page-faq.html"><i class="mr-50" data-feather="help-circle"></i> FAQ</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+                    <a class="dropdown-item" href="{{ route('my-profile') }}">
+                        <i class="mr-50" data-feather="user"></i> Profile
+                    </a>
+                    {{-- <a class="dropdown-item" href="app-email.html"><i class="mr-50" data-feather="mail"></i> Inbox
+                    </a> --}}
+                    {{-- <a class="dropdown-item" href="app-todo.html"><i class="mr-50" data-feather="check-square"></i> Task</a>
+                    <a class="dropdown-item" href="app-chat.html"><i class="mr-50" data-feather="message-square"></i> Chats</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="page-account-settings.html"><i class="mr-50" data-feather="settings"></i> Settings</a><a class="dropdown-item" href="page-pricing.html"><i class="mr-50" data-feather="credit-card"></i> Pricing</a><a class="dropdown-item" href="page-faq.html"><i class="mr-50" data-feather="help-circle"></i> FAQ</a> --}}
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                     <button type="submit" class="dropdown-item" ><i class="mr-50" data-feather="power"></i> Logout</button>
@@ -311,24 +332,42 @@
         </a></li>
 </ul>
 <ul class="main-search-list-defaultlist-other-list d-none">
-    <li class="auto-suggestion justify-content-between"><a class="d-flex align-items-center justify-content-between w-100 py-50">
-            <div class="d-flex justify-content-start"><span class="mr-75" data-feather="alert-circle"></span><span>No results found.</span></div>
-        </a></li>
+    <li class="auto-suggestion justify-content-between">
+        <a class="d-flex align-items-center justify-content-between w-100 py-50">
+            <div class="d-flex justify-content-start">
+                <span class="mr-75" data-feather="alert-circle"></span>
+                <span>No results found.</span>
+            </div>
+        </a>
+    </li>
 </ul>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-    $(document).ready(function(){
-        $('#dark').click(function(){
-            $.ajax({
-                url: "{{ route('theme.color') }}",
-                type: "GET",
-                success: function(data){
-                    
-                }
-            })
+    jQuery(document).ready(function(){
+
+    jQuery(document).on("keyup","#allsearch", function(){
+       var search= jQuery(this).val();
+        $.ajax({
+            type: "GET",
+            url: "/admin/all/search/"+search,
+            success: function (response) {
+                $('#searchlist').html(response.view);
+            }
         });
-    })
-</script>
+     
+     });
+
+
+
+
+
+
+    });
+
+    
+  
+</script> 
+
