@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
             RecentWorkButtonSeeder::class,
             CopyRightSeeder::class,
             ThemeSeeder::class,
+            AllTableSeeder::class,
 
         ]);
     }

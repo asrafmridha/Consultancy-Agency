@@ -84,6 +84,8 @@ class TeamController extends Controller
     public function teamDataSearch(Request $request){
         $search=$request->search;
         $data = TeamImage::where('designation','Like','%'.$search.'%')->orwhere('name','Like','%'.$search.'%')->get();
+
+        
         return view('backend.pages.teamtable',compact('data'));
     }
 

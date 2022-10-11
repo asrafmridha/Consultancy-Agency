@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\ClientFeedback;
 use App\Models\CustomerMessage;
+use App\Models\RecentWork;
 use App\Models\RecentWorkButton;
 use App\Models\Service;
 use App\Models\TeamImage;
@@ -18,9 +19,10 @@ class AdminController extends Controller
    public function index(){
     $team=TeamImage::count('name');
     $message=CustomerMessage::count('customer_message');
-    $review=ClientFeedback::count('client_name');
-    // $service=RecentWorkButton::count('button');
-    return view('dashboard',compact('team','message','review'));
+    $feedback=ClientFeedback::count('client_name');
+    $recent_work=RecentWork::count('title');
+    $service=RecentWorkButton::count();
+    return view('dashboard',compact('team','message','feedback','recent_work','service'));
    }
 
    public function myProfile(){
@@ -30,7 +32,7 @@ class AdminController extends Controller
    public function profile_update(Request $request, $id){
 
       $request->validate([
-         'image'=>'image',
+         'image'=>'required|image',
 
       ]);
 

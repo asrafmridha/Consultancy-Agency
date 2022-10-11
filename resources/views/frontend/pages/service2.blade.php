@@ -42,11 +42,7 @@
                     <div class="col-12">
                         <h2 class="service-details__list-title text-uppercase">{{  $ourservice->heading  }}</h2>
                         <ul class="service-details__list mb-0">
-                            <li class="service-details__list__item position-relative" data-aos="fade-up">{{  $ourservice->point  }}</li>
-                            {{-- <li class="service-details__list__item position-relative" data-aos="fade-up" data-aos-delay="100">It generates not just repeat business but also referral business.</li>
-                            <li class="service-details__list__item position-relative" data-aos="fade-up" data-aos-delay="200">Once you have a lots of positive customer reviews, you can start reputation marketing.</li>
-                            <li class="service-details__list__item position-relative" data-aos="fade-up" data-aos-delay="200">using your reviews to promote your reputation and scale your company!</li>
-                            <li class="service-details__list__item position-relative" data-aos="fade-up" data-aos-delay="300">If customers feel valued, they'll provide your business with a positive online review.</li> --}}
+                            <li class="service-details__list__item position-relative" data-aos="fade-up">{!!  $ourservice->point  !!}</li>
                         </ul>
                     </div>
                 </div>

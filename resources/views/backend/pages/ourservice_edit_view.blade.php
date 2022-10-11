@@ -1,6 +1,6 @@
 @extends('backend.mastaring.master')
 
-@section('recentwork','active')
+@section('service','active')
 
 {{-- Breadcrumb --}}
 @section('breadcrumb')
@@ -23,7 +23,6 @@
    <div class="row">
        <div class="col-12">
            <div class="card">
-
                <div class="card-body">
                    <form action="{{ route('ourservice.update',$data->id) }}" method="POST" class="form form-vertical" enctype="multipart/form-data">
                        @csrf

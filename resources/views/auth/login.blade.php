@@ -55,13 +55,6 @@
     </x-auth-card>
 </x-guest-layout> --}}
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
@@ -86,11 +79,11 @@
             </div>
             <div class="content-body">
                 <div class="auth-wrapper auth-v1 px-2">
-                    <div class="auth-inner py-2">
+                    <div class="auth-inner py-5">
                         <!-- Login v1 -->
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a style="margin-left: 600px; margin-right:600px" href="javascript:void(0);" class="brand-logo">
+                                <a style="margin-left: 750px; margin-right:600px" href="javascript:void(0);" class="brand-logo">
                                     <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
                                         <defs>
                                             <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -119,7 +112,7 @@
                                     <h2 class="brand-text text-primary ml-1">Vuexy</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">Welcome to Vuexy! 👋</h4>
+                                
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
                                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
                                 <form action="{{ route('login') }}" method="POST">

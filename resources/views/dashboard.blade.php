@@ -1,25 +1,5 @@
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in! 
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}
-
-
-
-<!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+{{-- <!DOCTYPE html>
+<html class="loading {{ (themesetting(Auth::id()) == null) ? 'light-layout' : themesetting(Auth::id())->theme }}" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
 
 <head>
@@ -34,7 +14,19 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static 
+
+    @if(themesetting(Auth::id()) == null)
+      menu-expanded
+    @else
+         @if(themesetting(Auth::id())->nav == 'collapsed')
+            menu-collapsed
+         @else
+            menu-expanded
+        @endif
+    @endif 
+
+" data-open="click" data-menu="vertical-menu-modern" data-col="">
 
     <!-- BEGIN: Header-->
     @include('backend.includes.header')
@@ -49,6 +41,8 @@
     @include('backend.includes.content')
     <!-- END: Content-->
 
+
+
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
 
@@ -58,6 +52,7 @@
 
 
     <!-- BEGIN: Vendor JS-->
+    
     @include('backend.includes.script')
     <!-- END: Page JS-->
 
@@ -74,7 +69,45 @@
 </body>
 <!-- END: Body-->
 
-</html>
+</html> --}}
+
+@extends('backend.mastaring.master')
+ 
+
+@section('breadcrumb')
+    <h2 class="content-header-title float-left mb-0">Admin Dashboard</h2>
+    <div class="breadcrumb-wrapper">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ route('dashboard') }}">HomePage</a>
+            </li>
+        </ol>
+    </div>
+@endsection
+
+@section('content')
+
+<section >
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    @include('backend.includes.content')
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@endsection
+
+
+
+
+
+
 
 
 

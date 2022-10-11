@@ -68,7 +68,7 @@
                 <button style="width: 100px" type="submit"  class=" mb-1 btn btn-danger " id="delete_all"> Delete</button>   
             <div class="table-responsive">
                 <button id="msgbtn" style="display: none" type="submit" class="btn btn-danger">Delete</button>
-                <table class="table table-white display" id="table_id">
+                <table class="table table-white " >
                     <thead>
                         @if($data->isEmpty())
                         <th><h2 class="alert alert-danger">Data Not Found</h2></th>

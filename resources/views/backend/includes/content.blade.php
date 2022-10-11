@@ -1,23 +1,123 @@
-<div class="app-content content ">
+<div class="row match-height">
+    <!-- Medal Card -->
+    <div class="col-xl-4 col-md-6 col-12">
+        <div class="card card-congratulation-medal">
+            <div class="card-body">
+                <h5>Congratulations 🎉 {{ Auth::user()->name }}</h5>
+                <p class="card-text font-small-3">You have {{ $message }} Message</p>
+                <h3 class="mb-75 mt-4 pt-50">
+                    <a href="javascript:void(0);">Unread Message({{ $message }})</a>
+                </h3>
+                <a href="{{ route('customer.message.show') }}" class="btn btn-primary">View Message</a>
+                
+                {{-- <img src="{{ ('uploads/user/'.Auth::user()->image) }}app-assets/images/illustration/badge.svg" class="congratulation-medal" alt="Medal Pic" /> --}}
+            </div>
+        </div>
+    </div>
+    <!--/ Medal Card -->
+
+    <!-- Statistics Card -->
+    <div class="col-xl-8 col-md-6 col-12">
+        <div class="card card-statistics mr-5">
+            <div class="card-header ">
+                <h4 class="card-title">Welcome Back {{ Auth::user()->name }}</h4>
+                {{-- <div class="d-flex align-items-center">
+                    <p class="card-text font-small-2 mr-25 mb-0">Updated {{ \Carbon\Carbon::today()}} </p>
+                </div> --}}
+
+
+                {{-- value="{{ \Carbon\Carbon::parse(request()->end_date)->format('Y-m-d') }} --}}
+            </div>
+            <div class="card-body statistics-body">
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                        <div class="media">
+                            <div class="avatar bg-light-primary mr-2">
+                                <div class="avatar-content">
+                                    <i data-feather='slack'></i>
+                                </div>
+                            </div>
+                            <div class="media-body my-auto">
+                                <h4 class="font-weight-bolder mb-0">{{ $service }}</h4>
+                                <p class="card-text font-small-3 mb-0">Service</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                        <div class="media">
+                            <div class="avatar bg-light-info mr-2">
+                                <div class="avatar-content">
+                                    <i data-feather='users'></i>
+                                </div>
+                            </div>
+                            <div class="media-body my-auto">
+                                <a href="{{ route('admin.teamview') }}" class="font-weight-bolder mb-0">{{ $team }}
+                                <p class="card-text font-small-3 mb-0">Team Member</p> </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+                        <div class="media">
+                            <div class="avatar bg-light-danger mr-2">
+                                <div class="avatar-content">
+                                    <i data-feather='activity'></i>
+                                </div>
+                            </div>
+                            <div class="media-body my-auto">
+                                <a href="{{ route('admin.managerecentwork') }}" class="font-weight-bolder mb-0">{{ $recent_work }}
+                                <p class="card-text font-small-3 mb-0">Recent Work</p> </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="media">
+                            <div class="avatar bg-light-success mr-2">
+                                <div class="avatar-content">
+                                    <i data-feather='award'></i>
+                                </div>
+                            </div>
+                            <div class="media-body my-auto">
+                                <a href="{{ route('feedback.show') }}" class="font-weight-bolder mb-0">{{ $feedback }}
+                                <p class="card-text font-small-3 mb-0">Feedback</p> </a>
+                            </div>
+                        </div>
+                    </div>
+
+                   <div class="m-3 ">
+                    <a  href="{{ route('admin.serviceview') }}" class="btn btn-primary ">Add Service</a>
+                    <a  href="{{ route('admin.teamview') }}" class="btn btn-primary ">Add Team</a>
+                    <a  href="{{ route('admin.addrecentwork') }}" class="btn btn-primary  ">Add Recent Work</a>
+                    <a  href="{{ route('feedback.addview') }}" class="btn btn-primary ">Add Feedback</a>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Statistics Card -->
+</div>
+
+
+
+{{--  <div class="app-content content ">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
-    <div class="content-wrapper">
+     <div class="content-wrapper"> 
         <div class="content-header row">
         </div>
-        <div class="content-body">
-            <!-- Dashboard Ecommerce Starts -->
-            <section id="dashboard-ecommerce">
-                <div class="row match-height">
+         <div class="content-body"> 
+            Dashboard Ecommerce Starts -->
+             <section id="dashboard-ecommerce"> 
+               <div class="row match-height">
                     <!-- Medal Card -->
                     <div class="col-xl-4 col-md-6 col-12">
                         <div class="card card-congratulation-medal">
                             <div class="card-body">
-                                <h5>Congratulations 🎉 John!</h5>
+                                <h5>Congratulations 🎉 {{ Auth::user()->name }}</h5>
                                 <p class="card-text font-small-3">You have won gold medal</p>
                                 <h3 class="mb-75 mt-2 pt-50">
-                                    <a href="javascript:void(0);">$48.9k</a>
+                                    <a href="javascript:void(0);">Customer Message({{ $message }})</a>
                                 </h3>
-                                <button type="button" class="btn btn-primary">View Sales</button>
+                                <a href="{{ route('customer.message.show') }}" class="btn btn-primary">View Message</a>
                                 <img src="../../../app-assets/images/illustration/badge.svg" class="congratulation-medal" alt="Medal Pic" />
                             </div>
                         </div>
@@ -28,10 +128,13 @@
                     <div class="col-xl-8 col-md-6 col-12">
                         <div class="card card-statistics">
                             <div class="card-header">
-                                <h4 class="card-title">Statistics</h4>
+                                <h4 class="card-title">Welcome Back {{ Auth::user()->name }}</h4>
                                 <div class="d-flex align-items-center">
                                     <p class="card-text font-small-2 mr-25 mb-0">Updated 1 month ago</p>
                                 </div>
+
+
+                                {{-- value="{{ \Carbon\Carbon::parse(request()->end_date)->format('Y-m-d') }} 
                             </div>
                             <div class="card-body statistics-body">
                                 <div class="row">
@@ -43,8 +146,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">230k</h4>
-                                                <p class="card-text font-small-3 mb-0">Sales</p>
+                                                <h4 class="font-weight-bolder mb-0">{{ $service }}</h4>
+                                                <p class="card-text font-small-3 mb-0">Service</p>
                                             </div>
                                         </div>
                                     </div>
@@ -56,8 +159,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">8.549k</h4>
-                                                <p class="card-text font-small-3 mb-0">Customers</p>
+                                                <a href="{{ route('admin.teamview') }}" class="font-weight-bolder mb-0">{{ $team }}
+                                                <p class="card-text font-small-3 mb-0">Team Member</p> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -69,8 +172,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">1.423k</h4>
-                                                <p class="card-text font-small-3 mb-0">Products</p>
+                                                <a href="{{ route('admin.managerecentwork') }}" class="font-weight-bolder mb-0">{{ $recent_work }}
+                                                <p class="card-text font-small-3 mb-0">Recent Work</p> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -82,8 +185,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">$9745</h4>
-                                                <p class="card-text font-small-3 mb-0">Revenue</p>
+                                                <a href="{{ route('feedback.show') }}" class="font-weight-bolder mb-0">{{ $feedback }}
+                                                <p class="card-text font-small-3 mb-0">Feedback</p> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -92,9 +195,9 @@
                         </div>
                     </div>
                     <!--/ Statistics Card -->
-                </div>
+                </div> 
 
-                <div class="row match-height">
+                {{-- <div class="row match-height">
                     <div class="col-lg-4 col-12">
                         <div class="row match-height">
                             <!-- Bar Chart - Orders -->
@@ -188,11 +291,11 @@
                         </div>
                     </div>
                     <!--/ Revenue Report Card -->
-                </div>
+                </div> --}}
 
-                <div class="row match-height">
+                {{-- <div class="row match-height"> --}}
                     <!-- Company Table Card -->
-                    <div class="col-lg-8 col-12">
+                    {{-- <div class="col-lg-8 col-12">
                         <div class="card card-company-table">
                             <div class="card-body p-0">
                                 <div class="table-responsive">
@@ -478,11 +581,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ Company Table Card -->
 
                     <!-- Developer Meetup Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    {{-- <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-developer-meetup">
                             <div class="meetup-img-wrapper rounded-top text-center">
                                 <img src="../../../app-assets/images/illustration/email.svg" alt="Meeting Pic" height="170" />
@@ -540,11 +643,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ Developer Meetup Card -->
 
                     <!-- Browser States Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    {{-- <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-browser-states">
                             <div class="card-header">
                                 <div>
@@ -613,11 +716,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ Browser States Card -->
 
                     <!-- Goal Overview Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    {{-- <div class="col-lg-4 col-md-6 col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4 class="card-title">Goal Overview</h4>
@@ -637,11 +740,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ Goal Overview Card -->
 
                     <!-- Transaction Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    {{-- <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-transaction">
                             <div class="card-header">
                                 <h4 class="card-title">Transactions</h4>
@@ -727,12 +830,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ Transaction Card -->
-                </div>
-            </section>
+                {{-- </div> --}}
+            {{-- </section> --}}
             <!-- Dashboard Ecommerce ends -->
 
-        </div>
-    </div>
-</div>
+        {{-- </div> --}}
+    {{-- </div> --}}
+{{-- </div> --}}

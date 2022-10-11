@@ -15,7 +15,6 @@ class ServiceController extends Controller
     public function index(){
         return view('backend.pages.serviceview');
     }
-
     public function store(Request $request){
 
         $request->validate([
@@ -80,13 +79,6 @@ class ServiceController extends Controller
            return back()->with('success','Data Deleted Successfully');
         }
 
-    //     public function servicelview($id){
-        
-    //     $data=Service::find($id);
-
-    //     return view('backend.pages.service_edit_view',compact('data'));
-    //    }  
-
        public function update(Request $request, $id){
 
         $request->validate([
@@ -123,8 +115,6 @@ class ServiceController extends Controller
         $updeateservice->heading=$request->heading;
         $updeateservice->update();
         return redirect()->route('admin.servicetableview')->with('success',' Data Updated Successfully');
-
- 
        }
 
        public function editview($id){
@@ -133,8 +123,7 @@ class ServiceController extends Controller
 
        }
 
-       public function updateview(){
-        
+       public function updateview(){        
         $data=OurService::first();
         return view('backend.pages.ourservice_edit_view',compact('data'));
 

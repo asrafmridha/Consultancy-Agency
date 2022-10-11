@@ -138,8 +138,14 @@
                                     <div class="form-group">
                                         <label for="about">About</label>
                                         <div>
-                                            <input name="about" id="about" type="hidden" name="about" value="{!! Auth::user()->about !!}">
-                                            <trix-editor input="about" class="trix-content"></trix-editor>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-label-group">
+                                                        <textarea class="form-control" id="label-textarea" rows="3" 
+                                                        placeholder="Label in Textarea" name="about">{{ Auth::user()->about }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

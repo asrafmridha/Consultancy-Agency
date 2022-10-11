@@ -76,7 +76,7 @@
                 <h4 class="card-title">Total Feedback ({{ $data->count() }})</h4>
             </div>  
                 <div class="table-responsive " >
-                    <table class="table table-white display" id="table_id">
+                    <table class="table table-white " >
                         <thead>
                             @if($data->isEmpty())
                             <th><h2 class="alert alert-danger">Data Not Found</h2></th>

@@ -155,9 +155,6 @@
 </div>
 <!-- White Tables end -->
 
-
-
-      
 <!-- Modal For Import CSV -->
 <div class="modal fade" id="csvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
