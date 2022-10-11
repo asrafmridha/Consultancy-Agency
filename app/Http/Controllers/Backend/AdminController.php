@@ -17,12 +17,20 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
    public function index(){
-    $team=TeamImage::count('name');
-    $message=CustomerMessage::count('customer_message');
-    $feedback=ClientFeedback::count('client_name');
-    $recent_work=RecentWork::count('title');
-    $service=RecentWorkButton::count();
-    return view('dashboard',compact('team','message','feedback','recent_work','service'));
+      $team=TeamImage::count('name');
+      $message=CustomerMessage::count('customer_message');
+      $feedback=ClientFeedback::count('client_name');
+      $recent_work=RecentWork::count('title');
+      $service=RecentWorkButton::count();
+
+
+      $message_count = [] ;
+      for ($i=1; $i <= 12; $i++) { 
+         $message_count [] = CustomerMessage::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
+      }
+
+
+      return view('dashboard',compact('team','message','feedback','recent_work','service','message_count'));
    }
 
    public function myProfile(){
