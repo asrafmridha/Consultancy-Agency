@@ -112,6 +112,37 @@
     </div>
 </div>
 
+{{-- Bar Chart  --}}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <!-- Bar Chart Starts -->
+<div class="col-xl-6 col-12">
+    <div class="card">
+        <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
+            <div>
+                <p class="card-subtitle text-muted mb-25">Balance</p>
+                <h4 class="card-title font-weight-bolder">$74,382.72</h4>
+            </div>
+            <div class="d-flex align-items-center mt-md-0 mt-1">
+                <i class="font-medium-2" data-feather="calendar"></i>
+                <input type="text" class="form-control flat-picker bg-transparent border-0 shadow-none" placeholder="YYYY-MM-DD" />
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="bar-chart"></div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bar Chart Ends -->
+
 
 
 

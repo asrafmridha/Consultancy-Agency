@@ -1,33 +1,20 @@
 
-
 @extends('backend.mastaring.master')
  
-
 @section('breadcrumb')
     <h2 class="content-header-title float-left mb-0">Admin Dashboard</h2>
     <div class="breadcrumb-wrapper">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('dashboard') }}">HomePage</a>
+                <a href="{{ route('dashboard') }}">Home Page</a>
             </li>
         </ol>
     </div>
 @endsection
 
 @section('content')
-
-<section >
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    @include('backend.includes.content')
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+     @include('backend.includes.content')
+ 
 @endsection
 
 @section('js')
@@ -117,7 +104,7 @@
         xaxis: {
             categories: [
             'Jan',
-            'Fab',
+            'Feb',
             'Mar',
             'Apr',
             'May',
@@ -138,8 +125,80 @@
         var lineChart = new ApexCharts(lineChartEl, lineChartConfig);
         lineChart.render();
     }
+
+
+
+
+    //Bar Chart
+
+    var barChartEl = document.querySelector('#bar-chart'),
+    barChartConfig = {
+      chart: {
+        height: 400,
+        type: 'bar',
+        parentHeightOffset: 0,
+        toolbar: {
+          show: false
+        }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          barHeight: '30%',
+          endingShape: 'rounded'
+        }
+      },
+      grid: {
+        xaxis: {
+          lines: {
+            show: false
+          }
+        },
+        padding: {
+          top: -15,
+          bottom: -10
+        }
+      },
+      colors: window.colors.solid.info,
+      dataLabels: {
+        enabled: false
+      },
+      series: [
+        {
+          data: @json($subcription_count)
+        }
+      ],
+      xaxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'July',
+            'Aug',
+            'Sept',
+            'Oct',
+            'Nov',
+            'Dec',      
+        ]
+      },
+      yaxis: {
+        opposite: isRtl
+      }
+    };
+  if (typeof barChartEl !== undefined && barChartEl !== null) {
+    var barChart = new ApexCharts(barChartEl, barChartConfig);
+    barChart.render();
+  }
 </script>
 @endsection
+
+
+
+
+
 
 
 

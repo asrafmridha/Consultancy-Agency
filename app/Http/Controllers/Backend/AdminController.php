@@ -8,6 +8,7 @@ use App\Models\CustomerMessage;
 use App\Models\RecentWork;
 use App\Models\RecentWorkButton;
 use App\Models\Service;
+use App\Models\Subscription;
 use App\Models\TeamImage;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,8 +31,15 @@ class AdminController extends Controller
          $message_count [] = CustomerMessage::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
       }
 
+      $subcription_count= [];
 
-      return view('dashboard',compact('team','message','feedback','recent_work','service','message_count','totalmessage'));
+      for ($i=1; $i <= 12; $i++) { 
+         $subcription_count [] = Subscription::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
+      }
+
+
+
+      return view('dashboard',compact('team','message','feedback','recent_work','service','message_count','totalmessage','subcription_count'));
    }
 
    public function myProfile(){
