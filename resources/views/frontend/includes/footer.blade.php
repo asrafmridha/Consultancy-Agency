@@ -45,22 +45,22 @@
                 </div>
                 <div class="col-xl-3 col-md-6 mb-5 mb-xl-0">
                     <div class="footer__block ml-md-4">
-                        <h3 class="footer__block__title side-line side-line--40 mb-4">Our Services</h3>
+                        <h3 class="footer__block__title side-line side-line--40 mb-4">{{ $title->service_title }}</h3>
                         <ul class="footer__block__list mb-0 pt-2">
                             <li class="footer__block__list__item">
-                                <a href="{{ route('service2') }}">Financial Consultancy</a>
+                                <a href="{{ route('service2') }}">{{ footer_service()->financial }}</a>
                             </li>
                             <li class="footer__block__list__item">
-                                <a href="{{ route('service2') }}">Sales Service Consultancy</a>
+                                <a href="{{ route('service2') }}">{{ footer_service()->sale_service }}</a>
                             </li>
                             <li class="footer__block__list__item">
-                                <a href="{{ route('service2') }}">Business Strategy</a>
+                                <a href="{{ route('service2') }}">{{ footer_service()->buisness }}</a>
                             </li>
                             <li class="footer__block__list__item">
-                                <a href="{{ route('service2') }}">User and Market Research</a>
+                                <a href="{{ route('service2') }}">{{ footer_service()->market_research }}</a>
                             </li>
                             <li class="footer__block__list__item">
-                                <a href="{{ route('service2') }}">Customer Support Consulting</a>
+                                <a href="{{ route('service2') }}">{{ footer_service()->customer_support }}</a>
                             </li>
                         </ul>
                     </div>
@@ -69,10 +69,18 @@
                     <div class="footer__block ml-md-4">
                         <h3 class="footer__block__title side-line side-line--40 mb-4">Sign up for Newsletter</h3>
                         <p class="footer__block__text">If you sign up for newsletter, Then you will get notified in every single update</p>
-                        <form class="footer__block__form form-inline w-100 position-relative needs-validation" novalidate>
-                            <input class="form-control d-inline-flex bg-transparent shadow-none w-100" type="email" placeholder="your email here" aria-label="email" required>
-                            <div class="invalid-tooltip">Please provide a valid email.</div>
-                            <button class="primary-btn text-uppercase border-0 mt-3 mt-sm-0" type="submit">Submit</button>
+                        @if(Session::has('message'))
+                        <p class="alert alert-info">{{ Session::get('message') }}</p>
+                        @endif
+                        <form class="footer__block__form form-inline w-100 position-relative needs-validation" action="{{ route('user.subcription') }}" method="POST">
+                            @csrf
+                            @error('email')
+                            <p class="alert alert-danger">{{ $message }}</p>
+                            @enderror 
+                            <input class="form-control d-inline-flex bg-transparent shadow-none w-100" type="email" placeholder="your email here" aria-label="email" required name="email">
+                                        
+                            <button class="primary-btn text-uppercase border-0 mt-4 mt-sm-0" type="submit">Submit</button>
+                            
                         </form>
                         <h3 class="footer__block__title side-line side-line--40 mt-5 mb-3">Get Social</h3>
                         <ul class="social social--rounded d-flex flex-wrap align-items-center mb-0">
