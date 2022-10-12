@@ -18,7 +18,8 @@ class AdminController extends Controller
 {
    public function index(){
       $team=TeamImage::count('name');
-      $message=CustomerMessage::count('customer_message');
+      $totalmessage=CustomerMessage::count();
+      $message=CustomerMessage::where('status',1)->count();
       $feedback=ClientFeedback::count('client_name');
       $recent_work=RecentWork::count('title');
       $service=RecentWorkButton::count();
@@ -30,7 +31,7 @@ class AdminController extends Controller
       }
 
 
-      return view('dashboard',compact('team','message','feedback','recent_work','service','message_count'));
+      return view('dashboard',compact('team','message','feedback','recent_work','service','message_count','totalmessage'));
    }
 
    public function myProfile(){

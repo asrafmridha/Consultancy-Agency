@@ -18,25 +18,33 @@ class CustomerMessageController extends Controller
 
     public function show_message(){
 
-        $data=CustomerMessage::all();
-        return view('backend.contact.user_message',compact('data'));
+        $message=CustomerMessage::all();
+        foreach($message as $data){
+            if($data->status==1){
+                $data->status=0;
+            }
+            $data->update();
+        }
 
+        $data=CustomerMessage::all();
+        return view('backend.contact.user_message',compact('data'));    
     }
 
+   
     public function mass_delete(Request $request){
 
-        // $ids=$request->ids;
-        // CustomerMessage::whereIn('id',$ids)->delete();
-        // return response()->json([
+        $ids=$request->ids;
+        CustomerMessage::whereIn('id',$ids)->delete();
+        return response()->json([
  
-        //     'success'=>'Message Delete'
-        // ]);
+            'success'=>'Message Delete'
+        ]);
 
         $message = CustomerMessage::findMany($request->ids);
         foreach ($message as $message) {
-            // if ($message->id->count() > 0) {
-            //     return back()->with('error', 'Cette catégorie contient des sous-catégories. Veuillez les supprimer avant de pouvoir la supprimer.');
-            // }
+            if ($message->id->count() > 0) {
+                return back()->with('error', 'Data Not Found');
+            }
         $message->each->delete();
         return response()->json(['success' => 'done']);
     }
