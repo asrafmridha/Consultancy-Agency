@@ -39,15 +39,23 @@
           <div class="col-md">
               <div class="form-group">
                   <label for="start_date">End Date <span class="text-danger">*</span></label>
-                  <input type="date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->end_date)->format('Y-m-d') }}" @endisset name="end_date" id="end_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
+                  <input  type="date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->end_date)->format('Y-m-d') }}" @endisset name="end_date" id="end_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
               </div>
           </div>
-           <div class="col-md-auto">
-              <div class="form-group">
-                  <button type="submit" class="btn btn-success waves-effect w-100 w-sm-auto">Filter</button>
-              </div>
-          </div>
-      </div>
+
+            <div class="col-md-auto">
+                <div class="form-group">
+                    @if (Route::is('service.date.filter'))
+                        <a href="{{ route('admin.servicetableview') }}"
+                            class="btn btn-danger waves-effect mt-1 mt-sm-0 w-100">Clear</a>
+                    @else
+                        <button type="submit"
+                            class="btn btn-success waves-effect w-100">Filter</button>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
     </form>
     <form action="{{ route('service.table.search') }}" method="GET">
        <div class="row align-items-md-center">
@@ -181,51 +189,3 @@
 
 
 @endsection
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>
-  // jQuery(document).ready(function(){
-
-  //   show();
-  //   function show(){
-  //     $.ajax({
-  //       type: "GET",
-  //       url: "/admin/servicetabledata",
-  //       dataType: "JSON",
-  //       success: function (response) {
-  //        var data = "";
-  //         $.each(respons.alldata, function (key, item) { 
-
-  //           data+='<tr>\
-  //             <td>'+item.title+'</td>\
-  //             <td>'+item.Short_description+'</td>\
-  //             <td>'+item.button_text+'</td>\
-  //               <td><button id="updatebtn" value="'+item.id+'" class="updateproduct btn btn-success btn-sm" data-toggle="modal" data-target="#updateproduct"><i class="fa fa-edit"></i></button> </td>\
-  //               <td> <button value="'+item.id+'" class="deleteproduct btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModalproduct"><i class="fa fa-trash"></i></button></td>\
-  //             </tr>';
-             
-  //         });
-  //       }
-  //     });
-
-  //     jQuery(".servicetable").html(data);
-
-
-  //   }
-
-  });
-
-  $('.table_search').on('input', function(){
-                var tableSearchValue = $(this).val();
-                $(this).closest(".card-body").find(".table tbody tr").each(function(){
-                    if($(this).text().search(new RegExp(tableSearchValue, "i")) < 0){
-                        $(this).hide();
-                    }
-                    else{
-                        $(this).show();
-                    }
-                });
-            });
-
- </script>
