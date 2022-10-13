@@ -30,27 +30,6 @@ class CustomerMessageController extends Controller
         return view('backend.contact.user_message',compact('data'));    
     }
 
-   
-    public function mass_delete(Request $request){
-
-        $ids=$request->ids;
-        CustomerMessage::whereIn('id',$ids)->delete();
-        return response()->json([
- 
-            'success'=>'Message Delete'
-        ]);
-
-        $message = CustomerMessage::findMany($request->ids);
-        foreach ($message as $message) {
-            if ($message->id->count() > 0) {
-                return back()->with('error', 'Data Not Found');
-            }
-        $message->each->delete();
-        return response()->json(['success' => 'done']);
-    }
-        
-}
-
      public function destroy($id){
         $message=CustomerMessage::find($id)->delete();
         return redirect()->back()->withSuccess('Delete Data Successfully');  
@@ -69,6 +48,15 @@ class CustomerMessageController extends Controller
         return view('backend.contact.user_message',compact('data'));
 
      }
+
+     public function mass_delete(Request $request)
+     {
+        $data = CustomerMessage::findMany($request->ids);
+        $data->each->delete();
+        return response()->json(['success' => 'Delete Successfully!']);
+     }
+
+     
 
      
    
