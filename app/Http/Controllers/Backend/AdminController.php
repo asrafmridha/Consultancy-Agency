@@ -11,6 +11,7 @@ use App\Models\Service;
 use App\Models\Subscription;
 use App\Models\TeamImage;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -30,15 +31,17 @@ class AdminController extends Controller
       for ($i=1; $i <= 12; $i++) { 
          $message_count [] = CustomerMessage::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
       }
-
-      $subcription_count= [];
-
-      for ($i=1; $i <= 12; $i++) { 
-         $subcription_count [] = Subscription::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
-      }
+      
 
 
+      $year_ago = Carbon::create(2021, 10, 13);
 
+         $subcription_count= [];
+         for ($i=12; $i>0; $i--){
+            $subcription_count []= Subscription::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
+            
+         } 
+        
       return view('dashboard',compact('team','message','feedback','recent_work','service','message_count','totalmessage','subcription_count'));
    }
 

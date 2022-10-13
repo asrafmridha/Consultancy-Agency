@@ -44,11 +44,17 @@
                   <input type="date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->end_date)->format('Y-m-d') }}" @endisset name="end_date" id="end_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
               </div>
           </div>
-           <div class="col-md-auto">
-              <div class="form-group">
-                  <button type="submit" class="btn btn-success waves-effect w-100 w-sm-auto">Filter</button>
-              </div>
-          </div>
+          <div class="col-md-auto">
+                <div class="form-group">
+                    @if (Route::is('recentwork.date.filter'))
+                        <a href="{{ route('admin.managerecentwork') }}"
+                            class="btn btn-danger waves-effect mt-1 mt-sm-0 w-100">Clear</a>
+                    @else
+                        <button type="submit"
+                            class="btn btn-success waves-effect w-100">Filter</button>
+                    @endif
+                </div>
+            </div>
       </div>
   </form>
   <form action="{{ route('recentwork.data.search') }}" method="GET">
@@ -56,10 +62,10 @@
           <div class="col-md">
               <div class="form-group mb-md-0">
                   <div class="input-group">
-                      <input type="search" name="search" class="form-control table_search" placeholder="Search Here">
+                      <input type="search" name="search" class="form-control table_search" placeholder="Search Here" required>
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <button type="submit"><i data-feather='search'></i></button>
+                            <button  type="submit" class="btn btn-sm " style="height: 23px" ><i data-feather='search'></i></button>
                         </span>
                       </div>
                   </div>
@@ -78,7 +84,7 @@
                <h4 class="card-title">Recent Work ({{ $data->count() }})</h4>
             </div>
                 <div class="table-responsive">
-                     <table class="table table-white display" id="table_id">
+                     <table class="table table-white">
                         <thead>
                             @if($data->isEmpty())
                             <th><h2 class="alert alert-danger">Data Not Found</h2></th>
@@ -159,8 +165,7 @@
                     </div>
                 </div> 
 
-{{-- End Modal  --}}
-
+                    {{-- End Modal  --}}
                 <!-- Modal for recent Work delete -->
                     <div class="modal fade" id="deleterecentworkModal_{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">

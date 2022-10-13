@@ -130,13 +130,7 @@
             {{-- Client Message  --}}
 
             
-            <li class=" nav-item"><a class=" @yield('clientmessage') d-flex align-items-center" href="#"><i data-feather='message-square'></i><span class="menu-title text-truncate" data-i18n="Service">Client Message</span></a>
-                <ul class="menu-content">
-                    <li><a  class="d-flex align-items-center" href="{{ route('customer.message.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Show Message</span></a>
-                    </li>
-
-                
-                </ul>
+            <li class=" nav-item"><a href="{{ route('customer.message.show') }}" class=" @yield('clientmessage') d-flex align-items-center" href="#"><i data-feather='message-square'></i><span class="menu-title text-truncate" data-i18n="Service">Client Message</span></a>
             </li>
 
             {{-- Project area --}}
@@ -185,7 +179,11 @@
                 </li>
 
                 <li class=" nav-item"><a class=" @yield('copyright') d-flex align-items-center" href="{{ route('copyright.update.view') }}"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Service">Update Copyright</span></a>
-                </li> <br> 
+                </li> 
+                
+                <li class=" nav-item"><a class=" @yield('footer_service') d-flex align-items-center" href="{{ route('footer-service') }}"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Service">Footer Service</span></a>
+                </li> 
+                <br> 
                 
             {{-- End my Section  --}}
 

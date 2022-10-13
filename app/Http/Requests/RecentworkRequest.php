@@ -25,7 +25,7 @@ class RecentworkRequest extends FormRequest
     {
         return [
            
-            'image' => 'required|image',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
             'title' => 'required|string|max:50',
             'short_description' => 'required'
         ];
@@ -35,6 +35,7 @@ class RecentworkRequest extends FormRequest
     {
         return [
             'image.required' => 'image is required!',
+            'image.max'=>'image is too long',
             'title.required' => 'title field is required!',
             'short_description.required' => 'Short Description is required!'
         ];

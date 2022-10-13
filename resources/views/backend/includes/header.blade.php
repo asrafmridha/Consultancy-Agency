@@ -49,20 +49,19 @@
             <li class="nav-item d-none d-lg-block">
                 <a  id="dark" class="nav-link nav-link-style">
                     @if(themesetting(Auth::id()) == null)
-                    <i class="ficon"
-                    data-feather="sun"></i>
+                        <i class="ficon" data-feather="sun"></i>
                         @else
-                         @if(themesetting(Auth::id())->theme == 'dark-layout') 
+                        @if(themesetting(Auth::id())->theme == 'dark-layout') 
                          <i class="ficon"
                          data-feather="sun"></i>
-                         @else
+                        @else
                          <i class="ficon"
                          data-feather="moon"></i>
                     
-                    @endif
-              @endif 
+                        @endif
+                    @endif 
                     
-                    </a>
+                </a>
                 </li>
             <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon" data-feather="search"></i></a>
                 {{-- <form action="{{ route('admin.allsearch')  }}" method="POST"> --}}
@@ -244,15 +243,13 @@
                     <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block" href="javascript:void(0)">Read all notifications</a></li>
                 </ul>
             </li> --}}
-            <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown dropdown-user"><a href="{!! URL::to('/') !!}" class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
                         <span class="user-name font-weight-bolder">{{ Auth::user()->name }}</span>
                         <span class="user-status">{{ Auth::user()->email }}</span>
                     </div>
                     <span >
-                        {{-- <img class="round" src="{{('uploads/user/'.Auth::user()->image)  }}" alt="image" height="40" width="40"> --}}
-                        {{-- <span class="avatar-status-online"></span> --}}
-                        <img class="round" src="{{ 'uploads/user/'.Auth::user()->image }}" height="40px" width="40px" alt="admin">
+                        <img class="round" src="{{asset('uploads/user/'.Auth::user()->image)  }}" alt="image" height="40" width="40">
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">

@@ -115,6 +115,19 @@
             'Oct',
             'Nov',
             'Dec',
+
+            // 'Dec', 
+            // 'Nov', 
+            // 'Oct',
+            // 'Sept',
+            // 'Aug', 
+            // 'July',
+            // 'Jun',
+            // 'May',
+            // 'Apr',
+            // 'Mar',
+            // 'Feb',
+            // 'Jan',
             ]
         },
         yaxis: {
@@ -170,18 +183,31 @@
       ],
       xaxis: {
         categories: [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'July',
-            'Aug',
-            'Sept',
+            // 'Jan',
+            // 'Feb',
+            // 'Mar',
+            // 'Apr',
+            // 'May',
+            // 'Jun',
+            // 'July',
+            // 'Aug',
+            // 'Sept',
+            // 'Oct',
+            // 'Nov',
+            // 'Dec',  
+            'Dec', 
+            'Nov', 
             'Oct',
-            'Nov',
-            'Dec',      
+            'Sept',
+            'Aug', 
+            'July',
+            'Jun',
+            'May',
+            'Apr',
+            'Mar',
+            'Feb',
+            'Jan',
+
         ]
       },
       yaxis: {
@@ -192,6 +218,11 @@
     var barChart = new ApexCharts(barChartEl, barChartConfig);
     barChart.render();
   }
+
+
+
+
+
 </script>
 @endsection
 

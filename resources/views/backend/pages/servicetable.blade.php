@@ -28,20 +28,17 @@
 </div> --}}
  {{-- Data Filter Start  --}}
 <div class="card-body">
-
     <div class="btn-group mb-2">
-        
         <a data-toggle="modal" data-target="#import_form" class="end btn btn-success"
             href="">Import</a>
-        <button id="all_action"
+            <button id="all_action"
             class="d-none btn btn-danger dropdown-toggle waves-effect waves-float waves-light"
             type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             All Action
-        </button>
+            </button>
         <div data-toggle="modal" data-target="#mass_delete_modal" class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
             <a  class="dropdown-item">Mass Delete</a>
-
             <form action="{{ route('service.mass-export') }}">
                 <input type="hidden" name="id" id="export_id">
                 <button type="submit" class=" dropdown-item">Mass Export</button>
@@ -49,47 +46,47 @@
         </div>
     </div>
     <form action="{{ route('service.date.filter') }}" method="GET">
-      <div class="row align-items-end">
-          <div class="col-md">
-              <div class="form-group">
-                  <label for="start_date">Start Date <span class="text-danger">*</span></label>
-                  <input type="date" name="start_date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->start_date)->format('Y-m-d') }}" @endisset id="start_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
-              </div>
-          </div>
-          <div class="col-md">
-              <div class="form-group">
+        <div class="row align-items-end">
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="start_date">Start Date <span class="text-danger">*</span></label>
+                    <input type="date" name="start_date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->start_date)->format('Y-m-d') }}" @endisset id="start_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group">
                   <label for="start_date">End Date <span class="text-danger">*</span></label>
                   <input  type="date" @isset(request()->start_date) value="{{ \Carbon\Carbon::parse(request()->end_date)->format('Y-m-d') }}" @endisset name="end_date" id="end_date" class="form-control flatpickr-human-friendly" placeholder="dd/mm/yyyy">
-              </div>
-          </div>
-
+                </div>
+            </div>
             <div class="col-md-auto">
                 <div class="form-group">
                     @if (Route::is('service.date.filter'))
                         <a href="{{ route('admin.servicetableview') }}"
-                            class="btn btn-danger waves-effect mt-1 mt-sm-0 w-100">Clear</a>
+                        class="btn btn-danger waves-effect mt-1 mt-sm-0 w-100">Clear</a>
                     @else
                         <button type="submit"
-                            class="btn btn-success waves-effect w-100">Filter</button>
+                        class="btn btn-success waves-effect w-100">Filter</button>
                     @endif
                 </div>
             </div>
         </div>
-    </div>
     </form>
+</div>
+    
     
     <form action="{{ route('service.table.search') }}" method="GET">
-       <div class="row align-items-md-center">
-          <div class="col-md">
-              <div class="form-group mb-md-0">
-                  <div class="input-group">
-                      <input type="search" name="search" class="form-control table_search" placeholder="Search Here">
-                      <div class="input-group-append">
-                        <span class="input-group-text">
-                            <button type="submit" class="btn btn-sm" style="height: 23px"><i data-feather='search'></i></button>
-                        </span>
-                      </div>
-                  </div>
+        <div class="row align-items-md-center">
+            <div class="col-md">
+                <div class="form-group mb-md-0">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control table_search" placeholder="Search Here">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <button type="submit" class="btn btn-sm" style="height: 23px"><i data-feather='search'></i></button>
+                            </span>
+                        </div>
+                    </div>
               </div>
           </div>
       </div> 
@@ -204,32 +201,31 @@
 {{-- modal for Import Csv  --}}
 <div class="modal fade text-left" id="import_form" tabindex="-1" aria-labelledby="myModalLabel33"
 style="display: none;" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel33">Inline Login Form</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel33">Inline Login Form</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <form action="{{ route('service-file-import') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="modal-body">
-                <label>Upload Your Expoted File </label>
-                <div class="form-group">
-                    <input type="file" name="exported_file" class="form-control">
-                    @error('exported_file')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                </button>
+            </div>
+                <form action="{{ route('service-file-import') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <label>Upload Your Expoted File </label>
+                        <div class="form-group">
+                            <input type="file" name="exported_file" class="form-control">
+                                @error('exported_file')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary waves-effect waves-float waves-light">Submit</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit"
-                    class="btn btn-primary waves-effect waves-float waves-light">Submit</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 </div>
 
 

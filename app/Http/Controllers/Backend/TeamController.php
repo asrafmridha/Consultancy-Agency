@@ -89,4 +89,7 @@ class TeamController extends Controller
         return view('backend.pages.teamtable',compact('data'));
     }
 
+      
+    
+
 }

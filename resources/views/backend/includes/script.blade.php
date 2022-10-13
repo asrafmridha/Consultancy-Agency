@@ -6,6 +6,10 @@
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{ asset('backend') }}/app-assets/vendors/js/charts/apexcharts.min.js"></script>
     <script src="{{ asset('backend') }}/app-assets/vendors/js/extensions/toastr.min.js"></script>
+
+  {{-- for chart  --}}
+    <script src="{{ asset('backend') }}/app-assets/vendors/js/charts/chart.min.js"></script>
+    <script src="{{ asset('backend') }}/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -15,6 +19,8 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('backend') }}/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
+
+    <script src="{{ asset('backend') }}./app-assets/js/scripts/charts/chart-chartjs.js"></script>
     <!-- END: Page JS-->
 
      {{-- toster Script  --}}
@@ -30,13 +36,15 @@
 
     {{-- for jQuery <Table></Table> --}}
    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> 
+
+ 
    
 
 
   <script>
      $(document).ready( function () {
-    $('#table_id').DataTable();
-  } );
+        $('#table_id').DataTable();
+    } );
 
   </script>
 
@@ -76,6 +84,8 @@
             @endif
         });
 </script>
+
+@yield('js')
 
 
 

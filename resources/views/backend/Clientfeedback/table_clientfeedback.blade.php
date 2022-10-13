@@ -53,10 +53,10 @@
             <div class="col-md">
                 <div class="form-group mb-md-0">
                     <div class="input-group">
-                            <input type="search" name="search" class="form-control table_search " placeholder="Search Here by Name or Designation"  value="{{old('search')}}">
+                            <input required type="search" name="search" class="form-control table_search " placeholder="Search Here by Name or Designation"  value="{{old('search')}}">
                         <div class="input-group-append">
                             <span class="input-group-text">
-                            <button type="submit"><i data-feather='search'></i></button>
+                                <button type="submit" class="btn btn-sm" style="height: 23px"><i data-feather='search'></i></button>
                           </span>
                         </div>
                     </div>

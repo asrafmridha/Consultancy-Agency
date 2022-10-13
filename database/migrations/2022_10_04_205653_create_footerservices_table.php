@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('footerservices', function (Blueprint $table) {
-            $table->id();           
+            $table->id();
+            $table->string('financial')->nullable();          
+            $table->string('sale_service')->nullable();          
+            $table->string('buisness')->nullable();          
+            $table->string('market_research')->nullable();          
+            $table->string('customer_support')->nullable();          
             $table->timestamps();
         });
     }

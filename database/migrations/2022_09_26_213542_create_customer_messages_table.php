@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('customer_name')->nullable();
             $table->string('customer_email')->nullable();
             $table->longText('customer_message')->nullable();
+            $table->integer('status')->default(1)->nullable();
             $table->timestamps();
         });
     }

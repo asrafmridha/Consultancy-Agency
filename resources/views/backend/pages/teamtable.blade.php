@@ -16,7 +16,7 @@
 @endsection
 @section('content') 
 
-<div class="d-flex justify-content-between">
+{{-- <div class="d-flex justify-content-between">
     <div class="row">
         <form action=" {{ route('team-file-export')}} " method="POST"> 
          @csrf
@@ -24,10 +24,28 @@
         </form>
         <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
     </div>
-</div>
+</div> --}}
 
 {{-- Team Date Filter  --}}
 <div class="card-body">
+    <div class="btn-group">   
+        <a data-toggle="modal" data-target="#import_form" class="end btn btn-success"
+            href="">Import</a>
+        <button id="all_action"
+            class="d-none btn btn-danger dropdown-toggle waves-effect waves-float waves-light"
+            type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            All Action
+        </button>
+        <div data-toggle="modal" data-target="#mass_delete_modal" class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+            <a  class="dropdown-item">Mass Delete</a>
+
+            <form action="">
+                <input type="hidden" name="id" id="export_id">
+                <button type="submit" class=" dropdown-item">Mass Export</button>
+            </form>
+        </div>
+    </div>
     <form action="{{ route('team.date.filter') }}" method="GET">
         <div class="row align-items-end">
             <div class="col-md">
@@ -54,10 +72,10 @@
             <div class="col-md">
                 <div class="form-group mb-md-0">
                     <div class="input-group">
-                        <input type="search" name="search" class="form-control table_search" placeholder="Search Here By Name Or Designation">
+                        <input type="search" name="search" class="form-control table_search" placeholder="Search Here By Name Or Designation" required>
                         <div class="input-group-append">
                           <span class="input-group-text">
-                            <button type="submit"><i data-feather='search'></i></button>
+                            <button type="submit" class="btn btn-sm" style="height: 23px"><i data-feather='search'></i></button>
                           </span>
                         </div>
                     </div>
@@ -80,7 +98,7 @@
                 <table class="table table-white"  >
                     <thead>
                         @if($data->isEmpty())
-                        <th><h2 class="alert alert-danger">Data Not Found</h2></th>
+                        <h2 class=" d-inline offset-5 alert alert-danger">Data Not Found</h2>
                         @else
                         <tr>
                             <th>Sl No</th>
@@ -274,6 +292,7 @@
         </div>
     </div>
 </div>
+
 
 
 
