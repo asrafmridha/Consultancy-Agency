@@ -16,14 +16,27 @@ use Maatwebsite\Excel\Facades\Excel;
 class ExportImportController extends Controller
 {
     
-    public function export(Request $request){
+     public function service_mass_export(Request $request){
         
-        return Excel::download(new ServiceExport, 'service.xlsx');
-    }
+        $explode = explode(',', $request->id);
+        $ids = [];
+        foreach($explode as $id){
+            array_push($ids, $id);
+        }
+        // return $request;
+        return Excel::download(new ServiceExport($ids), 'service.xlsx');
+     }
 
     public function import(Request $request){
 
-        Excel::import(new ServiceImport, $request->file('file'));
+        if($request->hasFile('exported_file')){
+            $file = $request->file('exported_file');
+            if($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx'){
+                Excel::import(new ServiceImport, $file);
+            }
+        }
+
+        // Excel::import(new ServiceImport, $request->file('exported_file'));
 
         return redirect()->back()->with('success', 'User Imported Successfully');
     }
