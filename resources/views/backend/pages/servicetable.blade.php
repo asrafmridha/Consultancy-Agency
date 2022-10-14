@@ -37,13 +37,14 @@
             aria-expanded="false">
             All Action
             </button>
-        <div data-toggle="modal" data-target="#mass_delete_modal" class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-            <a  class="dropdown-item">Mass Delete</a>
+        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+            <button data-toggle="modal" data-target="#mass_delete_modal" class="dropdown-item">Mass Delete</button>
             <form action="{{ route('service.mass-export') }}">
                 <input type="hidden" name="id" id="export_id">
-                <button type="submit" class=" dropdown-item">Mass Export</button>
+                <button type="submit" class=" dropdown-item">Mass Export</button> 
             </form>
         </div>
+        
     </div>
     <form action="{{ route('service.date.filter') }}" method="GET">
         <div class="row align-items-end">
