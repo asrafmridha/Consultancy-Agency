@@ -100,7 +100,7 @@
   <div class="col-12">
       <div class="card">
           <div class="table-responsive">
-            
+            {{ $alldata->links('vendor.pagination.custom') }}
               <table class="table table-white " >
                   <thead>
                     @if($alldata->isEmpty())
