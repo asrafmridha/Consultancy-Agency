@@ -225,7 +225,21 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     //Recent Work Export
 
-    Route::post('recent/work/Export',[RecentWorkController::class,'export'])->name('recentwork-file-export');
+    // Route::post('recent/work/Export',[RecentWorkController::class,'export'])->name('recentwork-file-export');
+
+    //Route for recent work mass delete  
+
+    Route::get('recent/work/mass/delete',[RecentWorkController::class,'mass_delete'])->name('recentwork.mass_delete');
+
+    //Route for recentwork mass export
+
+    Route::get('recent/work/mass/export',[RecentWorkController::class,'work_mass_export'])->name('recentwork.mass-export');
+
+
+
+    
+
+
 
     // Client Feedback Section 
 
@@ -366,7 +380,8 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('my-profile', [AdminController::class, 'myProfile'])->name('my-profile');
 
-    Route::get('/dd', [AdminController::class, 'index']);
+    Route::get('subcription/list',[SubcriptionController::class,'index'])->name('subcription-list');
+ 
     
 
 
