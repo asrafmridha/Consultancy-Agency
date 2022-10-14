@@ -148,8 +148,12 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     //Team Controller
 
-    //Route FOr Team File Export
-    Route::post('/teamexport',[ExportImportController::class,'teamexport'])->name('team-file-export');
+    //Route for team mass delete 
+
+    Route::get('/team/mass/delete', [TeamController::class, 'mass_delete'])->name('team.mass_delete');
+
+    //Route FOr Team File  mass Export
+     Route::get('/team/mass/export',[TeamController::class,'team_mass_export'])->name('team.mass-export');
 
     Route::post('/teamimport',[ExportImportController::class,'teamimport'])->name('team-file-import');
 
@@ -253,8 +257,17 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
  
     Route::get('feedback/table',[ClientFeedbackController::class,'show'])->name('feedback.show');
 
-    // Route for export feedback 
-    Route::post('/export/feedback',[ExportImportController::class,'exportFeedback'])->name('export-feedback');
+    // Route for  mass delete feedback  
+
+    Route::get('/feedback/mass/delete', [ClientFeedbackController::class, 'mass_delete'])->name('client.mass_delete');
+
+    // Route for mass Export feedback 
+
+    Route::get('/feedback/mass/export', [ClientFeedbackController::class, 'feedback_mass_export'])->name('feedback.mass-export');
+
+    
+    // Route::post('/export/feedback',[ExportImportController::class,'exportFeedback'])->name('export-feedback');
+
     //Route for feedback file import
     Route::post('/import/feedback',[ExportImportController::class,'importFeedback'])->name('feedback-file-import');
 
