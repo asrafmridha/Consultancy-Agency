@@ -17,13 +17,14 @@ class RecentWorkExport implements FromCollection,WithHeadings
         $this->id = $id;
         // $this->header = $header;
     }
-    
+
     public function headings(): array
     {
         return ['id','title','short_description'];
     }
     public function collection()
     {
-        return RecentWork::get(['id','title','short_description']);
+        // return RecentWork::get(['id','title','short_description']);
+        return RecentWork::whereIn('id', $this->id)->get();
     }
 }

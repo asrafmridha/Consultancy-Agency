@@ -33,7 +33,7 @@ class RecentWorkController extends Controller
     }
 
     public function show(){
-         $data=RecentWork::all();
+         $data=RecentWork::paginate(6);;
          return view('backend.pages.recentwork.recent_work_table',compact('data'));
     }
 

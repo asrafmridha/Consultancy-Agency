@@ -102,6 +102,7 @@
                <h4 class="card-title">Recent Work ({{ $data->count() }})</h4>
             </div>
                 <div class="table-responsive">
+                    {{ $data->links('vendor.pagination.custom') }}
                      <table class="table table-white">
                         <thead>
                             @if($data->isEmpty())
@@ -229,6 +230,7 @@
                 @endif
                         </tbody>
                     </table> 
+                    {{ $data->links('vendor.pagination.custom') }}
             </div>
         </div>
     </div>
@@ -279,15 +281,7 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 @endsection
-
 
 @section('js')
     <script>
