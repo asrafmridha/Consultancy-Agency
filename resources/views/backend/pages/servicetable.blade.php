@@ -74,8 +74,7 @@
         </div>
     </form>
 </div>
-    
-    
+       
     <form action="{{ route('service.table.search') }}" method="GET">
         <div class="row align-items-md-center">
             <div class="col-md">
@@ -190,8 +189,7 @@
                     @endif 
                   </tbody>
               </table>
-            
-              {{-- {{ $alldata->links() }}  --}}
+              {{ $alldata->links('vendor.pagination.custom') }}
           </div>
       </div>
   </div>

@@ -30,6 +30,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-{{-- jQuery <table></table>  --}}
+ {{-- for Custom Paginate  --}}
+
+ <style type="text/css">
+    .my-active span{
+        background-color: #5cb85c !important;
+        color: white !important;
+        border-color: #5cb85c !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+ {{-- End Custom Paginate --}}
 
    
