@@ -133,13 +133,13 @@
                             <label class="custom-control-label text-white"
                                 for="service_select_{{ $item->id }}"></label>
                         </div>
-                    </td>
-                    <td>      {{ $item->icon   }}                  </td>
-                    <td>      {{ $item->title  }}</td>
-                    <td>      {!! $item->Short_description !!}    </td>
-                    <td>      {{ $item->button_text }}             </td>
-                    <td><a class="btn btn-primary btn-sm" href="{{ route('service.details',$item->id) }}">See Details</a></td>
-                    <td>
+                        </td>
+                        <td>      {{ $item->icon   }}                  </td>
+                        <td>      {{ $item->title  }}</td>
+                        <td>      {!! $item->Short_description !!}    </td>
+                        <td>      {{ $item->button_text }}             </td>
+                        <td><a class="btn btn-primary btn-sm" href="{{ route('service.details',$item->id) }}">See Details</a></td>
+                        <td>
                       <div class="dropdown">
                              <button type="button" class="btn btn-sm text-dark dropdown-toggle hide-arrow" data-toggle="dropdown">
                              <i data-feather="more-vertical"></i>
@@ -232,24 +232,22 @@ style="display: none;" aria-hidden="true">
 
  <div class="modal fade text-left" id="mass_delete_modal" tabindex="-1" aria-labelledby="myModalLabel33"
  style="display: none;" aria-hidden="true">
- <div class="modal-dialog modal-dialog-centered" role="document">
-     <div class="modal-content">
-         <div class="modal-header">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
             
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                  <span aria-hidden="true">×</span>
-             </button>
-         </div>
-         <div class="p-3 text-center">
-
-             <h1 class="text-danger">Are your sure?</h1>
-             <p>You want to delete this</p>
-         </div>
-         
-        <a id="mass_delete" class="btn btn-danger">DELETE</a>
+                </button>
+            </div>
+            <div class="p-3 text-center">
+                <h1 class="text-danger">Are your sure?</h1>
+                <p>You want to delete this</p>
+            </div>
+            <a id="mass_delete" class="btn btn-danger">DELETE</a>
         
-     </div>
- </div>
+        </div>
+    </div>
 </div>
 
 

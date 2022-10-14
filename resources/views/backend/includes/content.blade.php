@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="media-body my-auto">
-                                <a href="{{ route('admin.teamview') }}" class="font-weight-bolder mb-0">{{ $team }}
+                                <a href="{{ route('admin.teamtable') }}" class="font-weight-bolder mb-0">{{ $team }}
                                 <p class="card-text font-small-3 mb-0">Team Member</p> </a>
                             </div>
                         </div>
@@ -136,14 +136,13 @@
     <div class="card">
         <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
             <div>
-                <h4 class="card-title">Line Chart</h4>
-                <span class="card-subtitle text-muted">Commercial networks</span>
+                <h3 class="ml-4 card-title">Client Feedback Chart</h3>
+                
             </div>
-            <div class="d-flex align-items-center">
-                <i class="font-medium-2" data-feather="calendar"></i>
-                <input type="text" class="form-control flat-picker bg-transparent border-0 shadow-none" placeholder="YYYY-MM-DD" />
-            </div>
+            
         </div>
+        
+        
         <div class="card-body">
             <div id="line-area-chart"></div>
         </div>

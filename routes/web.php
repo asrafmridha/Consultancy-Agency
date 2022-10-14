@@ -394,6 +394,10 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::get('my-profile', [AdminController::class, 'myProfile'])->name('my-profile');
 
     Route::get('subcription/list',[SubcriptionController::class,'index'])->name('subcription-list');
+
+    // Route subcription delete
+
+    Route::delete('/subcription/delete/{id}',[SubcriptionController::class,'destroy'])->name('subcription.destroy');
  
     
 

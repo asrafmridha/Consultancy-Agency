@@ -178,6 +178,7 @@ class ServiceController extends Controller
           $data->each->delete();
           return response()->json(['success' => 'Delete Successfully!']);
        }
+       
 
 }
 

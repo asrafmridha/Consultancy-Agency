@@ -34,7 +34,7 @@ class ClientFeedbackController extends Controller
     }
 
     public function show(){
-        $data=ClientFeedback::all();
+        $data=ClientFeedback::paginate(6);
         return view('backend.clientfeedback.table_clientfeedback',compact('data'));
     }
 
@@ -96,6 +96,6 @@ class ClientFeedbackController extends Controller
             array_push($ids, $id);
         }
         // return $request;
-        return Excel::download(new FeedbackExport($ids), 'service.xlsx');
+        return Excel::download(new FeedbackExport($ids), 'clientfeedback.xlsx');
     }
 }

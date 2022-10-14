@@ -184,11 +184,37 @@
                               @endif    
                             </tbody>
                         </table>
+                        {{ $data->links('vendor.pagination.custom') }}
                     </div>
                 </div>
             </div>
         </div>
         <!-- Dark Tables end -->
+
+        {{-- modal for mass delete  --}}
+
+ <div class="modal fade text-left" id="mass_delete_modal" tabindex="-1" aria-labelledby="myModalLabel33"
+ style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="p-3 text-center">
+                <h1 class="text-danger">Are your sure?</h1>
+                <p>You want to delete this</p>
+            </div>
+            <a id="mass_delete" class="btn btn-danger">DELETE</a>
+        
+        </div>
+    </div>
+</div>
+
+
+{{-- End mass delete modal --}}
 
 @endsection
 {{-- Modal For Import CSV  --}}
@@ -219,6 +245,8 @@
         </div>
     </div>
 </div>
+
+
 
 @section('js')
     <script>

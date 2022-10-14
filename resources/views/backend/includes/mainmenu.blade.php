@@ -169,6 +169,9 @@
                 </ul>
             </li>
 
+            <li class=" nav-item"><a class=" @yield('subcription') d-flex align-items-center" href="{{ route('subcription-list') }}"><i data-feather='bar-chart-2'></i><span class="menu-title text-truncate" data-i18n="Service">Subcription List</span></a>
+            </li> 
+
             {{-- title Section  --}}
 
             <li class=" nav-item"><a class=" @yield('title') d-flex align-items-center" href="{{ route('title.show') }}"><i data-feather='type'></i><span class="menu-title text-truncate" data-i18n="Service">Update Title</span></a>
@@ -178,11 +181,13 @@
                 <li class=" nav-item"><a class=" @yield('social_url') d-flex align-items-center" href="{{ route('social.url.update.view') }}"><i data-feather='link'></i></i><span class="menu-title text-truncate" data-i18n="Service">Social Url Update</span></a>
                 </li>
 
-                <li class=" nav-item"><a class=" @yield('copyright') d-flex align-items-center" href="{{ route('copyright.update.view') }}"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Service">Update Copyright</span></a>
+                <li class=" nav-item"><a class=" @yield('copyright') d-flex align-items-center" href="{{ route('copyright.update.view') }}"><i data-feather='copy'></i><span class="menu-title text-truncate" data-i18n="Service">Update Copyright</span></a>
                 </li> 
                 
                 <li class=" nav-item"><a class=" @yield('footer_service') d-flex align-items-center" href="{{ route('footer-service') }}"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Service">Footer Service</span></a>
                 </li> 
+
+                
                 <br> 
                 
             {{-- End my Section  --}}

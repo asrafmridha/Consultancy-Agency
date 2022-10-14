@@ -104,7 +104,7 @@ class TeamController extends Controller
             array_push($ids, $id);
         }
         // return $request;
-        return Excel::download(new TeamExport($ids), 'service.xlsx');
+        return Excel::download(new TeamExport($ids), 'Team.xlsx');
     }
 
       

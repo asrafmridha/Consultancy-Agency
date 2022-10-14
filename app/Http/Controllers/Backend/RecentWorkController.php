@@ -119,7 +119,7 @@ class RecentWorkController extends Controller
             array_push($ids, $id);
         }
         // return $request;
-        return Excel::download(new RecentWorkExport($ids), 'service.xlsx');
+        return Excel::download(new RecentWorkExport($ids), 'RecentWork.xlsx');
     }
     
 }

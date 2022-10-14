@@ -1,6 +1,6 @@
 @extends('backend.mastaring.master')
  
-@section('clientmessage','active')
+@section('subcription','active')
 
 @section('breadcrumb')
     <h2 class="content-header-title float-left mb-0">Admin Dashboard</h2>
@@ -36,22 +36,17 @@
     <div class="row" id="dark-table">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Dark Table</h4>
-                </div>
                 <div class="table-responsive">
                     <table class="table table-white">
                         <thead>
                             <tr>
-                                <th>Subcription Email</th>
+                                <th>Subscriber Email</th>
                                 <th>Action</th>
-                              
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($subscription as $item)
                             <tr> 
-
                                 <td>{{ $item->email }}</td>      
                                 <td>
                                         <div class="dropdown">
@@ -59,8 +54,7 @@
                                                 <i data-feather="more-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <button data-target="#deleteModal
-                                                subcription__{{ $item->id }}" data-toggle="modal" type="submit" class="dropdown-item" href="javascript:void(0);">
+                                                <button data-target="#delete_subcription__{{ $item->id }}" data-toggle="modal" type="submit" class="dropdown-item" href="javascript:void(0);">
                                                     <i data-feather="trash" class="mr-50"></i>
                                                     <span>Delete</span>
                                                 </button>
@@ -69,8 +63,7 @@
                                 </td>
                             </tr>
                             
-                                <div class="modal fade" id="deleteModal
-                                    subcription__{{ $item->id }}" tabindex="-1" role="dialog"                                   aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="delete_subcription__{{ $item->id }}" tabindex="-1" role="dialog"                                   aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -81,15 +74,15 @@
                                         </div>
            
                                         <div class="modal-body text-white bg-dark">
-                                            <form action="{{ route('feedback.destroy',$item->id) }}" method="POST">
+                                            <form action="{{ route('subcription.destroy',$item->id) }}" method="POST">
                                             @method('delete')
-                                 @csrf
-                            Are you sure want to delete this Service?
+                                            @csrf
+                                            Are you sure want to delete this Service?
                     
-                    <div class="modal-footer">
-                        <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                        <button type="submit" class="btn btn-primary deletemodalservicebutton">Confirm</button>
-                    </div>
+                                        <div class="modal-footer">
+                                            <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                            <button type="submit" class="btn btn-primary deletemodalservicebutton">Confirm</button>
+                                        </div>
                         </form>
             </div>
         </div>

@@ -1,6 +1,7 @@
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- Site Title -->
 	<title>Consult</title>
 	<!-- Favicon Link -->
@@ -10,4 +11,6 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('frontend') }}/assets/images/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('frontend') }}/assets/images/favicon/favicon-16x16.png">
 	<link rel="icon" type="image/x-icon" href="{{ asset('frontend') }}/assets/images/favicon/favicon.ico">
+
+	
 
