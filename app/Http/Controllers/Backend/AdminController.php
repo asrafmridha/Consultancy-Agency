@@ -41,8 +41,13 @@ class AdminController extends Controller
             $subcription_count []= Subscription::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
             
          } 
+
+         $client_feedback=[];
+         for ($i=1; $i <= 12; $i++) { 
+            $client_feedback[] = ClientFeedback::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
+         }
         
-      return view('dashboard',compact('team','message','feedback','recent_work','service','message_count','totalmessage','subcription_count'));
+      return view('dashboard',compact('team','message','feedback','recent_work','service','message_count','totalmessage','subcription_count','client_feedback'));
    }
 
    public function myProfile(){

@@ -116,18 +116,6 @@
             'Nov',
             'Dec',
 
-            // 'Dec', 
-            // 'Nov', 
-            // 'Oct',
-            // 'Sept',
-            // 'Aug', 
-            // 'July',
-            // 'Jun',
-            // 'May',
-            // 'Apr',
-            // 'Mar',
-            // 'Feb',
-            // 'Jan',
             ]
         },
         yaxis: {
@@ -217,6 +205,76 @@
   if (typeof barChartEl !== undefined && barChartEl !== null) {
     var barChart = new ApexCharts(barChartEl, barChartConfig);
     barChart.render();
+  }
+
+  // Area Chart
+  // --------------------------------------------------------------------
+  var areaChartEl = document.querySelector('#line-area-chart'),
+    areaChartConfig = {
+      chart: {
+        height: 400,
+        type: 'area',
+        parentHeightOffset: 0,
+        toolbar: {
+          show: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: false,
+        curve: 'straight'
+      },
+      legend: {
+        show: true,
+        position: 'top',
+        horizontalAlign: 'start'
+      },
+      grid: {
+        xaxis: {
+          lines: {
+            show: true
+          }
+        }
+      },
+      colors: [chartColors.area.series3, chartColors.area.series2, chartColors.area.series1],
+      series: [
+        {
+          data: @json($client_feedback)
+        }
+      ],
+      xaxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'July',
+            'Aug',
+            'Sept',
+            'Oct',
+            'Nov',
+            'Dec',
+            
+        ]
+      },
+      fill: {
+        opacity: 1,
+        type: 'solid'
+      },
+      tooltip: {
+        shared: false
+      },
+      yaxis: {
+        opposite: isRtl
+      }
+    };
+  if (typeof areaChartEl !== undefined && areaChartEl !== null) {
+    var areaChart = new ApexCharts(areaChartEl, areaChartConfig);
+    areaChart.render();
   }
 
 

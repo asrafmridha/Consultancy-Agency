@@ -129,9 +129,29 @@
     </div>
 </div>
 
-   <!-- Line Chart Starts -->
+   
+
+   <!-- Area Chart starts -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
+            <div>
+                <h4 class="card-title">Line Chart</h4>
+                <span class="card-subtitle text-muted">Commercial networks</span>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="font-medium-2" data-feather="calendar"></i>
+                <input type="text" class="form-control flat-picker bg-transparent border-0 shadow-none" placeholder="YYYY-MM-DD" />
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="line-area-chart"></div>
+        </div>
+    </div>
+</div>
+<!-- Area Chart ends -->
   
-<!-- Line Chart Ends -->
+
 
 
 
