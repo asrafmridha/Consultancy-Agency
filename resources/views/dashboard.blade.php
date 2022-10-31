@@ -1,20 +1,31 @@
-
 @extends('backend.mastaring.master')
  
+
 @section('breadcrumb')
     <h2 class="content-header-title float-left mb-0">Admin Dashboard</h2>
     <div class="breadcrumb-wrapper">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('dashboard') }}">Home Page</a>
+                <a href="{{ route('dashboard') }}">HomePage</a>
             </li>
         </ol>
     </div>
 @endsection
 
 @section('content')
-     @include('backend.includes.content')
- 
+
+<section >
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    @include('backend.includes.content')
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
 
 @section('js')
@@ -104,7 +115,7 @@
         xaxis: {
             categories: [
             'Jan',
-            'Feb',
+            'Fab',
             'Mar',
             'Apr',
             'May',
@@ -115,7 +126,6 @@
             'Oct',
             'Nov',
             'Dec',
-
             ]
         },
         yaxis: {
@@ -126,168 +136,8 @@
         var lineChart = new ApexCharts(lineChartEl, lineChartConfig);
         lineChart.render();
     }
-
-
-
-
-    //Bar Chart
-
-    var barChartEl = document.querySelector('#bar-chart'),
-    barChartConfig = {
-      chart: {
-        height: 400,
-        type: 'bar',
-        parentHeightOffset: 0,
-        toolbar: {
-          show: false
-        }
-      },
-      plotOptions: {
-        bar: {
-          horizontal: true,
-          barHeight: '30%',
-          endingShape: 'rounded'
-        }
-      },
-      grid: {
-        xaxis: {
-          lines: {
-            show: false
-          }
-        },
-        padding: {
-          top: -15,
-          bottom: -10
-        }
-      },
-      colors: window.colors.solid.info,
-      dataLabels: {
-        enabled: false
-      },
-      series: [
-        {
-          data: @json($subcription_count)
-        }
-      ],
-      xaxis: {
-        categories: [
-            // 'Jan',
-            // 'Feb',
-            // 'Mar',
-            // 'Apr',
-            // 'May',
-            // 'Jun',
-            // 'July',
-            // 'Aug',
-            // 'Sept',
-            // 'Oct',
-            // 'Nov',
-            // 'Dec',  
-            'Dec', 
-            'Nov', 
-            'Oct',
-            'Sept',
-            'Aug', 
-            'July',
-            'Jun',
-            'May',
-            'Apr',
-            'Mar',
-            'Feb',
-            'Jan',
-
-        ]
-      },
-      yaxis: {
-        opposite: isRtl
-      }
-    };
-  if (typeof barChartEl !== undefined && barChartEl !== null) {
-    var barChart = new ApexCharts(barChartEl, barChartConfig);
-    barChart.render();
-  }
-
-  // Area Chart
-  // --------------------------------------------------------------------
-  var areaChartEl = document.querySelector('#line-area-chart'),
-    areaChartConfig = {
-      chart: {
-        height: 400,
-        type: 'area',
-        parentHeightOffset: 0,
-        toolbar: {
-          show: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        show: false,
-        curve: 'straight'
-      },
-      legend: {
-        show: true,
-        position: 'top',
-        horizontalAlign: 'start'
-      },
-      grid: {
-        xaxis: {
-          lines: {
-            show: true
-          }
-        }
-      },
-      colors: [chartColors.area.series3, chartColors.area.series2, chartColors.area.series1],
-      series: [
-        {
-          data: @json($client_feedback)
-        }
-      ],
-      xaxis: {
-        categories: [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'July',
-            'Aug',
-            'Sept',
-            'Oct',
-            'Nov',
-            'Dec',
-            
-        ]
-      },
-      fill: {
-        opacity: 1,
-        type: 'solid'
-      },
-      tooltip: {
-        shared: false
-      },
-      yaxis: {
-        opposite: isRtl
-      }
-    };
-  if (typeof areaChartEl !== undefined && areaChartEl !== null) {
-    var areaChart = new ApexCharts(areaChartEl, areaChartConfig);
-    areaChart.render();
-  }
-
-
-
-
-
 </script>
 @endsection
-
-
-
-
-
 
 
 

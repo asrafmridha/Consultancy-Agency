@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Exports\FeedbackExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientFeedbackRequest;
 use App\Http\Requests\UpdateFeedbackRequest;
 use App\Models\ClientFeedback;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ClientFeedbackController extends Controller
 {
@@ -34,7 +32,7 @@ class ClientFeedbackController extends Controller
     }
 
     public function show(){
-        $data=ClientFeedback::paginate(6);
+        $data=ClientFeedback::all();
         return view('backend.clientfeedback.table_clientfeedback',compact('data'));
     }
 
@@ -80,22 +78,5 @@ class ClientFeedbackController extends Controller
         $search=$request->search;
         $data = ClientFeedback::where('client_name','Like','%'.$search.'%')->orWhere('designation','Like','%'.$search.'%')->get();
         return view('backend.clientfeedback.table_clientfeedback',compact('data'));
-    } 
-    
-    public function mass_delete(Request $request){
-        $data=ClientFeedback::findMany($request->ids);
-        $data->each->delete();
-        return response()->json(['success' => 'Delete Successfully!']);
-    }
-
-    public function feedback_mass_export(Request $request){
-
-        $explode = explode(',', $request->id);
-        $ids = [];
-        foreach($explode as $id){
-            array_push($ids, $id);
-        }
-        // return $request;
-        return Excel::download(new FeedbackExport($ids), 'clientfeedback.xlsx');
-    }
+    }   
 }

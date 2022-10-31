@@ -16,7 +16,7 @@
 @endsection
 @section('content') 
 
-{{-- <div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between">
     <div class="row">
         <form action=" {{ route('team-file-export')}} " method="POST"> 
          @csrf
@@ -24,28 +24,10 @@
         </form>
         <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
     </div>
-</div> --}}
+</div>
 
 {{-- Team Date Filter  --}}
 <div class="card-body">
-    <div class="btn-group">   
-        <a data-toggle="modal" data-target="#teamcsvModal" class="end btn btn-success"
-            href="">Import</a>
-        <button id="all_action"
-            class="d-none btn btn-danger dropdown-toggle waves-effect waves-float waves-light"
-            type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            All Action
-        </button>
-        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-            <button data-toggle="modal" data-target="#mass_delete_modal"  class="dropdown-item">Mass Delete</button>
-
-            <form action="{{ route('team.mass-export') }}">
-                <input type="hidden" name="id" id="export_id">
-                <button type="submit" class=" dropdown-item">Mass Export</button>
-            </form>
-        </div>
-    </div>
     <form action="{{ route('team.date.filter') }}" method="GET">
         <div class="row align-items-end">
             <div class="col-md">
@@ -72,10 +54,10 @@
             <div class="col-md">
                 <div class="form-group mb-md-0">
                     <div class="input-group">
-                        <input type="search" name="search" class="form-control table_search" placeholder="Search Here By Name Or Designation" required>
+                        <input type="search" name="search" class="form-control table_search" placeholder="Search Here By Name Or Designation">
                         <div class="input-group-append">
                           <span class="input-group-text">
-                            <button type="submit" class="btn btn-sm" style="height: 23px"><i data-feather='search'></i></button>
+                            <button type="submit"><i data-feather='search'></i></button>
                           </span>
                         </div>
                     </div>
@@ -95,21 +77,13 @@
                 <h4 class="card-title">Team Member ({{ $data->count() }})</h4>
             </div> 
             <div class="table-responsive">
-                {{ $data->links('vendor.pagination.custom') }}
                 <table class="table table-white"  >
                     <thead>
                         @if($data->isEmpty())
-                        <h2 class=" d-inline offset-5 alert alert-danger">Data Not Found</h2>
+                        <th><h2 class="alert alert-danger">Data Not Found</h2></th>
                         @else
                         <tr>
-                            <th>
-                                <div class="custom-control custom-control-primary custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input select_all"
-                                        id="colorCheck1">
-                                    <label class="custom-control-label text-white"
-                                        for="colorCheck1"></label>
-                                </div> 
-                            </th>
+                            <th>Sl No</th>
                             <th>image</th>
                             <th>name</th>  
                             <th>Designation</th>
@@ -124,14 +98,7 @@
                             <?php $slno=1; ?>
                             @foreach ($data as $item) 
                             <tr>
-                                <td>
-                                    <div class="custom-control custom-control-primary custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input select_item"
-                                        id="service_select_{{ $item->id }}">
-                                    <label class="custom-control-label text-white"
-                                        for="service_select_{{ $item->id }}"></label>
-                                    </div>
-                                </td>
+                                <td>{{ $slno }}</td>
                                 <td>
                                     <div class="avatar-group">
                                         <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="{{ $item->name }}">
@@ -268,32 +235,12 @@
                                     </div>
                                 </div>
                             </tr>
+                            <?php $slno++; ?>
                             @endforeach 
                         @endif
                     </tbody>
                 </table>
-                {{ $data->links('vendor.pagination.custom') }}
             </div>  
-        </div>
-    </div>
-</div>
-
-{{-- modal for mass delete  --}}
-
-<div class="modal fade text-left" id="mass_delete_modal" tabindex="-1" aria-labelledby="myModalLabel33"
- style="display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="p-3 text-center">
-                <h1 class="text-danger">Are your sure?</h1>
-                <p>You want to delete this</p>
-            </div>
-            <a id="mass_delete" class="btn btn-danger">DELETE</a>
         </div>
     </div>
 </div>
@@ -327,106 +274,6 @@
         </div>
     </div>
 </div>
-
-@section('js')
-    <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            //select all feature
-            $('.select_all').change(function() {
-                ids = []
-                if ($(this).is(":checked")) {
-                    $('.select_item').prop('checked', true);
-                    $('.select_item').each(function() {
-                        ids.push($(this).attr('id').split('_')[2]);
-                    });
-                    if (ids.length == 0) {
-                        $('#all_action').addClass('d-none');
-                    } else {
-                        $('#all_action').removeClass('d-none');
-                        $('#export_id').val(ids);
-                    }
-                } else {
-                    $('.select_item').prop('checked', false);
-                    $('#all_action').addClass('d-none');
-                }
-                // $(document).on('click', '#mass_delete', function(){
-                $('#mass_delete').click(function() {
-                    $.ajax({
-                        type: 'get',
-                        url: "{{ route('team.mass_delete') }}",
-                        data: {
-                            'ids': ids
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                toastr.success(response.success);
-                                $('#all_action').addClass('d-none');
-                                window.location.reload();
-                            }
-                        }
-                    })
-                });
-            });
-            //individual select feature
-            $('.select_item').change(function() {
-                ids = []
-                $('.select_item').each(function() {
-                    if ($(this).is(":checked")) {
-                        ids.push($(this).attr('id').split('_')[2]);
-                    }
-                });
-                if (ids.length == 0) {
-                    $('#all_action').addClass('d-none');
-                    $('.select_all').prop('checked', false);
-                } else {
-                    $('#all_action').removeClass('d-none');
-                    $('#export_id').val(ids);
-                }
-                $(document).on('click', '#mass_delete', function(e) {
-                    $.ajax({
-                        type: 'get',
-                        url: "{{ route('team.mass_delete') }}",
-                        data: {
-                            'ids': ids
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                toastr.success(response.success);
-                                $('#all_action').addClass('d-none');
-                                window.location.reload();
-                            }
-                        }
-                    })
-                });
-            });
-            // // seach
-            // $('#search').keyup(function() {
-            //     var value = $(this).val().toLowerCase();
-            //     $('#service_table tr').filter(function() {
-            //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            //     });
-            // });
-            //service search
-            $('#search').keyup(function(){
-                var value = $(this).val();
-                $.ajax({
-                    type:'get',
-                    url:"{{ route('admin.service.search') }}",
-                    data:{'value':value},  
-                    success:function(response){                  
-                            $('#data_table').html(response);
-                    }
-                });
-            });
-        });
-    </script>
-@endsection
-
 
 
 

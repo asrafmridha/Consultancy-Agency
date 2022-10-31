@@ -68,10 +68,10 @@
                 </div>
             </div>
             <div class="content-body">
-                {{-- Content Start From Here --}}
-                    @yield('content')
-                {{-- Content End Here --}}
-            </div>
+                           {{-- Content Start From Here --}}
+                               @yield('content')
+                           {{-- Content End Here --}}
+                       </div>
         </div>
     </div>
 

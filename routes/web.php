@@ -2,14 +2,12 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CaseStudiesController;
-use App\Http\Controllers\Backend\ChartController;
 use App\Http\Controllers\Backend\ClientFeedbackController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\CopyRightController;
 use App\Http\Controllers\Backend\CustomerMessageController;
 use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\ExportImportController;
-use App\Http\Controllers\Backend\FooterServiceController;
 use App\Http\Controllers\Backend\RecentWorkController;
 use App\Http\Controllers\Backend\SearchController;
 use App\Http\Controllers\Backend\ServiceController;
@@ -19,7 +17,6 @@ use App\Http\Controllers\Backend\ThemeSettingController;
 use App\Http\Controllers\Backend\TitleController;
 use App\Http\Controllers\Backend\TrustUsController;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\frontend\SubcriptionController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\ProjectAreaController;
 use App\Models\Contact;
@@ -59,9 +56,7 @@ Route::get('/about_us',[FrontendController::class,'about'])->name('about-us');
 
 //Customer Message Save
 
-Route::post('user/message',[CustomerMessageController::class,'store'])->name('store.customermessage'); 
-
-Route::post('user/subcription',[SubcriptionController::class,'store'])->name('user.subcription');
+Route::post('user/message',[CustomerMessageController::class,'store'])->name('store.customermessage');
 
 
 //  All Route For Admin
@@ -93,17 +88,6 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
       //Route for Service Details 
       Route::get('/service/details/{id}',[ServiceController::class,'servicedetails'])->name('service.details');
-
-      //Route for mass delete
-
-      Route::get('/mass/delete',[ServiceController::class,'mass_delete'])->name('service.mass_delete');
-
-    //   Service mass export service.mass-export
-
-    Route::get('service/mass/export',[ExportImportController::class,'service_mass_export'])->name('service.mass-export'); 
-
-    Route::get('/admin/search',[ServiceController::class,'mass_delete'])->name('admin.service.search');
-
        
 
        // Route for Our Service Update
@@ -148,12 +132,8 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     //Team Controller
 
-    //Route for team mass delete 
-
-    Route::get('/team/mass/delete', [TeamController::class, 'mass_delete'])->name('team.mass_delete');
-
-    //Route FOr Team File  mass Export
-     Route::get('/team/mass/export',[TeamController::class,'team_mass_export'])->name('team.mass-export');
+    //Route FOr Team File Export
+    Route::post('/teamexport',[ExportImportController::class,'teamexport'])->name('team-file-export');
 
     Route::post('/teamimport',[ExportImportController::class,'teamimport'])->name('team-file-import');
 
@@ -177,8 +157,6 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
      //Route for Team Delete
 
      Route::delete('/teamdelete/{id}',[TeamController::class,'destroy'])->name('admin.teamdata.destroy'); 
-
-    
 
     //  Route for team data show for update
     Route::get('/teamdatashow/{id}',[TeamController::class,'showdata'])->name('admin.teamdatashow');
@@ -229,21 +207,7 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     //Recent Work Export
 
-    // Route::post('recent/work/Export',[RecentWorkController::class,'export'])->name('recentwork-file-export');
-
-    //Route for recent work mass delete  
-
-    Route::get('recent/work/mass/delete',[RecentWorkController::class,'mass_delete'])->name('recentwork.mass_delete');
-
-    //Route for recentwork mass export
-
-    Route::get('recent/work/mass/export',[RecentWorkController::class,'work_mass_export'])->name('recentwork.mass-export');
-
-
-
-    
-
-
+    Route::post('recent/work/Export',[RecentWorkController::class,'export'])->name('recentwork-file-export');
 
     // Client Feedback Section 
 
@@ -257,17 +221,8 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
  
     Route::get('feedback/table',[ClientFeedbackController::class,'show'])->name('feedback.show');
 
-    // Route for  mass delete feedback  
-
-    Route::get('/feedback/mass/delete', [ClientFeedbackController::class, 'mass_delete'])->name('client.mass_delete');
-
-    // Route for mass Export feedback 
-
-    Route::get('/feedback/mass/export', [ClientFeedbackController::class, 'feedback_mass_export'])->name('feedback.mass-export');
-
-    
-    // Route::post('/export/feedback',[ExportImportController::class,'exportFeedback'])->name('export-feedback');
-
+    // Route for export feedback 
+    Route::post('/export/feedback',[ExportImportController::class,'exportFeedback'])->name('export-feedback');
     //Route for feedback file import
     Route::post('/import/feedback',[ExportImportController::class,'importFeedback'])->name('feedback-file-import');
 
@@ -303,11 +258,7 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     
 
     // Route for group Delete Message 
-        // Route::post('user/message/delete',[CustomerMessageController::class,'mass_delete'])->name('user.message.delete');
-
-    //  Route for Message  mass Delete
-
-    Route::get('/message/mass/delete',[CustomerMessageController::class,'mass_delete'])->name('customer.message.mass_delete');
+    Route::get('user/message/delete',[CustomerMessageController::class,'mass_delete'])->name('message.delete');
     
     
     Route::delete('delete/message/{id}',[CustomerMessageController::class,'destroy'])->name('user.message.delete'); 
@@ -372,7 +323,7 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     //CopyRight Update
 
-    Route::post('copyright/update/{id}',[CopyRightController::class,'update'])->name('copyright.update'); 
+    Route::post('copyright/update/{id}',[CopyRightController::class,'update'])->name('copyright.update');
 
     //Theme Color
     Route::get('theme-color', [ThemeSettingController::class, 'color'])->name('theme.color');
@@ -387,24 +338,10 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('/all/search/{search}',[SearchController::class,'allsearch'])->name('admin.allsearch');
 
-    Route::get('/footer/service',[FooterServiceController::class,'index'])->name('footer-service');
 
-    Route::post('footerservice/update/{id}',[FooterServiceController::class,'update'])->name('footerservice.update'); 
-
-    Route::get('my-profile', [AdminController::class, 'myProfile'])->name('my-profile');
-
-    Route::get('subcription/list',[SubcriptionController::class,'index'])->name('subcription-list');
-
-    // Route subcription delete
-
-    Route::delete('/subcription/delete/{id}',[SubcriptionController::class,'destroy'])->name('subcription.destroy');
- 
     
-
-
-
 
 
 });
 
-
+      Route::get('my-profile', [AdminController::class, 'myProfile'])->name('my-profile');

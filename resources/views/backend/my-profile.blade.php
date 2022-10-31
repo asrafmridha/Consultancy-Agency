@@ -219,7 +219,7 @@
 </div>
 @endsection
 
- @push('js')
+@push('js')
     <script>
         // Update & Reset Profile photo on click of button
         $(document).ready(function(){
@@ -249,4 +249,4 @@
             });
         })
     </script>
-@endpush 
+@endpush

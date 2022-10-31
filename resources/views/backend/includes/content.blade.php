@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="media-body my-auto">
-                                <a href="{{ route('admin.teamtable') }}" class="font-weight-bolder mb-0">{{ $team }}
+                                <a href="{{ route('admin.teamview') }}" class="font-weight-bolder mb-0">{{ $team }}
                                 <p class="card-text font-small-3 mb-0">Team Member</p> </a>
                             </div>
                         </div>
@@ -107,53 +107,10 @@
             </div>
         </div>
         <div class="card-body">
-            <h1 class="ml-4">Message Chart</h1>
             <div id="line-chart"></div>
         </div>
     </div>
 </div>
-
-{{-- Bar Chart  --}}
-
-
-
-                <!-- Bar Chart Starts -->
-<div class="col-12">
-    <div class="card">
-        <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
-        </div>
-        <div class="card-body">
-            <h1 class="ml-4">Subcription Chart</h1>
-            <div id="bar-chart"></div>
-        </div>
-    </div>
-</div>
-
-   
-
-   <!-- Area Chart starts -->
-<div class="col-12">
-    <div class="card">
-        <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
-            <div>
-                <h3 class="ml-4 card-title">Client Feedback Chart</h3>
-                
-            </div>
-            
-        </div>
-        
-        
-        <div class="card-body">
-            <div id="line-area-chart"></div>
-        </div>
-    </div>
-</div>
-<!-- Area Chart ends -->
-  
-
-
-
-
 
 
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Exports\ServiceExport;
 use App\Http\Controllers\Controller;
 use App\Models\OurService;
 use App\Models\Service;
@@ -10,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ServiceController extends Controller
 {
@@ -171,14 +169,5 @@ class ServiceController extends Controller
         $alldata = Service::where('title','Like','%'.$search.'%')->orwhere('advisor_name','Like','%'.$search.'%')->paginate(10);
         return view('backend.pages.servicetable',compact('alldata'));
        }
-
-       public function mass_delete(Request $request)
-       {
-          $data = Service::findMany($request->ids);
-          $data->each->delete();
-          return response()->json(['success' => 'Delete Successfully!']);
-       }
-       
-
 }
 

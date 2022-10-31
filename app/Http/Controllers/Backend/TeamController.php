@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Exports\TeamExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamRequest;
 use App\Models\TeamImage;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class TeamController extends Controller
 {
@@ -36,7 +34,7 @@ class TeamController extends Controller
     }  
     
     public function teamtable(){
-        $data= TeamImage::paginate(6);
+        $data= TeamImage::all();
         return view('backend.pages.teamtable',compact('data'));
     }
 
@@ -85,29 +83,10 @@ class TeamController extends Controller
 
     public function teamDataSearch(Request $request){
         $search=$request->search;
-        $data = TeamImage::where('designation','Like','%'.$search.'%')->orwhere('name','Like','%'.$search.'%')->get(); 
+        $data = TeamImage::where('designation','Like','%'.$search.'%')->orwhere('name','Like','%'.$search.'%')->get();
+
+        
         return view('backend.pages.teamtable',compact('data'));
     }
-
-    public function mass_delete(Request $request)
-    {
-       $data = TeamImage::findMany($request->ids);
-       $data->each->delete();
-       return response()->json(['success' => 'Delete Successfully!']);
-    }
-
-    public function team_mass_export(Request $request){
-
-        $explode = explode(',', $request->id);
-        $ids = [];
-        foreach($explode as $id){
-            array_push($ids, $id);
-        }
-        // return $request;
-        return Excel::download(new TeamExport($ids), 'Team.xlsx');
-    }
-
-      
-    
 
 }

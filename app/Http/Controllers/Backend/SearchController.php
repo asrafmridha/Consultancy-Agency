@@ -11,11 +11,15 @@ class SearchController extends Controller
 {
     public function allsearch($search){
 
+        // $data=::where('banner',$search)->first();
         $data = AllTableName::where('name','Like','%'.$search.'%')->get();
+
         $view = view('backend.includes.all_search',compact('data'))->render();
 
         return response()->json([
             'view'=>$view
         ]);
+        
+
     }
 }

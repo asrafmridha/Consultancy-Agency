@@ -16,53 +16,32 @@ use Maatwebsite\Excel\Facades\Excel;
 class ExportImportController extends Controller
 {
     
-     public function service_mass_export(Request $request){
+    public function export(Request $request){
         
-        $explode = explode(',', $request->id);
-        $ids = [];
-        foreach($explode as $id){
-            array_push($ids, $id);
-        }
-        // return $request;
-        return Excel::download(new ServiceExport($ids), 'service.xlsx');
-     }
+        return Excel::download(new ServiceExport, 'service.xlsx');
+    }
 
     public function import(Request $request){
 
-        $request->validate([
-            'exported_file'=>'required|mimes:csv,xlsx',
-        ]);
+        Excel::import(new ServiceImport, $request->file('file'));
 
-        if($request->hasFile('exported_file')){
-            $file = $request->file('exported_file');
-            if($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx'){
-                Excel::import(new ServiceImport, $file);
-            }
-        }
-        else{
-
-            return redirect()->back()->with('error', 'wrong file extension');
-
-        }
         return redirect()->back()->with('success', 'User Imported Successfully');
-        
-
     }
 
-    // public function teamexport(){
+    public function teamexport(){
 
-    //     return Excel::download(new TeamExport, 'team.xlsx');
-    // }
+        return Excel::download(new TeamExport, 'team.xlsx');
+    }
     public function teamimport(Request $request){
 
         Excel::import(new TeamImport, $request->file('file'));
         return redirect()->back()->with('success', 'Team Imported Successfully');
     }
 
-    // public function exportFeedback(){
+    public function exportFeedback(){
 
-    //     return Excel::download(new FeedbackExport, 'feedback.xlsx');
-    // }
+        return Excel::download(new FeedbackExport, 'feedback.xlsx');
+    }
     public function importFeedback(Request $request){
         Excel::import(new FeedbackImport(), $request->file('file'));
         return redirect()->back()->with('success', 'feedback Imported Successfully');

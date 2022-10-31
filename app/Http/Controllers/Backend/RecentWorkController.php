@@ -33,7 +33,7 @@ class RecentWorkController extends Controller
     }
 
     public function show(){
-         $data=RecentWork::paginate(6);;
+         $data=RecentWork::all();
          return view('backend.pages.recentwork.recent_work_table',compact('data'));
     }
 
@@ -70,9 +70,9 @@ class RecentWorkController extends Controller
         return back()->with('success','Excel Imported Successfully');
       
     }
-    // public function export(){
-    //     return Excel::download(new RecentWorkExport, 'recentwork.xlsx');
-    // }
+    public function export(){
+        return Excel::download(new RecentWorkExport, 'recentwork.xlsx');
+    }
     
     public function recentworkDateFilter(){
 
@@ -102,24 +102,6 @@ class RecentWorkController extends Controller
 
         RecentWorkButton::find($id)->update($request->except('_token'));
         return back()->withSuccess('Data Updated Successfully');
-    }
-
-    public function mass_delete(Request $request)
-    {
-       $data = RecentWork::findMany($request->ids);
-       $data->each->delete();
-       return response()->json(['success' => 'Delete Successfully!']);
-    }
-
-    public function work_mass_export(Request $request){
-
-        $explode = explode(',', $request->id);
-        $ids = [];
-        foreach($explode as $id){
-            array_push($ids, $id);
-        }
-        // return $request;
-        return Excel::download(new RecentWorkExport($ids), 'RecentWork.xlsx');
     }
     
 }
