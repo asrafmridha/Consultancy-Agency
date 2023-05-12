@@ -18,7 +18,7 @@
 
 @section('content')
 
-<div class="card-body">
+{{-- <div class="card-body">
     <form action="{{ route('message.date.filter') }}" method="GET">
         <div class="row align-items-end">
             <div class="col-md">
@@ -56,7 +56,7 @@
             </div>
         </div> 
      </form>
-</div>
+</div> --}}
 
     <!-- White Tables start -->
 <div class="row" id="dark-table">
@@ -65,7 +65,7 @@
             <div class="card-header">
                 <h4 class="card-title">User Message  ({{ $data->count() }})</h4>     
             </div>
-                <button style="width: 100px" type="submit"  class=" mb-1 btn btn-danger " id="delete_all"> Delete</button>   
+                {{-- <button style="width: 100px" type="submit"  class=" mb-1 btn btn-danger " id="delete_all"> Delete</button>    --}}
             <div class="table-responsive">
                 <button id="msgbtn" style="display: none" type="submit" class="btn btn-danger">Delete</button>
                 <table class="table table-white " >
@@ -230,10 +230,6 @@
                         });
                 }
             });
-
-
-
-
       });
 
 </script> 

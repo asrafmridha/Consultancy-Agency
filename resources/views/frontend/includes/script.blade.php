@@ -8,3 +8,5 @@
 <script src="{{ asset('frontend') }}/assets/plugins/aos/js/aos.js"></script>
 <script src="{{ asset('frontend') }}/assets/plugins/venobox/js/venobox.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/script.js"></script>
+
+@yield('js')

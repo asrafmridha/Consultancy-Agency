@@ -16,7 +16,7 @@
 @endsection
 @section('content') 
 
-<div class="d-flex justify-content-between">
+{{-- <div class="d-flex justify-content-between">
     <div class="row">
         <form action=" {{ route('team-file-export')}} " method="POST"> 
          @csrf
@@ -24,10 +24,10 @@
         </form>
         <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
     </div>
-</div>
+</div> --}}
 
 {{-- Team Date Filter  --}}
-<div class="card-body">
+{{-- <div class="card-body">
     <form action="{{ route('team.date.filter') }}" method="GET">
         <div class="row align-items-end">
             <div class="col-md">
@@ -65,7 +65,7 @@
             </div>
         </div> 
      </form>
-</div>
+</div> --}}
 
 {{-- End Filter  --}}
 
@@ -247,7 +247,7 @@
  
 @endsection
         {{-- Modal For Import CSV  --}}
-<div class="modal fade" id="teamcsvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="teamcsvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -273,7 +273,7 @@
                 </form>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 

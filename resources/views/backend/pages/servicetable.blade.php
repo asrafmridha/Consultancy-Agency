@@ -17,7 +17,7 @@
 @endsection
 @section('content') 
 
-<div class="d-flex justify-content-between">
+{{-- <div class="d-flex justify-content-between">
   <div class="row">
       <form action=" {{ route('service-export')}} " method="POST"> 
        @csrf
@@ -25,9 +25,9 @@
       </form>
       <button data-toggle="modal" data-target="#csvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
   </div>
-</div>
+</div> --}}
  {{-- Data Filter Start  --}}
-<div class="card-body">
+{{-- <div class="card-body">
   <form action="{{ route('service.date.filter') }}" method="GET">
       <div class="row align-items-end">
           <div class="col-md">
@@ -65,7 +65,7 @@
           </div>
       </div> 
     </form>
-</div>
+</div> --}}
 
 {{-- Data Filter End  --}}
 

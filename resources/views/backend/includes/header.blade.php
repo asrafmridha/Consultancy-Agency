@@ -252,7 +252,7 @@
                     <span >
                         {{-- <img class="round" src="{{('uploads/user/'.Auth::user()->image)  }}" alt="image" height="40" width="40"> --}}
                         {{-- <span class="avatar-status-online"></span> --}}
-                        <img class="round" src="{{ 'uploads/user/'.Auth::user()->image }}" height="40px" width="40px" alt="admin">
+                        <img class="round" src="{{ asset('uploads/user/'.Auth::user()->image) }}" height="40px" width="40px" alt="admin">
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
@@ -374,15 +374,6 @@
         });
      
      });
-
-
-
-
-
-
     });
-
-    
-  
 </script> 
 

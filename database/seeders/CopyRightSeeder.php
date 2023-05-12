@@ -16,8 +16,8 @@ class CopyRightSeeder extends Seeder
     public function run()
     {
         CopyRight::create([
-            'copy_right_year'=>'2021. All rights reserved by',
-            'copy_right_text'=>'SoClose',
+            'copy_right_year'=>'2023. All rights reserved by',
+            'copy_right_text'=>'AlHazz & Asraf',
         ]);
     }
 }
