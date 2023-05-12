@@ -43,6 +43,7 @@
                         </ul>
                     </div>
                 </div>
+            @if (footer_service()!=null)
                 <div class="col-xl-3 col-md-6 mb-5 mb-xl-0">
                     <div class="footer__block ml-md-4">
                         <h3 class="footer__block__title side-line side-line--40 mb-4">{{ $title->service_title }}</h3>
@@ -65,6 +66,7 @@
                         </ul>
                     </div>
                 </div>
+            @endif
                 <div class="col-xl-5 col-lg-6 col-md-8">
                     <div class="footer__block ml-md-4">
                         <h3 class="footer__block__title side-line side-line--40 mb-4">Sign up for Newsletter</h3>
@@ -72,7 +74,7 @@
                         @if(Session::has('message'))
                         <p class="alert alert-info">{{ Session::get('message') }}</p>
                         @endif
-                        <form class="footer__block__form form-inline w-100 position-relative needs-validation" action="{{ route('user.subcription') }}" method="POST">
+                        {{-- <form class="footer__block__form form-inline w-100 position-relative needs-validation" action="{{ route('user.subcription') }}" method="POST">
                             @csrf
                             @error('email')
                             <p class="alert alert-danger">{{ $message }}</p>
@@ -81,7 +83,7 @@
                                         
                             <button class="primary-btn text-uppercase border-0 mt-4 mt-sm-0" type="submit">Submit</button>
                             
-                        </form>
+                        </form> --}}
                         <h3 class="footer__block__title side-line side-line--40 mt-5 mb-3">Get Social</h3>
                         <ul class="social social--rounded d-flex flex-wrap align-items-center mb-0">
                             <li class="social__items" data-aos="fade-up">

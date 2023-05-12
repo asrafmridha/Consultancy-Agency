@@ -20,6 +20,9 @@
     return \App\Models\ThemeSetting::where('user_id',$user_id)->first();
   }
   
+   function footer_service(){
+    return \App\Models\footerservice::first();
+  }
 
 
 
