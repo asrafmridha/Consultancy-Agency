@@ -519,7 +519,7 @@
 
  {{-- Faq Question Start --}}
 
- <section class="form-and-faq section-gap">
+ {{-- <section class="form-and-faq section-gap">
     <div class="container">
         <div class="row">
             <div class="form-and-faq__wrapper col-xl-4 col-lg-6 col-md-10">
@@ -632,7 +632,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 {{-- Faq Question End  --}}
 

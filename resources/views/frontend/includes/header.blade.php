@@ -30,9 +30,17 @@
                     </li> 
                 </ul>
                 <div class="text-center">
-                    <a href="{{ route('contact') }}" class="primary-btn d-inline-block text-uppercase">Get a Quote</a>
+                    <a href="{{ route('contact') }}" class="primary-btn d-inline-block text-uppercase">Contact Us</a>
                 </div>
             </div>
         </div>
     </nav>
 </header>
+
+@section('js')
+<script>
+    $('.navbar-toggler').on('click',function(){
+         $('#navbarSupportedContent').toggle();
+    });
+</script>
+@endsection

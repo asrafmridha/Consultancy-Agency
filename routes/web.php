@@ -344,4 +344,4 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
 });
 
-      Route::get('my-profile', [AdminController::class, 'myProfile'])->name('my-profile');
+    Route::get('my-profile', [AdminController::class, 'myProfile'])->name('my-profile');
