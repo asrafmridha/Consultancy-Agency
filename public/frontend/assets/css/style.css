@@ -472,8 +472,8 @@ ol {
   width: 3.75rem;
   height: 3.75rem;
   font-size: 1.25rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#FE5B90), to(#FF7BA3));
-  background: linear-gradient(180deg, #FE5B90, #FF7BA3);
+  background: -webkit-gradient(linear, left top, left bottom, from(#3e7dc0), to(#3e7dc0));
+  background: linear-gradient(180deg, #3e7dc0, #3e7dc0);
   -webkit-box-shadow: 0.625em 0.625em 3.125em rgba(254, 91, 144, 0.2);
           box-shadow: 0.625em 0.625em 3.125em rgba(254, 91, 144, 0.2);
   margin-right: 0.625rem;

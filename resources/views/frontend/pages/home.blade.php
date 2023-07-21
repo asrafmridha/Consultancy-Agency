@@ -4,14 +4,14 @@
 
 {{-- banner Section  --}}
 
-<section class="banner section-gap position-relative">
+<section class="banner section-gap position-relative" style="background-color: #b5eadf">
     <div class="container">
         <div class="row justify-content-center justify-content-lg-start">
             <div class="col-xl-6 col-lg-7 col-md-10 text-center text-lg-left">
                 <h3 class="banner__sub-title side-line side-line--50">{{ $title->banner_title }}</h3>
                 <h1 class="banner__title text-uppercase"><span class="d-block d-sm-inline d-lg-block"> </span><span class="d-block d-sm-inline d-lg-block">{{ $headertext->title }} </span></h1>
                 <p class="banner__text"><span class="d-xl-block">{!! $headertext->Short_description !!}</p>
-                <a href="{{ route('about-us') }}" class="primary-btn d-inline-block text-uppercase">{{ $headertext->button_text }}</a>
+                <a href="{{ route('about-us') }}" class="btn d-inline-block text-uppercase" style="background-color: #3e7dc0;color:white">{{ $headertext->button_text }}</a>
             </div>
         </div>
         <div class="banner__image-wrapper mt-5 mt-lg-0">
@@ -338,8 +338,6 @@
                     </linearGradient>
                 </defs>
             </svg>
-
-        
         </div>
     </div>
 </section>
@@ -794,7 +792,8 @@
             @endforeach
         </div>
     </div>
-</section>
+</section> 
+
 
 {{-- our team End  --}}
 

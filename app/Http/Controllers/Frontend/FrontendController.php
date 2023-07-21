@@ -15,6 +15,7 @@ use App\Models\RecentWorkButton;
 use App\Models\Service;
 use App\Models\TeamImage;
 use App\Models\Title;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,6 @@ class FrontendController extends Controller
     public function index()
     {
         // $headertext = HeaderText::first();
-
         $headertext = DB::table('header_texts')->first();
         $recentwork = RecentWork::all();
         $teamimages = TeamImage::all();

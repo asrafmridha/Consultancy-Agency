@@ -25,17 +25,12 @@
                     <img src="{{ asset('frontend') }}/assets/images/contact/contact-image.png" alt="Contact Image" class="contact__image img-fluid">
                 </div>
             </div>
-
-            
-           
             <div class="col-xl-5 col-lg-6 col-md-10 mt-5 mt-lg-0 d-flex align-items-end">
-
                 @if(session()->has('message'))
-                <div class="h2 alert alert-danger">
-                {{ session()->get('message') }}
-                </div>
+                    <div class="h2 alert alert-danger">
+                    {{ session()->get('message') }}
+                    </div>
                 @endif
-                    
                 <form action="{{ route('store.customermessage') }}" method="POST">
                             @csrf
                             <div class="row">
@@ -65,9 +60,7 @@
                             @enderror
                         </div>
                         <div class="col-12">
-                           <button class="primary-btn d-inline-block text-uppercase border-0 w-100" type="submit">Send Message</button> 
-
-                            
+                           <button class="primary-btn d-inline-block text-uppercase border-0 w-100" type="submit">Send Message</button>  
                         </div>
                     </div>
                 </form>                
@@ -132,18 +125,8 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-        
     </div>
 </section>
-
-
 @endsection 
 
 

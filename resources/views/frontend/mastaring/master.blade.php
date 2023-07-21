@@ -7,11 +7,11 @@
 </head>
 <body>
 	<!-- Preloader Section Start -->
-	<div class="preloader position-fixed w-100 h-100">
+	{{-- <div class="preloader position-fixed w-100 h-100">
 		<div class="preloader__bg d-flex align-items-center justify-content-center w-100 h-100">
 			<img src="{{ asset('frontend/assets/images/preloader/preloader.gif') }}" alt="Preloader Image" class="img-fluid">
 		</div>
-	</div>
+	</div> --}}
 	<!-- Preloader Section End -->
 
 	<!-- Header Section Start -->
