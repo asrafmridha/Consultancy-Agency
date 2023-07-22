@@ -6,7 +6,7 @@
                     <div class="footer__block">
                         <a href="{{ route('index') }}" class="footer__block__logo d-inline-block side-line side-line--60">
                             <div class="logo">
-                                <img class="img-fluid mr-2" src="{{ asset('frontend') }}/assets/images/logo/logo.png" alt="Logo image" style="max-width: 180px">
+                                <img class="img-fluid mr-2" src="{{ asset('storage/') }}/{{ generalSettings()->logo }}" alt="Logo image" style="max-width: 180px">
                             </div>
                         </a>
                         <ul class="footer__block__list mb-0">
@@ -15,28 +15,28 @@
                                     <span class="contact-details__icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="background-color: #3e7dc0">
                                         {!! address()->email_font !!}
                                     </span>
-                                    <address class="footer__block__list__address contact-details__text mb-0" style="color: #1B4D7E">{{address()->address  }}</address>	
+                                    <address class="footer__block__list__address contact-details__text mb-0" style="color: #1B4D7E">{{generalSettings()->address  }}</address>	
                                 </div>
                             </li>
                             <li class="footer__block__list__item my-4">
                                 <div class="contact-details d-flex align-items-center">
                                     <span class="contact-details__icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0">
-                                        {!! address()->phone_font !!}
+                                        {!! generalSettings()->phone_image !!}
                                     </span>
                                     <div>
                                         <a href="tel:+5391235862145" class="footer__block__list__link d-inline-block" style="color: #1B4D7E">{{ address()->phone }}</a><br>
-                                        <a href="tel:+8801234586987" class="footer__block__list__link d-inline-block" style="color: #1B4D7E">{!! address()->alter_phone !!}</a>
+                                        <a href="tel:+8801234586987" class="footer__block__list__link d-inline-block" style="color: #1B4D7E">{!! generalSettings()->alter_phone !!}</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="footer__block__list__item">
                                 <div class="contact-details d-flex align-items-center">
                                     <span class="contact-details__icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0">
-                                       {!! address()->address_font !!}
+                                       {!! generalSettings()->location_image !!}
                                     </span>
                                     <div>
-                                        <a href="mailto:consultancyagency@consult.com" class="footer__block__list__link d-inline-block" style="color: #1B4D7E">{{address()->email  }}</a><br>
-                                        <a href="mailto:consult@consultancyagency.com" class="footer__block__list__link d-inline-block" style="color: #1B4D7E">{{address()->alter_email  }}</a>
+                                        <a href="mailto:consultancyagency@consult.com" class="footer__block__list__link d-inline-block" style="color: #1B4D7E">{{generalSettings()->email  }}</a><br>
+                                        <a href="mailto:consult@consultancyagency.com" class="footer__block__list__link d-inline-block" style="color: #1B4D7E">{{generalSettings()->alter_email  }}</a>
                                     </div>
                                 </div>
                             </li>

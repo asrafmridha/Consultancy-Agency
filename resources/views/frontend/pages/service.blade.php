@@ -1,7 +1,7 @@
 @extends('frontend.mastaring.master')
 @section('content')
 
-<section class="sub-banner section-gap">
+<section class="sub-banner section-gap" style="background-color: #b5eadf !important">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -82,7 +82,7 @@
                         <div class="tab-pane fade d-block show active" id="pills-business-finance" role="tabpanel" aria-labelledby="pills-business-finance-tab">
                             <div class="case-studies__slider row">
                                 @foreach ($recentwork as $item)
-                                <div class="case-studies__slide col-lg-4 col-md-6">  
+                                <div class="case-studies__slide col-lg-4 col-md-6">
                                     <div class="case-studies__block position-relative">
                                         <img height="300px" width="200px" src="{{ asset('uploads/recentwork/'.$item->image) }}" alt="Case Studies Image" class="case-studies__block__image w-100">
                                         <div class="case-studies__block__overlay d-flex align-items-end w-100 h-100 position-absolute">
@@ -98,23 +98,23 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
-    
+
                                 @endforeach
                                 <div class="case-studies__slide col-lg-4 col-md-6">
                                     <div class="case-studies__block position-relative">
-                                            <div class="case-studies__block__overlay__content d-flex align-items-end w-100">      
+                                            <div class="case-studies__block__overlay__content d-flex align-items-end w-100">
                                             </div>
                                         </div>
                                     </div>
-                                </div>      
+                                </div>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
 @endsection

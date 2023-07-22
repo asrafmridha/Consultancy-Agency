@@ -7,7 +7,7 @@
         @else
         menu-dark
         @endif
-    @endif 
+    @endif
     menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
@@ -19,14 +19,14 @@
                     <i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i>
                     <i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i>
                 </a>
-            </li> 
+            </li>
         </ul>
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
-               
+
             </li>
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
             </li>
@@ -38,7 +38,7 @@
                 {{-- <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ route('headertextview') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Update Banner</span></a>
                     </li>
-                    
+
                 </ul> --}}
             </li>
 
@@ -70,6 +70,16 @@
 
             {{-- end team --}}
 
+            {{-- Blog --}}
+            <li class=" nav-item"><a class="@yield('blog') d-flex align-items-center" href="#"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Service">Blog</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{ route('blog.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Create</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{ route('blog.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">List </span></a>
+                    </li>
+                </ul>
+            </li>
+
             {{-- Case Studies --}}
 
             <li class=" nav-item"><a class="@yield('recentwork') d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Service">Recent Work</span></a>
@@ -82,7 +92,7 @@
 
                     <li><a class="d-flex align-items-center" href="{{ route('recentwork.button.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Update Button</span></a>
                     </li>
-                   
+
                 </ul>
             </li>
 
@@ -97,19 +107,19 @@
 
                     <li><a class="d-flex align-items-center" href="{{ route('feedback.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
                     </li>
-                    
+
                 </ul>
             </li>
 
             {{-- Client Message  --}}
 
-            
+
             <li class=" nav-item"><a class=" @yield('clientmessage') d-flex align-items-center" href="#"><i data-feather='message-square'></i><span class="menu-title text-truncate" data-i18n="Service">Client Message</span></a>
                 <ul class="menu-content">
                     <li><a  class="d-flex align-items-center" href="{{ route('customer.message.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Show Message</span></a>
                     </li>
 
-                
+
                 </ul>
             </li>
 
@@ -120,7 +130,7 @@
                     <li><a  class="d-flex align-items-center" href="{{ route('project.area.updateview') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List"> Update Project</span></a>
                     </li>
 
-                
+
                 </ul> --}}
             </li>
 
@@ -134,7 +144,7 @@
             <li class=" nav-item"><a class=" @yield('contact') d-flex align-items-center" href="{{ route('contact.updateview') }}"><i data-feather='phone-forwarded'></i><span class="menu-title text-truncate" data-i18n="Service">Update Contact</span></a>
                 {{-- <ul class="menu-content">
                     <li><a  class="d-flex align-items-center" href="{{ route('contact.updateview') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Update Contact</span></a>
-                    </li> 
+                    </li>
                 </ul> --}}
             </li>
             <li class=" nav-item"><a class=" @yield('trust') d-flex align-items-center" href="#"><i data-feather='sunset'></i><span class="menu-title text-truncate" data-i18n="Service">Trust Us</span></a>
@@ -144,8 +154,8 @@
 
                     <li><a  class="d-flex align-items-center" href="{{ route('trust.show') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
                     </li>
-                   
-                
+
+
                 </ul>
             </li>
 
@@ -159,8 +169,11 @@
                 </li>
 
                 <li class=" nav-item"><a class=" @yield('copyright') d-flex align-items-center" href="{{ route('copyright.update.view') }}"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Service">Update Copyright</span></a>
-                </li> <br> 
-                
+                </li> <br>
+
+                <li class=" nav-item"><a class=" @yield('social_url') d-flex align-items-center" href="{{ route('generalsetting.update.view') }}"><i data-feather='link'></i></i><span class="menu-title text-truncate" data-i18n="Service">General Setting</span></a>
+                </li>
+
             {{-- End my Section  --}}
 
         </ul>
@@ -186,14 +199,14 @@
             type: "GET",
             success: function(data)
             {
-            
+
             }
-                
+
         })
     });
 
     })
-</script> 
+</script>
 
 
 

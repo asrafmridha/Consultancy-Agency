@@ -1,4 +1,4 @@
-/* 
+/*
 ------------------
 Template Name: Consult | Agency Type Website
 Version: 1.00
@@ -1585,7 +1585,7 @@ ol {
 
 /* Sub Banner Section Style */
 .sub-banner {
-  background-image: url(../images/banner/sub-banner-bg.png);
+  /* background-image: url(../images/banner/sub-banner-bg.png); */
   padding: 11.3125rem 0 3.25rem;
 }
 

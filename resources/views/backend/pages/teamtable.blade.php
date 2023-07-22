@@ -14,20 +14,20 @@
         </ol>
     </div>
 @endsection
-@section('content') 
+@section('content')
 
-{{-- <div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between">
     <div class="row">
-        <form action=" {{ route('team-file-export')}} " method="POST"> 
+        <form action=" {{ route('team-file-export')}} " method="POST">
          @csrf
             <button type="submit" class="btn btn-primary m-1">Export</button>
         </form>
-        <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>    
+        <button data-toggle="modal" data-target="#teamcsvModal" type="submit" class="btn btn-primary m-1 btn-sm" style="height: 40px">Import</button>
     </div>
-</div> --}}
+</div>
 
 {{-- Team Date Filter  --}}
-{{-- <div class="card-body">
+<div class="card-body">
     <form action="{{ route('team.date.filter') }}" method="GET">
         <div class="row align-items-end">
             <div class="col-md">
@@ -63,9 +63,9 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
      </form>
-</div> --}}
+</div>
 
 {{-- End Filter  --}}
 
@@ -75,7 +75,7 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Team Member ({{ $data->count() }})</h4>
-            </div> 
+            </div>
             <div class="table-responsive">
                 <table class="table table-white"  >
                     <thead>
@@ -85,7 +85,7 @@
                         <tr>
                             <th>Sl No</th>
                             <th>image</th>
-                            <th>name</th>  
+                            <th>name</th>
                             <th>Designation</th>
                             <th>fb_link</th>
                             <th>twitter_link</th>
@@ -96,14 +96,14 @@
                     </thead>
                     <tbody>
                             <?php $slno=1; ?>
-                            @foreach ($data as $item) 
+                            @foreach ($data as $item)
                             <tr>
                                 <td>{{ $slno }}</td>
                                 <td>
                                     <div class="avatar-group">
                                         <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="{{ $item->name }}">
                                             <img height="80px" width="100px" src="{{ asset('uploads/team/'.$item->image) }}" alt="">
-                                        </div> 
+                                        </div>
                                     </div>
                                 </td>
                                 <td>{{ $item->name }}</td>
@@ -140,7 +140,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                        
+
                                             <div class="modal-body">
                                                 <form action="{{ Route('admin.team.update',$item->id) }}"  method="POST" enctype="multipart/form-data" >
                                                         @csrf
@@ -150,13 +150,13 @@
                                                         @error('image')
                                                         <div class="alert alert-danger">
                                                             {{$message}}
-                                                        </div>  
+                                                        </div>
                                                         @enderror
                                                         <input type="text" name="name" value="{{ $item->name }}" class="mt-3 form-control name" placeholder="Enter Team Member name">
                                                         @error('name')
                                                         <div class="alert alert-danger">
                                                             {{$message}}
-                                                        </div>  
+                                                        </div>
                                                         @enderror
 
                                                         <input type="text" name="designation" class="mt-3 form-control image"
@@ -164,39 +164,39 @@
                                                         @error('designation')
                                                         <div class="alert alert-danger">
                                                             {{$message}}
-                                                        </div>  
+                                                        </div>
                                                         @enderror
                                                         <input type="text" name="fb_link" class="mt-3 form-control" placeholder="Enter  Fb link here" value="{{ $item->fb_link }}">
                                                         @error('fb_link')
                                                         <div class="alert alert-danger">
-                                                    
+
                                                             {{$message}}
-                                                        </div>  
+                                                        </div>
                                                         @enderror
-                                        
+
                                                         <input type="text" name="twitter_link" class="mt-3 form-control" placeholder="Enter  Twitter link here" value="{{ $item->twitter_link }}">
-                                        
+
                                                         @error('twitter_link')
                                                         <div class="alert alert-danger">
-                                                    
+
                                                             {{$message}}
-                                                        </div>  
+                                                        </div>
                                                         @enderror
-                                        
+
                                                         <input type="text" name="linkedin_link" class="mt-3 form-control" placeholder="Enter  Linkedin link here" value="{{ $item->linkedin_link }}">
                                                         @error('linkedin_link')
                                                         <div class="alert alert-danger">
-                                                    
+
                                                             {{$message}}
-                                                        </div>  
+                                                        </div>
                                                         @enderror
                                                         <input type="text" name="pinterest_link" class="mt-3 form-control" placeholder="Enter  Pinterest link here" value="{{ $item->pinterest_link }}">
-                                                
+
                                                         @error('pinterest_link')
                                                         <div class="alert alert-danger">
-                                                    
+
                                                             {{$message}}
-                                                        </div>  
+                                                        </div>
                                                         @enderror
                                                         <div class="modal-footer">
                                                             <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
@@ -219,7 +219,7 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                        
+
                                             <div class="modal-body text-white bg-dark">
                                                 <form action="{{ route('admin.teamdata.destroy',$item->id) }}" method="POST">
                                                 @method('delete')
@@ -236,49 +236,53 @@
                                 </div>
                             </tr>
                             <?php $slno++; ?>
-                            @endforeach 
+                            @endforeach
                         @endif
                     </tbody>
                 </table>
-            </div>  
+            </div>
         </div>
     </div>
 </div>
- 
-@endsection
+
+
+
         {{-- Modal For Import CSV  --}}
-{{-- <div class="modal fade" id="teamcsvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        <div class="modal fade" id="teamcsvModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('team-file-import') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                            <input type="file" name="file" class="mt-3 form-control import" >
+                            @error('file')
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                        </form>
+                </div>
             </div>
-            <div class="modal-body">
-                <form action="{{ route('team-file-import') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                    <input type="file" name="file" class="mt-3 form-control import" >
-                    @error('file')
-                    <div class="alert alert-danger">
-                        {{$message}}
-                    </div>  
-                    @enderror 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-                </form>
         </div>
-    </div>
-</div> --}}
+
+
+@endsection
 
 
 
 
 
-     
+
 
 

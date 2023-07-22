@@ -1,7 +1,7 @@
 @extends('frontend.mastaring.master')
 @section('content')
 
-<section class="sub-banner section-gap">
+<section class="sub-banner section-gap" style="background-color: #b5eadf !important">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">

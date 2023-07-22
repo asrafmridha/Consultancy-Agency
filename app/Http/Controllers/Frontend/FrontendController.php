@@ -14,6 +14,7 @@ use App\Models\RecentWork;
 use App\Models\RecentWorkButton;
 use App\Models\Service;
 use App\Models\TeamImage;
+use App\Models\Blog;
 use App\Models\Title;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
@@ -87,5 +88,13 @@ class FrontendController extends Controller
     {
         $footer = Contact::first();
         return view('frontend.includes.footer', compact('footer'));
+    }
+    public function blog(){
+        $blogs=Blog::orderBy('id','DESC')->paginate(3);
+        return view('frontend.pages.blog',compact('blogs'));
+    }
+    public function blogDetails($id){
+        $blog=Blog::find($id);
+        return view('frontend.pages.blog_details',compact('blog'));
     }
 }

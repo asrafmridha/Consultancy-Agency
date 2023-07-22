@@ -1,7 +1,7 @@
 @extends('frontend.mastaring.master')
 @section('content')
 
-<section class="sub-banner section-gap">
+<section class="sub-banner section-gap" style="background-color: #b5eadf !important">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -36,14 +36,14 @@
                             <div class="row">
                                 <div class="section-header text-center text-lg-left col-12">
                                     <h3 class="section-header__sub-title side-line side-line--81 mb-1">{{ $title->contact_title }}</h3>
-                                    <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->contact_heading }}</h1>      
+                                    <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->contact_heading }}</h1>
                                 </div>
                         <div class="form-group col-12">
                             <input type="text" class="form-control shadow-none h-auto" placeholder="your name"  name="customer_name">
                             @error('customer_name')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
-                            
+
                         </div>
                         <div class="form-group col-12">
                             <input type="email" class="form-control shadow-none h-auto" placeholder="your e-mail"  name="customer_email">
@@ -60,10 +60,10 @@
                             @enderror
                         </div>
                         <div class="col-12">
-                           <button class="primary-btn d-inline-block text-uppercase border-0 w-100" type="submit">Send Message</button>  
+                           <button class="primary-btn d-inline-block text-uppercase border-0 w-100" type="submit">Send Message</button>
                         </div>
                     </div>
-                </form>                
+                </form>
             </div>
         </div>
         <div class="row" data-aos="fade-up">
@@ -117,7 +117,7 @@
                                         {{-- <i class="flaticon-placeholder"></i> --}}
                                         {!! $contact->address_font !!}
                                     </span>
-                                    <address class="footer__block__list__address contact-details__text mb-0">{{ $contact->address }}</address>	
+                                    <address class="footer__block__list__address contact-details__text mb-0">{{ $contact->address }}</address>
                                 </div>
                             </div>
                         </div>
@@ -127,6 +127,6 @@
         </div>
     </div>
 </section>
-@endsection 
+@endsection
 
 

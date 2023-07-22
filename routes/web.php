@@ -17,8 +17,10 @@ use App\Http\Controllers\Backend\ThemeSettingController;
 use App\Http\Controllers\Backend\TitleController;
 use App\Http\Controllers\Backend\TrustUsController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\ProjectAreaController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +55,10 @@ Route::get('/cases',[FrontendController::class,'case'])->name('cases');
 Route::get('/testimonials', [FrontendController::class, 'testimonials'])->name('testimonials');
 Route::get('/about_us',[FrontendController::class,'about'])->name('about-us');
 
+Route::get('/our_blog',[FrontendController::class,'blog'])->name('blog');
+Route::get('/blogDetails/{id}',[FrontendController::class,'blogDetails'])->name('blog.details');
+
+
 // Route::get('/service',[FrontendController::class,'service'])->name('our.service');
 
 //Customer Message Save
@@ -74,27 +80,27 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
         Route::get('/headertextview',[HeaderController::class,'view'])->name('headertextview');
 
         //Route for updateheadertext
-    
+
         Route::post('/update/header/text/{id}',[HeaderController::class,'update'])->name('updateheadertext');
 
-    //Add Service View 
+    //Add Service View
 
-    Route::get('/serviceview',[ServiceController::class,'index'])->name('admin.serviceview'); 
-    
-    // Route for Add Serviec 
-    Route::post('/addservice',[ServiceController::class,'store'])->name('admin.addservice'); 
+    Route::get('/serviceview',[ServiceController::class,'index'])->name('admin.serviceview');
+
+    // Route for Add Serviec
+    Route::post('/addservice',[ServiceController::class,'store'])->name('admin.addservice');
 
       // Route for  Serviec Table View by
       Route::get('/servicetableview',[ServiceController::class,'servicetableview'])->name('admin.servicetableview');
 
-      //Route for Service Details 
+      //Route for Service Details
       Route::get('/service/details/{id}',[ServiceController::class,'servicedetails'])->name('service.details');
-       
+
 
        // Route for Our Service Update
 
-       Route::post('/updateourservice/{id}',[ServiceController::class,'updateourservice'])->name('ourservice.update'); 
-      
+       Route::post('/updateourservice/{id}',[ServiceController::class,'updateourservice'])->name('ourservice.update');
+
 
       //Route for service edit view
 
@@ -105,23 +111,23 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
      //Export Service
      Route::post('/export',[ExportImportController::class,'export'])->name('service-export');
-  
+
      //Service Filter
-     
+
      Route::get('/service-date-filter', [ServiceController::class, 'serviceDateFilter'])->name('service.date.filter');
 
-     //Service table Search 
+     //Service table Search
 
      Route::get('/service-date-search', [ServiceController::class, 'serviceDataSearch'])->name('service.table.search');
 
 
      //Import Service
      Route::post('/import',[ExportImportController::class,'import'])->name('service-file-import');
-   
+
     // Route::get('/servicetabledata',[ServiceController::class,'show']);
-    
-    
-    Route::delete('/deleteservice/{id}',[ServiceController::class,'destroy'])->name('admin.deleteservice'); 
+
+
+    Route::delete('/deleteservice/{id}',[ServiceController::class,'destroy'])->name('admin.deleteservice');
 
     // Route for  Show data in Modal
 
@@ -138,26 +144,26 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::post('/teamimport',[ExportImportController::class,'teamimport'])->name('team-file-import');
 
-    //Route For Team Filter 
+    //Route For Team Filter
     Route::get('/team-date-filter', [TeamController::class, 'teamDateFilter'])->name('team.date.filter');
 
-    // Route for Team table Search 
+    // Route for Team table Search
     Route::get('/team-data-search', [TeamController::class, 'teamDataSearch'])->name('team.table.search');
 
 
     // Route for form view for team
 
-    Route::get('/teamview',[TeamController::class,'teamview'])->name('admin.teamview');  
+    Route::get('/teamview',[TeamController::class,'teamview'])->name('admin.teamview');
      // Route for Add team
-    Route::post('/addteam',[TeamController::class,'create'])->name('admin.addteam'); 
+    Route::post('/addteam',[TeamController::class,'create'])->name('admin.addteam');
 
      // Route for team data table
 
-     Route::get('/teamtable',[TeamController::class,'teamtable'])->name('admin.teamtable'); 
+     Route::get('/teamtable',[TeamController::class,'teamtable'])->name('admin.teamtable');
 
      //Route for Team Delete
 
-     Route::delete('/teamdelete/{id}',[TeamController::class,'destroy'])->name('admin.teamdata.destroy'); 
+     Route::delete('/teamdelete/{id}',[TeamController::class,'destroy'])->name('admin.teamdata.destroy');
 
     //  Route for team data show for update
     Route::get('/teamdatashow/{id}',[TeamController::class,'showdata'])->name('admin.teamdatashow');
@@ -170,7 +176,7 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('recentwork',[RecentWorkController::class,'index'])->name('admin.addrecentwork');
 
-    //  Route for recent work add 
+    //  Route for recent work add
     Route::post('add/recentwork',[RecentWorkController::class,'store'])->name('admin.recentwork.store');
 
     Route::get('recent/work/table',[RecentWorkController::class,'show'])->name('admin.managerecentwork');
@@ -181,11 +187,11 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     //Route for recent work button update
     Route::post('recent/work/button/update/{id}',[RecentWorkController::class,'recent_work_button_update'])->name('recentwork.button.update');
 
-    // Recentwork Date Filter 
+    // Recentwork Date Filter
 
     Route::get('/recentwork-date-filter', [RecentWorkController::class, 'recentworkDateFilter'])->name('recentwork.date.filter');
 
-    //RecentWork Data Search 
+    //RecentWork Data Search
     Route::get('/recentwork-date-search', [RecentWorkController::class, 'recentworkDataSearch'])->name('recentwork.data.search');
 
 
@@ -194,11 +200,11 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::delete('delete/recentwork/{id}',[RecentWorkController::class,'destroy'])->name('admin.deleterecentwork');
 
 
-    // Route for recent work update view form 
+    // Route for recent work update view form
 
     // Route::get('recentwork/update/view/{id}',RecentWorkController::class,'updateview')->name('admin.update.view');
 
-    // Route for recent work Update 
+    // Route for recent work Update
 
     Route::post('update/recentwork/{id}',[RecentWorkController::class,'update'])->name('admin.updaterecentwork');
 
@@ -210,7 +216,7 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::post('recent/work/Export',[RecentWorkController::class,'export'])->name('recentwork-file-export');
 
-    // Client Feedback Section 
+    // Client Feedback Section
 
     Route::get('view/clientfeedback',[ClientFeedbackController::class,'index'])->name('feedback.addview');
 
@@ -218,11 +224,11 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::post('add/clientfeedback',[ClientFeedbackController::class,'store'])->name('feedback.add');
 
-    // Route For see Feedback Table 
- 
+    // Route For see Feedback Table
+
     Route::get('feedback/table',[ClientFeedbackController::class,'show'])->name('feedback.show');
 
-    // Route for export feedback 
+    // Route for export feedback
     Route::post('/export/feedback',[ExportImportController::class,'exportFeedback'])->name('export-feedback');
     //Route for feedback file import
     Route::post('/import/feedback',[ExportImportController::class,'importFeedback'])->name('feedback-file-import');
@@ -234,16 +240,16 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('/feedback-data-search', [ClientFeedbackController::class, 'feedbackDataSearch'])->name('feedback.data.search');
 
-    // Route for update form view Feedback 
+    // Route for update form view Feedback
 
     Route::get('updateview/clientfeedback/{id}',[ClientFeedbackController::class,'updateview'])->name('feedback.updateview');
 
-    // Route for update  Feedback 
+    // Route for update  Feedback
 
     Route::post('update/clientfeedback/{id}',[ClientFeedbackController::class,'update'])->name('feedback.update');
 
-    
-    // Route for Delete Feedback 
+
+    // Route for Delete Feedback
 
     Route::delete('delete/clientfeedback/{id}',[ClientFeedbackController::class,'destroy'])->name('feedback.destroy');
 
@@ -256,15 +262,16 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('message/Search',[CustomerMessageController::class,'messageDataSearch'])->name('message.table.search');
 
-    
+    // Blog Section
+    Route::resource('blog',BlogController::class);
 
-    // Route for group Delete Message 
+    // Route for group Delete Message
     Route::get('user/message/delete',[CustomerMessageController::class,'mass_delete'])->name('message.delete');
-    
-    
-    Route::delete('delete/message/{id}',[CustomerMessageController::class,'destroy'])->name('user.message.delete'); 
 
-    // Project area Section 
+
+    Route::delete('delete/message/{id}',[CustomerMessageController::class,'destroy'])->name('user.message.delete');
+
+    // Project area Section
 
     Route::get('project/area/update',[ProjectAreaController::class,'updateview'])->name('project.area.updateview');
 
@@ -272,8 +279,8 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::post('project/area/update/{id}',[ProjectAreaController::class,'update'])->name('project.area.update');
 
-    //Experience Are Update View 
- 
+    //Experience Are Update View
+
     Route::get('Experience/area/update',[ExperienceController::class,'updateview'])->name('experience.area.updateview');
 
     //Experience Are Update
@@ -284,7 +291,7 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('Experience/area/addimage',[ExperienceController::class,'add_image_view'])->name('experience.area.addimage_view');
 
-    // contact Area 
+    // contact Area
 
     //Form view for contact address/phone add
 
@@ -296,11 +303,11 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('trust/us',[TrustUsController::class,'index'])->name('trust.addview');
 
-    // for Store Image 
+    // for Store Image
     Route::post('trust/us/store',[TrustUsController::class,'store'])->name('trust.store');
-    // for Manage 
+    // for Manage
     Route::get('trust/us/show',[TrustUsController::class,'show'])->name('trust.show');
-    
+
     //Trust Destroy
     Route::delete('trust/destroy/{id}',[TrustUsController::class,'destroy'])->name('trust.destroy');
 
@@ -313,13 +320,13 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::post('title/update/{id}',[TitleController::class,'update'])->name('title.update');
 
-    //Social Area 
+    //Social Area
     Route::get('social/url',[SocialUrlController::class,'index'])->name('social.url.update.view');
     //Social Area Update
 
     Route::post('social/url/update/{id}',[SocialUrlController::class,'update'])->name('social.url.update');
 
-    //Copyright Area 
+    //Copyright Area
     Route::get('copyright/update/view',[CopyRightController::class,'index'])->name('copyright.update.view');
 
     //CopyRight Update
@@ -339,8 +346,13 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
     Route::get('/all/search/{search}',[SearchController::class,'allsearch'])->name('admin.allsearch');
 
+    Route::get('general_setting',[GeneralSettingController::class,'index'])->name('generalsetting.update.view');
+    Route::post('general_setting/update/{id}',[GeneralSettingController::class,'update'])->name('generalsetting.update');
 
-    
+
+
+
+
 
 
 });

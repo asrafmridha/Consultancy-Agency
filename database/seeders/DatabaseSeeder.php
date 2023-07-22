@@ -47,6 +47,7 @@ class DatabaseSeeder extends Seeder
             CopyRightSeeder::class,
             ThemeSeeder::class,
             AllTableSeeder::class,
+            GeneralSettingSeeder::class,
 
         ]);
     }

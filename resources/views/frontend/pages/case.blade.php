@@ -1,7 +1,7 @@
 @extends('frontend.mastaring.master')
 @section('content')
 
-<section class="sub-banner section-gap">
+<section class="sub-banner section-gap" style="background-color: #b5eadf !important">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -41,9 +41,9 @@
             </div>
             <div class="col-12">
                 <div class="case-studies__container row">
-                    @foreach ($recentwork as $item)  
+                    @foreach ($recentwork as $item)
                     <div class="col-lg-4 col-sm-6 mix business-strategy">
-                                 
+
                         <div class="case-studies__block position-relative">
                             <img  height="300px" width="200px" src="{{ asset('uploads/recentwork/'. $item->image ) }}" alt="Case Studies Image" class="case-studies__block__image w-100">
                             <div class="case-studies__block__overlay d-flex align-items-end w-100 h-100 position-absolute">

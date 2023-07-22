@@ -24,6 +24,11 @@
     return \App\Models\footerservice::first();
   }
 
+function generalsettings()
+{
+    return \App\Models\GeneralSetting::first();
+}
+
 
 
 

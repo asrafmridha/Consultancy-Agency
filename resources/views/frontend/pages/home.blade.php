@@ -361,22 +361,22 @@
                         <div class="services__block__icon d-inline-flex flex-shrink-0 align-items-center justify-content-center position-relative">
                             {{-- <i class="flaticon-stats position-relative"></i> --}}
                             {!! $item->icon !!}
-                           
+
                         </div>
                         <h3 class="services__block__title mb-0">{{ $item->title }}</h3>
                     </div>
                     <p class="services__block__text">{!!  $item->Short_description !!}</p>
-                   
+
                     <a href="{{ route('our_service',$item->slug) }}" class="services__block__btn d-inline-flex align-items-center stretched-link"> {{ $item->button_text }}<i class="btn__icon flaticon-straight-right-arrow position-relative"></i></a>
-                   
+
                 </div>
             </div>
 
             @endforeach
-            
+
             </div>
         </div>
-    
+
 </section>
 
  {{-- Our Service End  --}}
@@ -436,7 +436,7 @@
 
 {{-- About us Section End --}}
 
-  {{-- Case Studies Section  --}}  
+  {{-- Case Studies Section  --}}
   <section class="case-studies" data-aos="fade-up">
     <div class="container">
         <div class="row">
@@ -465,12 +465,12 @@
             </div>
             <div class="col-12">
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade d-block show active" id="pills-business-finance" role="tabpanel" aria-labelledby="pills-business-finance-tab">     
+                    <div class="tab-pane fade d-block show active" id="pills-business-finance" role="tabpanel" aria-labelledby="pills-business-finance-tab">
                         <div class="case-studies__slider row">
                             @foreach ($recentwork as $item)
                             <div class="case-studies__slide col-lg-4 col-md-6">
                                 <div class="case-studies__block position-relative">
-                                    <img height="300px" width="200px" src="{{ asset('uploads/recentwork/'.$item->image) }}" alt="Case Studies Image" class="case-studies__block__image w-100">
+                                    <img height="300px" width="200px" src="{{ asset('uploads/recentwork/'.$item->image) }}" alt="Case Studies Image" class="case-studies__block__image w-100 mt-4">
                                     <div class="case-studies__block__overlay d-flex align-items-end w-100 h-100 position-absolute">
                                         <div class="case-studies__block__overlay__content d-flex align-items-end w-100">
                                             <div class="case-studies__block__overlay__content__text position-relative flex-grow-1">
@@ -486,22 +486,22 @@
                                     </div>
                                 </div>
 
-                                
+
                             </div>
 
                             @endforeach
                             <div class="case-studies__slide col-lg-4 col-md-6">
                                 <div class="case-studies__block position-relative">
-                                  
+
                                         <div class="case-studies__block__overlay__content d-flex align-items-end w-100">
-                                           
-                                            
+
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>      
+                            </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
@@ -563,7 +563,7 @@
                               </button>
                             </h2>
                           </div>
-                      
+
                           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body pt-0">
                                 <hr class="hr mt-0 mb-3">
@@ -656,7 +656,7 @@
                                             <span class="testimonial__block__quote d-inline-flex align-items-center justify-content-center rounded-circle position-absolute">
                                                 <i class="flaticon-straight-quotes"></i>
                                             </span>
-                                        </div>                          
+                                        </div>
                                     </div>
                                     <div class="col-sm-8 d-flex align-items-center">
                                         <div class="testimonial__block__content text-center text-sm-left">
@@ -668,7 +668,7 @@
                                                 <li class="testimonial__block__content__rating-item mr-1">
                                                     <i class="testimonial__block__content__rating-icon flaticon-star"></i>
                                                 </li>
-                                                
+
                                                 @elseif($item->star == 2)
                                                 <li class="testimonial__block__content__rating-item mr-1">
                                                     <i class="testimonial__block__content__rating-icon flaticon-star"></i>
@@ -724,10 +724,10 @@
                                                 </li>
                                                 <li class="testimonial__block__content__rating-item mr-1">
                                                     <i class="testimonial__block__content__rating-icon flaticon-star"></i>
-                                                </li> 
+                                                </li>
                                                     <li class="testimonial__block__content__rating-item mr-1">
                                                     <i class="testimonial__block__content__rating-icon flaticon-star"></i>
-                                                </li> 
+                                                </li>
                                                 <li class="testimonial__block__content__rating-item">
                                                     <i class="testimonial__block__content__rating-icon flaticon-star"></i>
                                                 </li>  --}}
@@ -736,8 +736,8 @@
                                     </div>
                             </div>
                         </div>
-                    </div> 
-                 @endforeach 
+                    </div>
+                 @endforeach
                 </div>
             </div>
         </div>
@@ -749,18 +749,18 @@
 {{-- our Team Start --}}
 
 <section class="team section-gap">
-    <div class="container">
+    <div class="container mx-auto">
         <div class="row">
             <div class="section-header col-12 text-center">
                 <h3 class="section-header__sub-title side-line side-line--106 mb-1">{{ $title->team_title }}</h3>
                 <h1 class="section-header__title text-uppercase font-weight-bold">{{ $title->team_heading }}</h1>
             </div>
 
-            @foreach ($teamimages as $item)    
-            <div class="team__grid col-lg-3 col-md-4 col-sm-6 d-flex" data-aos="fade-up">
-                <div class="team__block mx-auto">
+            @foreach ($teamimages as $item)
+            <div class="team__grid col-lg-3 col-md-4 col-sm-6 d-flex mb-5" data-aos="fade-up">
+                <div class="team__block  mx-auto">
                     <div class="team__block__wrapper position-relative overflow-hidden">
-                        <img height="1200px" width="100px"  src="{{ asset('uploads/team/'.$item->image) }}" alt="A team member image" class="team__block__image w-100 h-100"> 
+                        <img  style="height: 250px" width="220px" src="{{ asset('uploads/team/'.$item->image) }}" alt="A team member image" class="team__block__image ">
                         <div class="team__block__overlay d-flex align-items-end position-absolute w-100 h-100">
                             <div class="team__block__overlay__contant d-flex align-items-end w-100">
                                 <div class="flex-grow-1">
@@ -792,7 +792,7 @@
             @endforeach
         </div>
     </div>
-</section> 
+</section>
 
 
 {{-- our team End  --}}
@@ -837,7 +837,7 @@
                             <a href="#!" target="_blank" class="clients__block d-inline-flex align-items-center justify-content-center w-100 h-100" data-aos="zoom-in" data-aos-delay="100">
                                 <img src="{{ asset('frontend') }}/assets/images/clients/clients-2.png" alt="Clients Image" class="clients__block__image img-fluid">
                             </a>
-                        </li> 
+                        </li>
                         <li class="clients__list__item col-sm-4 col-6">
                             <a href="#!" target="_blank" class="clients__block d-inline-flex align-items-center justify-content-center justify-content-sm-end w-100 h-100" data-aos="zoom-in" data-aos-delay="200">
                                 <img src="{{ asset('frontend') }}/assets/images/clients/clients-3.png" alt="Clients Image" class="clients__block__image img-fluid">
@@ -853,13 +853,13 @@
                                 <img src="{{ asset('frontend') }}/assets/images/clients/clients-5.png" alt="Clients Image" class="clients__block__image img-fluid">
                             </a>
                         </li> --}}
-                        @foreach ($customertrust as   $item)                         
+                        @foreach ($customertrust as   $item)
                         <li class="clients__list__item col-sm-4 col-6">
                             <a href="#!" target="_blank" class="clients__block d-inline-flex align-items-center justify-content-center justify-content-sm-end w-100 h-100" data-aos="zoom-in" data-aos-delay="300">
                                 <img src="{{ asset('uploads/trustus/'.$item->image) }}" alt="Clients Image" class="clients__block__image img-fluid">
                             </a>
                         </li>
-                       
+
                         @endforeach
                     </ul>
                 </div>
