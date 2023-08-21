@@ -24,11 +24,11 @@ class ClientFeedbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'             =>'required|image',
-            'short_description' =>'required|max:250',
-            'client_name'       =>'required|max:15',
-            'designation'       =>'required|max:15', 
-            'star'              =>'required'
+            'image'             => 'required|image',
+            'short_description' => 'required|max:250',
+            'client_name'       => 'required|max:150',
+            'designation'       => 'required|max:150',
+            'star'              => 'required'
         ];
     }
 
@@ -38,8 +38,8 @@ class ClientFeedbackRequest extends FormRequest
             'image.required' => 'image is required!',
             'short_description.required' => 'Short Description field is required!',
             'client_name.required' => 'Client Name is required!',
-            'designation.required' =>  'Designation is required', 
-            'star.required'        => 'Star is required' ,    
+            'designation.required' =>  'Designation is required',
+            'star.required'        => 'Star is required',
         ];
     }
 }

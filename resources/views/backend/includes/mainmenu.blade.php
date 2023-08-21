@@ -168,6 +168,9 @@
                 <li class=" nav-item"><a class=" @yield('social_url') d-flex align-items-center" href="{{ route('social.url.update.view') }}"><i data-feather='link'></i></i><span class="menu-title text-truncate" data-i18n="Service">Social Url Update</span></a>
                 </li>
 
+                <li class=" nav-item"><a class=" @yield('ifrmae') d-flex align-items-center" href="{{ route('ifrmae.url.edit') }}"><i data-feather='link'></i></i><span class="menu-title text-truncate" data-i18n="Service">Update Iframe Video</span></a>
+                </li>
+
                 <li class=" nav-item"><a class=" @yield('copyright') d-flex align-items-center" href="{{ route('copyright.update.view') }}"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Service">Update Copyright</span></a>
                 </li> <br>
 

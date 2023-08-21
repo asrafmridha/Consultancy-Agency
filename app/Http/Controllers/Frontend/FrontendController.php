@@ -15,6 +15,7 @@ use App\Models\RecentWorkButton;
 use App\Models\Service;
 use App\Models\TeamImage;
 use App\Models\Blog;
+use App\Models\Iframe;
 use App\Models\Title;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
@@ -29,15 +30,16 @@ class FrontendController extends Controller
         $recentwork = RecentWork::all();
         $teamimages = TeamImage::all();
         $service = Service::all();
-        $feedback = ClientFeedback::all();
+        $feedback = ClientFeedback::orderBy('id', 'DESC')->paginate(3);
         $projectidea = ProjectIdea::first();
         $experience = Experience::first();
         $customertrust = CustomerTrust::all();
         $title = Title::first();
+        $embed = Iframe::first();
         $recentwork_button = RecentWorkButton::first();
 
         // return view('welcome',compact('headertext','teamimages','recentwork','service'));
-        return view('frontend.pages.home', compact('headertext', 'service', 'recentwork', 'teamimages', 'feedback', 'projectidea', 'experience', 'customertrust', 'title', 'recentwork_button'));
+        return view('frontend.pages.home', compact('headertext', 'service', 'recentwork', 'teamimages', 'feedback', 'projectidea', 'experience', 'customertrust', 'title', 'recentwork_button', 'embed'));
     }
 
     public function contact()
@@ -89,12 +91,14 @@ class FrontendController extends Controller
         $footer = Contact::first();
         return view('frontend.includes.footer', compact('footer'));
     }
-    public function blog(){
-        $blogs=Blog::orderBy('id','DESC')->paginate(3);
-        return view('frontend.pages.blog',compact('blogs'));
+    public function blog()
+    {
+        $blogs = Blog::orderBy('id', 'DESC')->paginate(3);
+        return view('frontend.pages.blog', compact('blogs'));
     }
-    public function blogDetails($id){
-        $blog=Blog::find($id);
-        return view('frontend.pages.blog_details',compact('blog'));
+    public function blogDetails($id)
+    {
+        $blog = Blog::find($id);
+        return view('frontend.pages.blog_details', compact('blog'));
     }
 }

@@ -21,6 +21,7 @@ use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\ProjectAreaController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\IframeController;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
@@ -330,8 +331,12 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::get('copyright/update/view',[CopyRightController::class,'index'])->name('copyright.update.view');
 
     //CopyRight Update
-
     Route::post('copyright/update/{id}',[CopyRightController::class,'update'])->name('copyright.update');
+
+    //ifrmae Area 
+    Route::get('iframe/url', [IframeController::class, 'index'])->name('ifrmae.url.edit');
+    //ifrmae Area Update
+    Route::post('iframe/url/update/{id}', [IframeController::class, 'update'])->name('ifrmae.url.update');
 
     //Theme Color
     Route::get('theme-color', [ThemeSettingController::class, 'color'])->name('theme.color');
